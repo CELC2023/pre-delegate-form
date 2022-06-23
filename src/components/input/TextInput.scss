@@ -1,0 +1,16 @@
+.textinput {
+    position: relative;
+    &--element {
+        border-radius: 5px;
+        border: 1px solid red;
+    }
+    &--label {
+        position: absolute;
+        left: 1em;
+        pointer-events: none;
+        &.label--active {
+            left: 0.25em;
+            top: -5px;
+        }
+    }
+}
