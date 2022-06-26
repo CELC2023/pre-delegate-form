@@ -1,3 +1,7 @@
+import { FieldValues, UseFormRegister, UseFormWatch } from "react-hook-form";
+
 export default interface FormPageProps {
-    onComplete: Function
+    onComplete: () => void,
+    register: UseFormRegister<FieldValues>,
+    watch: UseFormWatch<FieldValues>
 }

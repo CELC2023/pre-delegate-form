@@ -1,0 +1,17 @@
+.landing-page-container {
+    display: flex;
+    flex-direction: column;
+    .welcome-container {
+        display: flex;
+        .welcome-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .english-welcome {
+            justify-content: right;
+        }
+        .french-welcom {
+            justify-content: left;
+        }
+    }
+}
