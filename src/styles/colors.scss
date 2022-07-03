@@ -1,0 +1,34 @@
+// color pallette
+$color-blue-dark: #19274B;
+$color-blue-mid: #354C87;
+$color-blue-light: #527AAB;
+$color-gold: #83551B;
+$color-grey-dark: #2E3039;
+$color-grey-mid: #696969;
+$color-grey-light: #989898;
+$color-peach: #E4ADA3;
+$color-red: #C5283D;
+$color-white: #FFFFFF;
+$color-yellow: #EBD252;
+$color-baby-blue: #77ADE2;
+
+// common colors
+$color-primary: $color-blue-dark;
+$color-secondary: $color-grey-light;
+$color-accent: $color-red;
+
+$color-error: $color-red;
+
+$colors: (
+    "blue-dark": $color-blue-dark,
+    "blue-mid": $color-blue-mid,
+    "blue-light": $color-blue-light,
+    "color-gold": $color-gold,
+    "grey-dark": $color-grey-dark,
+    "grey-mid": $color-grey-mid,
+    "grey-light": $color-grey-light,
+    "peach": $color-peach,
+    "red": $color-red,
+    "white": $color-white,
+    "yellow": $color-yellow
+);
