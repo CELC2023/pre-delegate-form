@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Control, Controller } from "react-hook-form";
-import ReactSelect, { components, GroupBase, OptionProps, OptionsOrGroups } from "react-select";
+import ReactSelect, { OptionProps, OptionsOrGroups } from "react-select";
 import { SelectComponents } from "react-select/dist/declarations/src/components";
 import { FilterOptionOption } from "react-select/dist/declarations/src/filters";
-import Select from "react-select/dist/declarations/src/Select";
-import { SchoolData, SchoolOptionData } from "../../models/School";
 import axiosInstance from "../../utils/axios";
+import "./Autocomplete.scss"
 
 export interface AutocompleteProps {
     name: string,
@@ -19,11 +18,15 @@ export interface AutocompleteProps {
 }
 
 const Autocomplete: React.FC<AutocompleteProps> = ({control, fetchUrl, label, name, optionComponent, customFilter, options, customOptionData}) => {
-    const displayLabel = label || ""
+    const formattedLabel = label || ""
 
     const [optionsData, setOptionsData] = useState<OptionsOrGroups<any, any>>()
 
     const [loading, setLoading] = useState<boolean>(false)
+
+    const [isActive, setIsActive] = useState<boolean>(false);
+
+    const [placeholderVisibility, setPlaceholderVisibility] = useState<boolean>(true);
 
     useEffect(() => {
         if(options) {
@@ -60,21 +63,45 @@ const Autocomplete: React.FC<AutocompleteProps> = ({control, fetchUrl, label, na
         Option: optionComponent || undefined
     }
 
+    const watchValue = control?._getWatch(name)
+
+    useEffect(() => {
+        if(control) {
+            (watchValue && watchValue != null) ? setPlaceholderVisibility(false) : setPlaceholderVisibility(true)
+        }
+    }, [control, name, watchValue])
+
     return (
-        <Controller
-            control={control}
-            name={name}
-            render={({field: {onChange, value}}) => (
-                <ReactSelect 
-                    components={hasCustomComponents ? customComponents : undefined }
-                    options={optionsData} 
-                    onChange={onChange} 
-                    value={value} 
-                    isLoading={loading}
-                    filterOption={customFilter}
-                />
-            )}
-        />
+        <div className="autocompleteinput">
+            <label className={`autocompleteinput--label ${isActive ? 'label--active' : ''} placeholder--${placeholderVisibility ? 'show' : 'hide'}`}>
+                <span className={`autocompleteinput--span`}>
+                    {formattedLabel}
+                </span>
+            </label>
+            <Controller
+                control={control}
+                name={name}
+                render={({field: {name, onBlur, onChange, value}}) => (
+                    <ReactSelect
+                        className="autocompleteinput--element"
+                        classNamePrefix={'rac'}
+                        components={hasCustomComponents ? customComponents : undefined }
+                        options={optionsData} 
+                        onChange={onChange}
+                        name={name} 
+                        value={value} 
+                        isLoading={loading}
+                        filterOption={customFilter}
+                        placeholder={''}
+                        onFocus={() => setIsActive(true)}
+                        onBlur={() => {
+                            setIsActive(false)
+                            onBlur()
+                        }}
+                    />
+                )}
+            />
+        </div>
     )
 }
 

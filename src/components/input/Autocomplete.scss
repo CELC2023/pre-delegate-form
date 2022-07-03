@@ -1,6 +1,6 @@
 @import "../../styles/colors.scss";
 
-.textinput {
+.autocompleteinput {
     position: relative;
     width: 100%;
 
@@ -9,7 +9,7 @@
             border-color: $color-error;
         }
     }
-
+    
     &--element {
         border-radius: 5px;
         border: 1px solid $color-primary;
@@ -17,6 +17,23 @@
         text-align: left;
         width: 100%;
         padding: 0.5em;
+        .rac {
+            &__control {
+                border: none;
+                box-shadow: none;
+                &:hover {
+                    border: none;
+                }
+            }
+            &__option {
+                &--is-selected {
+                    background-color: $color-primary;
+                }
+                &--is-focused &:not(.rac__option--is-selected) {
+                    background-color: $color-baby-blue;
+                }
+            }
+        }
     }
 
     &--label {
@@ -26,11 +43,11 @@
         pointer-events: none;
         color: $color-grey-light;
         transition: 0.5s ease-in-out;
+        z-index: 1;
         &.placeholder--hide, &.label--active {
             left: 1em;
-            top: -0.5em;
+            top: -0.7em;
             background-color: $color-white;
-            height: 10px;
         }
     }
 }
