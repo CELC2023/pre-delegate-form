@@ -1,17 +1,79 @@
-.landing-page-container {
-    display: flex;
-    flex-direction: column;
+@import "../styles/colors.scss";
+@import "./PageCommon.scss";
+
+.page-container {
+
+    .mountain-red {
+        position: absolute;
+        height: 50%;
+        bottom: 0;
+        left: 0;
+    }
+
+    .mountain-yellow {
+        position: absolute;
+        left: 0%;
+        bottom: 0;
+        height: 60%;
+    }
+
+    .blue-background {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        margin-left: 20%;
+    }
+
     .welcome-container {
+        z-index: 1;
         display: flex;
+        gap: 1.5em;
+        height: 25%;
+        margin: 5% 10%;
         .welcome-text {
             display: flex;
             flex-direction: column;
+            text-transform: uppercase;
+            >p {
+                margin: 0;
+            }
+            .text {
+                &-welcome {
+                    font-weight: 700;
+                    font-size: 2em;
+                }
+                &-description {
+                    font-weight: 400;
+                    font-size: 1.5em;
+                    line-height: 1.5em;
+                }
+                &-portal {
+                    font-size: 1.5em;
+                    font-weight: 700;
+                }
+            }
         }
         .english-welcome {
-            justify-content: right;
+            align-items: flex-end;
+            color: $color-primary;
         }
-        .french-welcom {
-            justify-content: left;
+        .french-welcome {
+            align-items: flex-start;
+            color: $color-blue-mid;
+        }
+    }
+
+    .begin-container {
+        font-style: italic;
+        font-size: 1.5em;
+        z-index: 1;
+        display: flex;
+        justify-content: flex-end;
+        text-transform: uppercase;
+        color: $color-white;
+        .start-button {
+            margin-right: 2em;
         }
     }
 }

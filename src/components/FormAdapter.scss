@@ -1,7 +1,60 @@
+@import '../styles/colors.scss';
+
 .form-adapter {
     width: 100%;
+    position: relative;
+    border-radius: 0 0 16em 16em;
+    overflow: hidden;
+
     >form {
         display: flex;
         flex-direction: column;
+    }
+
+    .mountains-background {
+        position: absolute;
+        bottom: -1em;
+        width: 100%;
+    }
+
+    div[class^='form-navigation'] {
+        width: 100%;
+        display: flex;
+        >a {
+            font-weight: 400;
+            font-style: italic;
+            text-transform: uppercase;
+            color: $color-primary;
+        }
+    }
+
+    .form-navigation {
+        &-next-container {
+            justify-content: center;
+            .next-button {
+                font-size: 1.5em;
+            }
+        }
+        &-previous-container {
+            justify-content: flex-start;
+            .previous-button {
+                font-size: 1em;
+            }
+        }
+    }
+
+    .form-content {
+        padding: 2em;
+        position: relative;
+        
+        .form-fields {
+            top: 4em;
+            margin: 1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1em;
+        }
     }
 }

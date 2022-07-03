@@ -1,23 +1,40 @@
 import React from "react";
 import "./Landing.scss";
+import Tent from "../images/tent.svg";
+import Ground from "../images/ground.svg";
+import Trees from "../images/trees.svg";
+import Logo from "../images/logo-light.svg";
+
+import RedMountain from "../images/red-mountain.svg";
+import YellowMountain from "../images/yellow-mountain.svg";
+import BlueBackground from "../images/back-blue.svg";
 
 const Landing: React.FC = () => {
     return (
-        <div className="landing-page-container">
+        <div className="page-container">
+            <img className="mountain-yellow" src={YellowMountain} />
+            <img className="mountain-red" src={RedMountain} />
+            <img className="blue-background" src={BlueBackground} />
             <div className="welcome-container">
                 <div className="english-welcome welcome-text">
-                    <p>Welcome</p>
-                    <p>to the</p>
-                    <p>CELC registration portal</p>
+                    <p className="text-welcome">Welcome</p>
+                    <p className="text-description">to the</p>
+                    <p className="text-portal">CELC registration portal</p>
                 </div>
                 <div className="french-welcome welcome-text">
-                    <p>Bienvenue</p>
-                    <p>sur le</p>
-                    <p>portail d'inscription CCLI</p>
+                    <p className="text-welcome">Bienvenue</p>
+                    <p className="text-description">sur le</p>
+                    <p className="text-portal">portail d'inscription CCLI</p>
                 </div>
             </div>
             <div className="begin-container">
-                <a>START | début</a>
+                <a className="start-button">Start | début</a>
+            </div>
+            <div className="footer-container">
+                <img className="tent" src={Tent} />
+                <img className="trees" src={Trees}/>
+                <img className="ground" src={Ground} />
+                <img className="logo" src={Logo} />
             </div>
         </div>
     )

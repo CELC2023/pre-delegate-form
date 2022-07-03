@@ -1,0 +1,1 @@
+export const blankHref = '#0';

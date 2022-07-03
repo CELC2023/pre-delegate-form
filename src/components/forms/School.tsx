@@ -50,13 +50,12 @@ const School: React.FC<FormPageProps> = () => {
     }
 
     const customOptionData = (s: SchoolData): SchoolOptionData => {
-        return {value: s.uuid, ...s}
+        return {value: s.uuid, label: s.division ? s.name + ' ' + s.division : s.name, ...s}
     }
 
     return (
         <>
-        <p>hi</p>
-         <form>
+         <form className="form-fields">
             <Autocomplete name={"school"} label={'School Name'} control={control} optionComponent={OptionComponent} fetchUrl={`/schools/`} customFilter={customFilter} customOptionData={customOptionData} />
         </form>
         </>

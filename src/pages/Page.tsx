@@ -1,17 +1,23 @@
 import React, { ComponentType, ReactElement, useEffect, useState } from "react";
 import FormPageProps from "../interfaces/FormPageProps";
-import FormAdapter, { FormAdapterProps } from "./FormAdapter";
-import DelegateCount from "./forms/DelegateCount";
-import Information from "./forms/Information";
-import Language from "./forms/Language";
-import PersonalInformation from "./forms/PersonalInformation";
-import School from "./forms/School";
+import FormAdapter, { FormAdapterProps } from "../components/FormAdapter";
+import DelegateCount from "../components/forms/DelegateCount";
+import Information from "../components/forms/Information";
+import Language from "../components/forms/Language";
+import PersonalInformation from "../components/forms/PersonalInformation";
+import School from "../components/forms/School";
 import './Page.scss';
+
+import Tent from "../images/tent.svg";
+import Ground from "../images/ground.svg";
+import Trees from "../images/trees.svg";
+import Logo from "../images/logo-light.svg";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
     disableNext?: boolean,
     disablePrevious?: boolean,
+    validation?: object
 }
 
 const Page: React.FC = () => {
@@ -45,8 +51,13 @@ const Page: React.FC = () => {
 
     return (
         <div className="page-container">
-            <h1 className="">Page</h1>
             <FormAdapter form={FormList[currentFormIndex]} nextForm={next} previousForm={prev} />
+            <div className="footer-container">
+                <img className="tent" src={Tent} />
+                <img className="trees" src={Trees}/>
+                <img className="ground" src={Ground} />
+                <img className="logo" src={Logo} />
+            </div>
         </div>
     )
 }

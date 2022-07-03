@@ -1,9 +1,11 @@
 import React, { ComponentType, ReactElement, ReactNode, useEffect } from "react";
 import { render } from "react-dom";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import FormPageProps from "../interfaces/FormPageProps";
 import PersonalInformation from "./forms/PersonalInformation";
-import { FormConfig } from "./Page";
+import { FormConfig } from "../pages/Page";
+import Mountains from "../images/mountains-light.svg";
+import "./FormAdapter.scss";
 
 export interface FormAdapterProps {
     form: FormConfig,
@@ -12,36 +14,27 @@ export interface FormAdapterProps {
 }
 
 const FormAdapter: React.FC<FormAdapterProps> = ({form: {Form, disableNext, disablePrevious}, nextForm, previousForm}) => {
-    const {register, handleSubmit, watch, formState: {errors}} = useForm();
-
-    useEffect(() => {
-        console.log(errors)
-    }, [errors])
 
     const handleNext = () => {
-        if(errors !== {}) {
-            nextForm()
-        } else {
-            console.log(errors)
-        }
+        nextForm()
     }
     
     return (
         <div className="form-adapter">
+            <img className="mountains-background" src={Mountains} />
             {
                 !disablePrevious &&
                 <div className="form-navigation-previous-container">
-                    <a onClick={previousForm}>previous</a>
+                    <a className="previous-button" onClick={previousForm}>previous</a>
                 </div>
             }
-            <div className="form-error-container">
-
+            <div className="form-content">
+                <Form onComplete={nextForm} />
             </div>
-            <Form onComplete={nextForm} register={register} watch={watch}/>
             {
                 !disableNext &&
                 <div className="form-navigation-next-container">
-                    <a onClick={handleNext}>Next</a>
+                    <a className="next-button" onClick={handleNext}>Next</a>
                 </div>
             }
         </div>

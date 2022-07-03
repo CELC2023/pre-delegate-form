@@ -1,12 +1,12 @@
-import './App.css';
-import Page from './components/Page';
+import Page from './pages/Page';
 import React from 'react';
 import "./styles/main.scss";
+import Landing from './pages/Landing';
 
 const App: React.FC = () => {
 
   return (
-    <Page />
+    <Landing />
   )
 }
 

@@ -13,4 +13,5 @@ export interface SchoolOptionData {
     city: string,
     province: string,
     value: string,
+    label: string
 }

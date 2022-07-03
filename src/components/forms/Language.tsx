@@ -1,5 +1,6 @@
 import React from "react";
 import FormPageProps from "../../interfaces/FormPageProps";
+import { blankHref } from "../../utils/constants";
 
 const Language: React.FC<FormPageProps> = ({onComplete}) => {
     const selectLanguage = (lang: string) => {
@@ -8,9 +9,16 @@ const Language: React.FC<FormPageProps> = ({onComplete}) => {
     }
 
     return (
-        <div>
-            <button onClick={() => selectLanguage('english')}>English</button>
-            <button onClick={() => selectLanguage('french')}>Français</button>
+        <div className="form-fields">
+            <h2>Language<br/>Langue</h2>
+            <a className="btn btn--row" onClick={(e) => {
+                e.preventDefault()
+                selectLanguage('english')
+            }} href={blankHref}>English</a>
+            <a className="btn btn--row" onClick={(e) => {
+                e.preventDefault()
+                selectLanguage('french')
+            }} href={blankHref}>Français</a>
         </div>
     )
 }
