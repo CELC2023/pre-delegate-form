@@ -1,0 +1,14 @@
+$small-phone: 480px;
+$large-phone: 600px;
+$tablet: 600px;
+$small-desktop: 900px;
+$large-desktop: 1200px;
+
+// CSS vars to reduce individual imports
+:root {
+    --small-phone: $small-phone;
+    --large-phone: $large-phone;
+    --tablet: $tablet;
+    --small-desktop: $small-desktop;
+    --large-desktop: $large-desktop;
+}

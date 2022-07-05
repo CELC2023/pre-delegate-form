@@ -1,4 +1,5 @@
 @import "../styles/colors.scss";
+@import "../styles/breakpoints.scss";
 
 .page-container {
     display: flex;
@@ -20,6 +21,11 @@
             left: 1em;
             bottom: 10vw;
             z-index: 1;
+            pointer-events: none;
+
+            @media screen and (max-width: $tablet) {
+                left: -60%;
+            }
         }
 
         .trees {
@@ -27,6 +33,11 @@
             z-index: 1;
             bottom: 5vw;
             right: 2em;
+            pointer-events: none;
+
+            @media screen and (max-width: $tablet) {
+                right: -30%;
+            }
         }
 
         .ground {
@@ -34,6 +45,7 @@
             bottom: 0;
             overflow: hidden;
             width: 100%;
+            pointer-events: none;
         }
 
         .logo {
@@ -41,6 +53,10 @@
             bottom: 1em;
             left: 2em;
             height: 5em;
+            pointer-events: none;
+            @media screen and (max-width: $tablet) {
+                display: none;
+            }
         }
     }
 }

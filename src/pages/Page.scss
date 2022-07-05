@@ -1,20 +1,36 @@
 @import "../styles/colors.scss";
 @import "./PageCommon.scss";
+@import "../styles/breakpoints.scss";
 
 .page-container {
     
-    @media screen and (min-width: 480px) {
+    @media screen and (min-width: $small-phone) {
         align-items: center;
     }
+
     .form-adapter {
-        width: 100%;
+        width: 425px;
         height: 90%;
-        @media screen and (min-width: 480px) {
-            width: 30%;
+        z-index: 2;
+        @media screen and (max-width: 424px) {
+            width: 100%;
+        }
+        @media screen and (min-width: $small-phone) {
             height: 70%;
         }
 
         background-color: $color-white;
+    }
+
+    .footer-container {
+        @media screen and (max-width: $tablet) {
+            .tent, .trees {
+                display: none;
+            }
+            .ground {
+                width: 150%;
+            }
+        }
     }
 
 

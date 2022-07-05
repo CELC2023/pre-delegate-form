@@ -1,13 +1,24 @@
 @import "../styles/colors.scss";
 @import "./PageCommon.scss";
+@import "../styles/breakpoints.scss";
 
 .page-container {
+
+    @media screen and (max-width: $tablet) {
+        overflow: hidden;
+    }
 
     .mountain-red {
         position: absolute;
         height: 50%;
         bottom: 0;
         left: 0;
+
+        @media screen and (max-width: $tablet) {
+            max-width: 200%;
+            width: 200%;
+            left: -125%;
+        }
     }
 
     .mountain-yellow {
@@ -15,6 +26,13 @@
         left: 0%;
         bottom: 0;
         height: 60%;
+
+        @media screen and (max-width: $tablet) {
+            max-width: unset;
+            width: 200%;
+            left: -100%;
+            overflow: hidden;
+        }
     }
 
     .blue-background {
@@ -23,6 +41,15 @@
         right: 0;
         height: 100%;
         margin-left: 20%;
+
+        @media screen and (max-width: $tablet) {
+            max-width: unset;
+            width: 3000px;
+            height: 1100px;
+            bottom: -15%;
+            left: -1075px ;
+        }
+
     }
 
     .welcome-container {
@@ -31,6 +58,12 @@
         gap: 1.5em;
         height: 25%;
         margin: 5% 10%;
+
+        @media screen and (max-width: $tablet) {
+            flex-direction: column;
+            height: fit-content;
+        }
+
         .welcome-text {
             display: flex;
             flex-direction: column;
@@ -42,21 +75,33 @@
                 &-welcome {
                     font-weight: 700;
                     font-size: 2em;
+                    @media screen and (max-width: $tablet) {
+                        font-size: 1.75em;    
+                    }
                 }
                 &-description {
                     font-weight: 400;
                     font-size: 1.5em;
                     line-height: 1.5em;
+                    @media screen and (max-width: $tablet) {
+                        font-size: 1.25em;    
+                    }
                 }
                 &-portal {
                     font-size: 1.5em;
                     font-weight: 700;
+                    @media screen and (max-width: $tablet) {
+                        font-size: 1.25em;    
+                    }
                 }
             }
         }
         .english-welcome {
             align-items: flex-end;
             color: $color-primary;
+            @media screen and (max-width: $tablet) {
+                text-align: right;
+            }
         }
         .french-welcome {
             align-items: flex-start;
@@ -71,9 +116,39 @@
         display: flex;
         justify-content: flex-end;
         text-transform: uppercase;
-        color: $color-white;
+       
         .start-button {
             margin-right: 2em;
+            font-weight: 400;
+            color: $color-white;
+            letter-spacing: 0.2em;
+
+            @media screen and (max-width: $tablet) {
+                margin-right: 0;
+            }
         }
+
+        @media screen and (max-width: $tablet) {
+            margin-top: auto;
+            justify-content: center;
+            font-size: 1em;
+            margin-bottom: 5%;
+        }
+    }
+
+    .footer-container {
+        @media screen and (max-width: $tablet) {
+            bottom: 5vh;
+        }
+
+        .ground {
+            @media screen and (max-width: $tablet) {
+                height: 15vh;
+                width: auto;
+                max-width: unset;
+                bottom: -5vh;
+            }
+        }
+
     }
 }
