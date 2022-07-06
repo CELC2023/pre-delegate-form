@@ -2,11 +2,13 @@
 @import "./PageCommon.scss";
 @import "../styles/breakpoints.scss";
 
-.page-container {
+.landing-container {
 
     @media screen and (max-width: $tablet) {
         overflow: hidden;
     }
+
+    background-color: $color-white;
 
     .mountain-red {
         position: absolute;

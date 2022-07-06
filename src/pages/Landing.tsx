@@ -8,10 +8,11 @@ import Logo from "../images/logo-light.svg";
 import RedMountain from "../images/red-mountain.svg";
 import YellowMountain from "../images/yellow-mountain.svg";
 import BlueBackground from "../images/back-blue.svg";
+import { Link } from "react-router-dom";
 
 const Landing: React.FC = () => {
     return (
-        <div className="page-container">
+        <div className="page-container landing-container">
             <img className="mountain-yellow" src={YellowMountain} />
             <img className="mountain-red" src={RedMountain} />
             <img className="blue-background" src={BlueBackground} />
@@ -28,7 +29,9 @@ const Landing: React.FC = () => {
                 </div>
             </div>
             <div className="begin-container">
-                <a className="start-button">Start | début</a>
+                <Link to={'/predelegate'}>
+                    <a className="start-button">Start | début</a>
+                </Link>
             </div>
             <div className="footer-container">
                 <img className="tent" src={Tent} />

@@ -14,17 +14,26 @@ const TextInput: React.FC<TextInputProps> = ({control, label, name}) => {
     const [isActive, setIsActive] = useState<boolean>(false);
     const [value, setValue] = useState<string>('');
     const [placeholderVisibility, setPlaceholderVisibility] = useState<boolean>(true)
+    const [error, setError] = useState<string>('');
     const watchValue = control?._getWatch(name)
+    const fieldError = control?.getFieldState(name)?.error
 
     useEffect(() => {
         if(control) {
             (control._getWatch(name) && control._getWatch(name).length > 0) ? setPlaceholderVisibility(false) : setPlaceholderVisibility(true)
         }
-        
     }, [control, name, watchValue])
 
+    useEffect(() => {
+        if(fieldError && fieldError.message) {
+            setError(fieldError.message)
+        } else {
+            setError('')
+        }
+    }, [fieldError])
+
     return (
-        <div className="textinput">
+        <div className={`textinput ${error !== '' ? 'error' : ''}`}>
             <label className={`textinput--label ${isActive ? 'label--active' : ''} placeholder--${placeholderVisibility ? 'show' : 'hide'}`}>
                 <span className={`textinput--span`}>
                     {formattedLabel}

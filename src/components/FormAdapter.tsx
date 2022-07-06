@@ -22,21 +22,21 @@ const FormAdapter: React.FC<FormAdapterProps> = ({form: {Form, disableNext, disa
     return (
         <div className="form-adapter">
             <img className="mountains-background" src={Mountains} />
-            {
+            {/* {
                 !disablePrevious &&
                 <div className="form-navigation-previous-container">
                     <a className="previous-button" onClick={previousForm}>previous</a>
                 </div>
-            }
-            <div className="form-content">
-                <Form onComplete={nextForm} />
-            </div>
-            {
+            } */}
+            {/* <div className="form-content"> */}
+                <Form onComplete={nextForm} onBack={previousForm} />
+            {/* </div> */}
+            {/* {
                 !disableNext &&
                 <div className="form-navigation-next-container">
                     <a className="next-button" onClick={handleNext}>Next</a>
                 </div>
-            }
+            } */}
         </div>
     )
 }

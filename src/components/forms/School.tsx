@@ -6,7 +6,7 @@ import FormPageProps from "../../interfaces/FormPageProps";
 import { SchoolData, SchoolOptionData } from "../../models/School";
 import Autocomplete from "../input/Autocomplete";
 
-const School: React.FC<FormPageProps> = () => {
+const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {control, register, handleSubmit, watch, formState: {errors}} = useForm()
 
     const OptionComponent = (props: OptionProps) => {
@@ -55,9 +55,17 @@ const School: React.FC<FormPageProps> = () => {
 
     return (
         <>
-         <form className="form-fields">
-            <Autocomplete name={"school"} label={'School Name'} control={control} optionComponent={OptionComponent} fetchUrl={`/schools/`} customFilter={customFilter} customOptionData={customOptionData} />
-        </form>
+            <div className="form-navigation-previous-container">
+                    <a className="previous-button" onClick={onBack}>previous</a>
+            </div>
+            <div className="form-content">
+                <form className="form-fields">
+                    <Autocomplete name={"school"} label={'School Name'} control={control} optionComponent={OptionComponent} fetchUrl={`/schools/`} customFilter={customFilter} customOptionData={customOptionData} />
+                </form>
+            </div>
+            <div className="form-navigation-next-container">
+                    <a className="next-button" onClick={onComplete}>Next</a>
+            </div>
         </>
     )
 }

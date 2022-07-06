@@ -12,6 +12,7 @@ import Tent from "../images/tent.svg";
 import Ground from "../images/ground.svg";
 import Trees from "../images/trees.svg";
 import Logo from "../images/logo-light.svg";
+import Feedback from "../components/forms/Feedback";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
@@ -26,13 +27,16 @@ const Page: React.FC = () => {
         disableNext: true,
         disablePrevious: true
     }, {
-        Form: Information
+        Form: Information,
+
     }, {
         Form: PersonalInformation
     }, {
         Form: School
     }, {
         Form: DelegateCount
+    }, {
+        Form: Feedback
     }]
 
     const [currentFormIndex, setCurrentFormIndex] = useState<number>(0)
@@ -50,7 +54,7 @@ const Page: React.FC = () => {
     }
 
     return (
-        <div className="page-container">
+        <div className="page-container pre-delegate-container">
             <FormAdapter form={FormList[currentFormIndex]} nextForm={next} previousForm={prev} />
             <div className="footer-container">
                 <img className="tent" src={Tent} />
