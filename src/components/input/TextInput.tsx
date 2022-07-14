@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Control, Controller } from "react-hook-form";
+import { Control, Controller, FieldValues, UseFormClearErrors, UseFormSetError } from "react-hook-form";
 import "./TextInput.scss";
 
 export interface TextInputProps {
     name: string,
     control?: Control,
-    label?: string
+    label?: string,
+    validation?: (arg0: string) => boolean,
+    setErrors?: UseFormSetError<FieldValues>,
+    clearErrors?: UseFormClearErrors<FieldValues>
 }
 
-const TextInput: React.FC<TextInputProps> = ({control, label, name}) => {
+const TextInput: React.FC<TextInputProps> = ({control, label, name, validation, setErrors, clearErrors}) => {
     const formattedLabel = label || ""
 
     const [isActive, setIsActive] = useState<boolean>(false);
@@ -32,6 +35,20 @@ const TextInput: React.FC<TextInputProps> = ({control, label, name}) => {
         }
     }, [fieldError])
 
+    const validateInput = (value: string): void => {
+        if(validation !== undefined) {
+            if(!validation(value || "")) {
+                if(setErrors !== undefined) {
+                    setErrors(name, {type: 'custom', message: 'Enter a valid value'})
+                }
+            } else {
+                if(clearErrors !== undefined) {
+                    clearErrors(name)
+                }
+            }
+        }
+    }
+
     return (
         <div className={`textinput ${error !== '' ? 'error' : ''}`}>
             <label className={`textinput--label ${isActive ? 'label--active' : ''} placeholder--${placeholderVisibility ? 'show' : 'hide'}`}>
@@ -50,6 +67,7 @@ const TextInput: React.FC<TextInputProps> = ({control, label, name}) => {
                             <input className="textinput--element" onFocus={() => setIsActive(true)} onBlur={() => {
                                 setIsActive(false)
                                 onBlur()
+                                validateInput(value)
                             }} name={name} onChange={onChange} value={value || ""}/>
                         )
                     }}

@@ -13,25 +13,27 @@ const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const isValid = (values: PersonalInformationForm): boolean => {
         
         var hasErrors: boolean = false;
-        if(!(values.firstName.length > 0 && values.firstName.length < 128)) {
-            setError("firstName", {type: 'custom', message: 'Enter a valid first name less than 128 characters'})
+        if(Object.keys(errors).length !== 0) {
             hasErrors = true;
-        } else {
-            clearErrors('firstName')
         }
-        if(!(values.lastName.length > 0 && values.lastName.length < 128)) {
-            setError("lastName", {type: 'custom', message: 'Enter a valid last name less than 128 characters'})
+        if(touchedFields.length < 3) {
             hasErrors = true;
-        } else {
-            clearErrors('lastName')
-        }
-        if(! emailRegex.test(values.email)) {
-            hasErrors = true;
-            setError("email", {type: 'custom', message: 'Enter a valid email'})
-        } else {
-            clearErrors('email')
         }
         return !hasErrors;
+    }
+
+    const validateName = (value: string): boolean => {
+        if(value && value.length > 0 && value.length < 128) {
+            return true;
+        }
+        return false
+    }
+
+    const validateEmail = (value: string): boolean => {
+        if(emailRegex.test(value)) {
+            return true 
+        }
+        return false
     }
 
     interface PersonalInformationForm {
@@ -61,9 +63,9 @@ const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <div className="form-content">
                 <form className="form-fields" onSubmit={() =>handleSubmit}>
                 <h2>Personal</h2>
-                <TextInput name="email" label="Email" control={control}/>
-                <TextInput name="firstName" label="First Name" control={control} />
-                <TextInput name="lastName" label="Last Name" control={control} />
+                <TextInput name="email" label="Email" control={control} validation={validateEmail} setErrors={setError} clearErrors={clearErrors} />
+                <TextInput name="firstName" label="First Name" control={control} validation={validateName} setErrors={setError} clearErrors={clearErrors} />
+                <TextInput name="lastName" label="Last Name" control={control} validation={validateName} setErrors={setError} clearErrors={clearErrors} />
                 </form>
             </div>
             <div className="form-navigation-next-container">
