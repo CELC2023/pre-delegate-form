@@ -9,9 +9,11 @@ export interface TextInputProps {
     validation?: (arg0: string) => boolean,
     setErrors?: UseFormSetError<FieldValues>,
     clearErrors?: UseFormClearErrors<FieldValues>
+    type?: string,
+    autocomplete?: string
 }
 
-const TextInput: React.FC<TextInputProps> = ({control, label, name, validation, setErrors, clearErrors}) => {
+const TextInput: React.FC<TextInputProps> = ({autocomplete = "", control, label, name, validation, setErrors, clearErrors, type = "text"}) => {
     const formattedLabel = label || ""
 
     const [isActive, setIsActive] = useState<boolean>(false);
@@ -64,11 +66,11 @@ const TextInput: React.FC<TextInputProps> = ({control, label, name, validation, 
                     rules={{required: true}}
                     render={({field: {name, onBlur, onChange, value}}) => {
                         return (
-                            <input className="textinput--element" onFocus={() => setIsActive(true)} onBlur={() => {
+                            <input autoComplete={autocomplete} className="textinput--element" onFocus={() => setIsActive(true)} onBlur={() => {
                                 setIsActive(false)
                                 onBlur()
                                 validateInput(value)
-                            }} name={name} onChange={onChange} value={value || ""}/>
+                            }} name={name} onChange={onChange} value={value || ""} type={type} />
                         )
                     }}
                 /> :

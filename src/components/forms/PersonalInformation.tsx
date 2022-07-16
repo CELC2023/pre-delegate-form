@@ -1,14 +1,25 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
+import { selectEmail, selectFirstName, selectLastName, setPersonalInformation } from "../../redux/preDelegateReducer";
 import { blankHref } from "../../utils/constants";
 import { emailRegex } from "../../utils/regex";
 import Autocomplete from "../input/Autocomplete";
 import TextInput from "../input/TextInput";
 
 const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
-    const {control, register, handleSubmit, watch, getValues, setError, clearErrors ,formState: { errors, touchedFields }} = useForm();
+    const {control, register, handleSubmit, watch, getValues, setValue, setError, clearErrors ,formState: { errors, touchedFields }} = useForm();
 
+    const dispatch = useDispatch();
+
+    const defaultValues = {email: useSelector(selectEmail), firstName: useSelector(selectFirstName), lastName: useSelector(selectLastName)}
+
+    useEffect(() => {
+        setValue('email', defaultValues.email)
+        setValue('firstName', defaultValues.firstName)
+        setValue('lastName', defaultValues.lastName)
+    }, [])
 
     const isValid = (values: PersonalInformationForm): boolean => {
         
@@ -50,7 +61,7 @@ const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         }
 
         if(isValid(values)) {
-            // set redux state
+            dispatch(setPersonalInformation(values))
             onComplete();
         }
     }
@@ -63,9 +74,9 @@ const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <div className="form-content">
                 <form className="form-fields" onSubmit={() =>handleSubmit}>
                 <h2>Personal</h2>
-                <TextInput name="email" label="Email" control={control} validation={validateEmail} setErrors={setError} clearErrors={clearErrors} />
-                <TextInput name="firstName" label="First Name" control={control} validation={validateName} setErrors={setError} clearErrors={clearErrors} />
-                <TextInput name="lastName" label="Last Name" control={control} validation={validateName} setErrors={setError} clearErrors={clearErrors} />
+                <TextInput name="email" label="Email" control={control} validation={validateEmail} setErrors={setError} clearErrors={clearErrors} type="email" autocomplete="email" />
+                <TextInput name="firstName" label="First Name" control={control} validation={validateName} setErrors={setError} clearErrors={clearErrors} autocomplete="given-name" />
+                <TextInput name="lastName" label="Last Name" control={control} validation={validateName} setErrors={setError} clearErrors={clearErrors} autocomplete="family-name" />
                 </form>
             </div>
             <div className="form-navigation-next-container">

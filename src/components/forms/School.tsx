@@ -1,13 +1,16 @@
+import { getValue } from "@testing-library/user-event/dist/utils";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import { components, OptionProps, Options } from "react-select";
 import { FilterOptionOption } from "react-select/dist/declarations/src/filters";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { SchoolData, SchoolOptionData } from "../../models/School";
+import { selectSchool, setSchool } from "../../redux/preDelegateReducer";
 import Autocomplete from "../input/Autocomplete";
 
 const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
-    const {control, register, handleSubmit, watch, formState: {errors}} = useForm()
+    const {control, register, handleSubmit, watch, getValues, setValue, formState: {errors}} = useForm()
 
     const OptionComponent = (props: OptionProps) => {
 
@@ -25,6 +28,24 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             </>
         )
     }
+
+    console.log(watch('school'))
+
+    const dispatch = useDispatch()
+
+    const onNext = () => {
+        const schoolValue = getValues("school") || null
+        if(schoolValue !== null) {
+            dispatch(setSchool(schoolValue))
+            onComplete()
+        }
+    }
+
+    const defaultSchoolValue = useSelector(selectSchool)
+
+    useEffect(() => {
+        setValue('school', defaultSchoolValue)
+    }, [])
 
     const customFilter = (option: FilterOptionOption<any>, inputValue: string) => {
         const optionData: SchoolOptionData = option.data
@@ -64,7 +85,7 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 </form>
             </div>
             <div className="form-navigation-next-container">
-                    <a className="next-button" onClick={onComplete}>Next</a>
+                    <a className="next-button" onClick={onNext}>Next</a>
             </div>
         </>
     )

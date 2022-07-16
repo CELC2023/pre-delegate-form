@@ -3,6 +3,7 @@
 .autocompleteinput {
     position: relative;
     width: 100%;
+    z-index: 2;
 
     &.error {
         .textinput--element {
