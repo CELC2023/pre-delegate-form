@@ -1,0 +1,45 @@
+@import "../../styles/colors.scss";
+@import "rc-slider/assets/index.css";
+
+.form-slider {
+    &.rc-slider {
+        margin-top: 1.75em;
+        .rc-slider-handle {
+            border-color: $color-red;
+            border: 8px solid  $color-red;
+            background-color: $color-red;
+            opacity: 1;
+            margin-top: -6px;
+            &-dragging {
+                border-color: $color-red;
+                box-shadow: 0 0 0 5px $color-red;
+            }
+            &:hover {
+                border-color: $color-red;
+            }
+        }
+        .rc-slider-rail {
+            background-color: $color-grey-dark;
+            height: 10px;
+            top: 2px;
+        }
+        .rc-slider-track {
+            background: none;
+        }
+        .rc-slider-step {
+            .rc-slider-dot, .rc-slider-dot-active {
+                bottom: -3px;
+                border: 5px solid $color-grey-mid;
+                background-color: $color-grey-mid;
+            }
+        }
+        .rc-slider-mark {
+            top: -25px;
+            &-text {
+                color: $color-red;
+                font-weight: 700;
+                font-size: 1.25em;
+            }
+        }
+    }
+}

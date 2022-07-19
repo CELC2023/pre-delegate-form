@@ -1,9 +1,9 @@
-import Slider from "rc-slider";
+// import Slider from "rc-slider";
 import React from "react";
 import FormPageProps from "../../interfaces/FormPageProps";
-import "rc-slider/assets/index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectDelegateCount, setDelegateCount } from "../../redux/preDelegateReducer";
+import Slider from "../input/Slider";
 
 const DelegateCount: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     
@@ -33,7 +33,7 @@ const DelegateCount: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <form className="form-fields">
                     <h2>Count</h2>
                     <p>HOW MANY DELEGATES ARE REPRESENTING YOUR SCHOOL / ORGANIZATION?</p>
-                    <Slider min={1} step={1} max={10} marks={marks} onChange={onSliderUpdate}></Slider>
+                    <Slider min={1} step={1} max={10} marks={marks} onChange={onSliderUpdate} dots={true} />
                     <p>Sending more than 10 delegates?</p>
                 </form>  
             </div>
