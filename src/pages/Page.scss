@@ -33,6 +33,22 @@
         }
     }
 
+    .form-background-number {
+        font-weight: 800;
+        font-family: "Roboto";
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 15em;
+        line-height: 2em;
+        opacity: 33.33%;
+        color: $color-white;
+        pointer-events: none;
+        @media screen and (max-width: $tablet) {
+            top: 55%;
+        }
+    }
+
 
     background: $color-blue-light; // fallback color
     background: radial-gradient(35% 60% at 5% 70%, rgba($color-peach, 0.7) 0%, $color-baby-blue 75%, $color-blue-light 100%);

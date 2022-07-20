@@ -13,15 +13,20 @@ import Ground from "../images/ground.svg";
 import Trees from "../images/trees.svg";
 import Logo from "../images/logo-light.svg";
 import Feedback from "../components/forms/Feedback";
+import { useSelector } from "react-redux";
+import { selectDelegateCount } from "../redux/preDelegateReducer";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
     disableNext?: boolean,
     disablePrevious?: boolean,
-    validation?: object
+    validation?: object,
+    displayNumber?: number
 }
 
 const Page: React.FC = () => {
+    const delegateCountValue = useSelector(selectDelegateCount);
+
     const FormList: Array<FormConfig> = [{
         Form: Language,
         disableNext: true,
@@ -34,9 +39,11 @@ const Page: React.FC = () => {
     }, {
         Form: School
     }, {
-        Form: DelegateCount
+        Form: DelegateCount,
+        displayNumber: delegateCountValue
     }, {
-        Form: Feedback
+        Form: Feedback,
+        displayNumber: delegateCountValue
     }]
 
     const [currentFormIndex, setCurrentFormIndex] = useState<number>(0)
@@ -56,6 +63,9 @@ const Page: React.FC = () => {
     return (
         <div className="page-container pre-delegate-container">
             <FormAdapter form={FormList[currentFormIndex]} nextForm={next} previousForm={prev} />
+            {   FormList[currentFormIndex].displayNumber !== undefined &&
+                <p className="form-background-number">{FormList[currentFormIndex].displayNumber}</p>
+            }
             <div className="footer-container">
                 <img className="tent" src={Tent} />
                 <img className="trees" src={Trees}/>
