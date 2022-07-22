@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { selectEmail, selectFirstName, selectLastName, setPersonalInformation } from "../../redux/preDelegateReducer";
@@ -10,6 +11,8 @@ import TextInput from "../input/TextInput";
 
 const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {control, register, handleSubmit, watch, getValues, setValue, setError, clearErrors ,formState: { errors, touchedFields }} = useForm();
+
+    const {t, i18n} = useTranslation();
 
     const dispatch = useDispatch();
 
@@ -69,18 +72,18 @@ const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     return (
         <>
             <div className="form-navigation-previous-container">
-                    <a className="previous-button" onClick={onBack}>previous</a>
+                    <a className="previous-button" onClick={onBack}>{t('text-previous')}</a>
             </div>
             <div className="form-content">
                 <form className="form-fields" onSubmit={() =>handleSubmit}>
-                <h2>Personal</h2>
-                <TextInput name="email" label="Email" control={control} validation={validateEmail} setErrors={setError} clearErrors={clearErrors} type="email" autocomplete="email" />
-                <TextInput name="firstName" label="First Name" control={control} validation={validateName} setErrors={setError} clearErrors={clearErrors} autocomplete="given-name" />
-                <TextInput name="lastName" label="Last Name" control={control} validation={validateName} setErrors={setError} clearErrors={clearErrors} autocomplete="family-name" />
+                <h2>{t('text-personal')}</h2>
+                <TextInput name="email" label={t('field-email')} control={control} validation={validateEmail} setErrors={setError} clearErrors={clearErrors} type="email" autocomplete="email" />
+                <TextInput name="firstName" label={t('field-first-name')} control={control} validation={validateName} setErrors={setError} clearErrors={clearErrors} autocomplete="given-name" />
+                <TextInput name="lastName" label={t('field-last-name')} control={control} validation={validateName} setErrors={setError} clearErrors={clearErrors} autocomplete="family-name" />
                 </form>
             </div>
             <div className="form-navigation-next-container">
-                    <a className="next-button" onClick={onNext}>Next</a>
+                    <a className="next-button" onClick={onNext}>{t('text-next')}</a>
             </div>
         </>
        

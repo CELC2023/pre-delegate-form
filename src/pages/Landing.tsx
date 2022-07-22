@@ -9,8 +9,11 @@ import RedMountain from "../images/red-mountain.svg";
 import YellowMountain from "../images/yellow-mountain.svg";
 import BlueBackground from "../images/back-blue.svg";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Landing: React.FC = () => {
+    const {t, i18n} = useTranslation();
+
     return (
         <div className="page-container landing-container">
             <img className="mountain-yellow" src={YellowMountain} />
@@ -30,7 +33,7 @@ const Landing: React.FC = () => {
             </div>
             <div className="begin-container">
                 <Link to={'/predelegate'}>
-                    <a className="start-button">Start | début</a>
+                    <a className="start-button">{t('text-start', {lng: 'en'} )} | {t('text-start', {lng: 'fr'} )}</a>
                 </Link>
             </div>
             <div className="footer-container">

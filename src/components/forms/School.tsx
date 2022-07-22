@@ -1,6 +1,7 @@
 import { getValue } from "@testing-library/user-event/dist/utils";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { components, OptionProps, Options } from "react-select";
 import { FilterOptionOption } from "react-select/dist/declarations/src/filters";
@@ -11,6 +12,8 @@ import Autocomplete from "../input/Autocomplete";
 
 const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {control, register, handleSubmit, watch, getValues, setValue, formState: {errors}} = useForm()
+
+    const {t, i18n} = useTranslation();
 
     const OptionComponent = (props: OptionProps) => {
 
@@ -77,15 +80,15 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     return (
         <>
             <div className="form-navigation-previous-container">
-                    <a className="previous-button" onClick={onBack}>previous</a>
+                    <a className="previous-button" onClick={onBack}>{t('text-previous')}</a>
             </div>
             <div className="form-content">
                 <form className="form-fields">
-                    <Autocomplete name={"school"} label={'School Name'} control={control} optionComponent={OptionComponent} fetchUrl={`/schools/`} customFilter={customFilter} customOptionData={customOptionData} />
+                    <Autocomplete name={"school"} label={t('field-school')} control={control} optionComponent={OptionComponent} fetchUrl={`/schools/`} customFilter={customFilter} customOptionData={customOptionData} />
                 </form>
             </div>
             <div className="form-navigation-next-container">
-                    <a className="next-button" onClick={onNext}>Next</a>
+                    <a className="next-button" onClick={onNext}>{t('text-next')}</a>
             </div>
         </>
     )
