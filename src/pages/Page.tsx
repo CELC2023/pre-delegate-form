@@ -15,6 +15,7 @@ import Logo from "../images/logo-light.svg";
 import Feedback from "../components/forms/Feedback";
 import { useSelector } from "react-redux";
 import { selectDelegateCount } from "../redux/preDelegateReducer";
+import Footer from "../components/Footer";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
@@ -66,12 +67,7 @@ const Page: React.FC = () => {
             {   FormList[currentFormIndex].displayNumber !== undefined &&
                 <p className="form-background-number">{FormList[currentFormIndex].displayNumber}</p>
             }
-            <div className="footer-container">
-                <img className="tent" src={Tent} />
-                <img className="trees" src={Trees}/>
-                <img className="ground" src={Ground} />
-                <img className="logo" src={Logo} />
-            </div>
+            <Footer />
         </div>
     )
 }

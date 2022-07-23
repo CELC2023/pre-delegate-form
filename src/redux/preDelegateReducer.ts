@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { SchoolOptionData } from "../models/School";
 
 export interface preDelegateSliceInterface {
+    language: string,
     email: string,
     firstName: string,
     lastName: string,
@@ -11,6 +12,7 @@ export interface preDelegateSliceInterface {
 }
 
 const initialState: preDelegateSliceInterface = {
+    language: '',
     email: '',
     firstName: '',
     lastName: '',
@@ -23,6 +25,9 @@ export const preDelegateSlice = createSlice({
     name: "preDelegate",
     initialState,
     reducers: {
+        setLanguagePreference: (state, action) => {
+            state.language = action.payload
+        },
         setPersonalInformation: (state, action) => {
             state.email = action.payload.email;
             state.firstName = action.payload.firstName;
@@ -37,7 +42,7 @@ export const preDelegateSlice = createSlice({
     }
 })
 
-export const { setPersonalInformation, setSchool, setDelegateCount } = preDelegateSlice.actions;
+export const { setLanguagePreference, setPersonalInformation, setSchool, setDelegateCount } = preDelegateSlice.actions;
 
 // selectors
 
@@ -46,5 +51,6 @@ export const selectFirstName = (state: { preDelegate: { firstName: string; }; })
 export const selectLastName = (state: { preDelegate: { lastName: string; }; }) => state.preDelegate.lastName;
 export const selectSchool = (state: {preDelegate: {school: SchoolOptionData;};}) => state.preDelegate.school;
 export const selectDelegateCount = (state: {preDelegate: {delegates: number;};}) => state.preDelegate.delegates;
+export const selectPreDelegateFormData = (state: {preDelegate: preDelegateSliceInterface}) => state.preDelegate;
 
 export default preDelegateSlice.reducer;
