@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { selectDelegateCount, selectSchool } from "../../redux/preDelegateReducer";
@@ -24,8 +24,7 @@ const Feedback: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <form className="form-fields" onSubmit={handleSubmit(onSubmit)}>
                     <p>{t('info-comments')}</p>
                     <Textarea />
-                    <p></p>
-                    <p>I understand that by submitting this form I am committing to sending the {delegateCount} delegates to CELC 2023 FROM {school.label}</p>
+                    <Trans i18nKey={'info-confirm-school'} values={{delegateNumber: delegateCount, schoolName: school.label }}></Trans>
                     <a className="btn btn--row">{t('text-yes')}</a>
                 </form>
             </div>
