@@ -26,6 +26,8 @@ const TextInput: React.FC<TextInputProps> = ({autocomplete = "", control, label,
     useEffect(() => {
         if(control) {
             (control._getWatch(name) && control._getWatch(name).length > 0) ? setPlaceholderVisibility(false) : setPlaceholderVisibility(true)
+        } else {
+            setPlaceholderVisibility(value && value.length > 0 ? false : true)
         }
     }, [control, name, watchValue])
 
