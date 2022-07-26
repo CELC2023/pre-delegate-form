@@ -10,18 +10,16 @@ import Autocomplete from "../input/Autocomplete";
 import TextInput from "../input/TextInput";
 
 const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
-    const {control, register, handleSubmit, watch, getValues, setValue, setError, clearErrors ,formState: { errors, touchedFields }} = useForm();
+    const {control, handleSubmit, getValues, setValue, setError, clearErrors ,formState: { errors, touchedFields }} = useForm();
 
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
 
     const dispatch = useDispatch();
 
     const defaultValues = {email: useSelector(selectEmail), firstName: useSelector(selectFirstName), lastName: useSelector(selectLastName)}
 
     useEffect(() => {
-        setValue('email', defaultValues.email)
-        setValue('firstName', defaultValues.firstName)
-        setValue('lastName', defaultValues.lastName)
+        console.log()
     }, [])
 
     const isValid = (values: PersonalInformationForm): boolean => {
@@ -30,7 +28,12 @@ const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         if(Object.keys(errors).length !== 0) {
             hasErrors = true;
         }
-        if(touchedFields.length < 3) {
+        if(Object.keys(touchedFields).length < 3) {
+            Object.keys(getValues()).forEach((f) => {
+                if(!touchedFields[f]) {
+                    setError(f, {type: 'custom', message: 'Enter a valid value'})
+                }
+            })
             hasErrors = true;
         }
         return !hasErrors;

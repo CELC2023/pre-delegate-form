@@ -11,7 +11,7 @@ import { parsePreDelegateData } from "../../utils/datautils";
 import Textarea from "../input/Textarea";
 
 const Feedback: React.FC<FormPageProps> = ({onBack, onComplete}) => {
-    const {control, register, handleSubmit, watch, formState: {errors}} = useForm();
+    const {clearErrors, control, setError} = useForm();
     
     const navigate = useNavigate()
     const formData = useSelector(selectPreDelegateFormData);
@@ -23,21 +23,23 @@ const Feedback: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         .catch((e) => console.error(e))
     }
 
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
 
     const delegateCount = useSelector(selectDelegateCount)
     const school = useSelector(selectSchool)
 
-
     return (
         <>
             <div className="form-navigation-previous-container">
-                    <a className="previous-button" onClick={onBack}>{t('text-previous')}</a>
+                    <a className="previous-button" href={blankHref} onClick={(e) => {
+                        e.preventDefault();
+                        onBack && onBack();
+                    }}>{t('text-previous')}</a>
             </div>
             <div className="form-content">
                 <form className="form-fields">
                     <p>{t('info-comments')}</p>
-                    <Textarea />
+                    <Textarea name="comments" label={t('info-enter-text')} control={control} setErrors={setError} clearErrors={clearErrors} />
                     <Trans i18nKey={'info-confirm-school'} values={{delegateNumber: delegateCount, schoolName: school.label }}></Trans>
                     <a 
                         className="btn btn--row" 
