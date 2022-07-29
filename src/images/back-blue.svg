@@ -1,18 +1,1 @@
-<svg width="971" height="1024" viewBox="0 0 971 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_b_301_1217)">
-<path d="M103.151 677.227C145.318 658.191 178.211 623.204 194.613 579.945L234.352 475.13C264.232 396.321 337.771 342.543 421.929 337.957L434.294 337.284C529.62 332.09 609.847 264.102 630.608 170.918L644.677 107.767C666.689 8.96663 755.195 -60.6955 856.402 -58.8794L2312.32 -32.7536C2428.45 -30.6697 2521.5 64.0652 2521.5 180.212V427.5V832.536C2521.5 951.517 2424.03 1047.43 2305.06 1045.51L172.208 1011.1C-14.3278 1008.09 -66.8848 753.99 103.151 677.227Z" fill="url(#paint0_radial_301_1217)"/>
-</g>
-<defs>
-<filter id="filter0_b_301_1217" x="-25670.9" y="-25729.9" width="53863.4" height="52446.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feGaussianBlur in="BackgroundImage" stdDeviation="12835.5"/>
-<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_301_1217"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_301_1217" result="shape"/>
-</filter>
-<radialGradient id="paint0_radial_301_1217" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(627.501 819) rotate(-70.026) scale(806.514 806.514)">
-<stop stop-color="#E4ADA3" stop-opacity="0.71"/>
-<stop offset="0.734375" stop-color="#77ADE2"/>
-<stop offset="1" stop-color="#527AAB"/>
-</radialGradient>
-</defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2521.37 1104.45"><defs><style>.cls-1{fill:url(#radial-gradient);}</style><radialGradient id="radial-gradient" cx="179.93" cy="967.17" r="1" gradientTransform="matrix(275.5, -758, -758, -275.5, 684174.3, 403720.49)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#e4ada3" stop-opacity="0.71"/><stop offset="0.73" stop-color="#77ade2"/><stop offset="1" stop-color="#527aab"/></radialGradient></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M103,736.14a174.64,174.64,0,0,0,91.46-97.28L234.22,534A213,213,0,0,1,421.8,396.87l12.36-.67A213,213,0,0,0,630.48,229.83l14.07-63.15A213,213,0,0,1,856.27,0L2312.19,26.16c116.13,2.08,209.18,96.82,209.18,213V891.45c0,119-97.47,214.89-216.44,213L172.08,1070C-14.46,1067-67,812.9,103,736.14Z"/></g></g></svg>

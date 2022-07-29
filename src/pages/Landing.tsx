@@ -4,6 +4,7 @@ import Tent from "../images/tent.svg";
 import Ground from "../images/ground.svg";
 import Trees from "../images/trees.svg";
 import Logo from "../images/logo-light.svg";
+import NextButton from "../images/next-button.svg";
 
 import RedMountain from "../images/red-mountain.svg";
 import YellowMountain from "../images/yellow-mountain.svg";
@@ -32,8 +33,9 @@ const Landing: React.FC = () => {
                 </div>
             </div>
             <div className="begin-container">
-                <Link to={'/predelegate'}>
-                    <a className="start-button">{t('text-start', {lng: 'en'} )} | {t('text-start', {lng: 'fr'} )}</a>
+                <Link to={'/predelegate'} className="start-button">
+                    <span>{t('text-start', {lng: 'en'} )} | {t('text-start', {lng: 'fr'} )}</span>
+                    <img className="next-button-icon" src={NextButton} />
                 </Link>
             </div>
             <div className="footer-container">

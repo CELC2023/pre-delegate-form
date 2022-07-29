@@ -3,7 +3,9 @@
 @import "../styles/breakpoints.scss";
 
 .pre-delegate-container {
-    
+
+    overflow: hidden;
+
     @media screen and (min-width: $small-phone) {
         align-items: center;
     }
@@ -49,8 +51,30 @@
         }
     }
 
+    @keyframes moveOutLeft {
+        0% {
+            transform: translateX(0);
 
-    background: $color-blue-light; // fallback color
-    background: radial-gradient(35% 60% at 5% 70%, rgba($color-peach, 0.7) 0%, $color-baby-blue 75%, $color-blue-light 100%);
+        }
+     }
 
+    .blue-background {
+        position: absolute;
+        bottom: 5%;
+        left: 40%;
+        height: 100%;
+        max-width: unset;
+        width: auto;
+        animation-name: moveOutLeft;
+        animation-duration: 3s;
+        animation-timing-function: ease-out;
+        transform: translateX(-100vw);
+
+        @media screen and (max-width: $tablet) {
+            width: 3000px;
+            height: 1100px;
+            bottom: -15%;
+            left: -1075px ;
+        }
+    }
 }

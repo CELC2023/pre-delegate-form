@@ -16,6 +16,7 @@ import Feedback from "../components/forms/Feedback";
 import { useSelector } from "react-redux";
 import { selectDelegateCount } from "../redux/preDelegateReducer";
 import Footer from "../components/Footer";
+import BlueBackground from "../images/back-blue.svg";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
@@ -63,6 +64,7 @@ const Page: React.FC = () => {
 
     return (
         <div className="page-container pre-delegate-container">
+            <img className="blue-background" src={BlueBackground} />
             <FormAdapter form={FormList[currentFormIndex]} nextForm={next} previousForm={prev} />
             {   FormList[currentFormIndex].displayNumber !== undefined &&
                 <p className="form-background-number">{FormList[currentFormIndex].displayNumber}</p>

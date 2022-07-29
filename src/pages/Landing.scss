@@ -4,10 +4,7 @@
 
 .landing-container {
 
-    @media screen and (max-width: $tablet) {
-        overflow: hidden;
-    }
-
+    overflow: hidden;
     background-color: $color-white;
 
     .mountain-red {
@@ -36,22 +33,20 @@
             overflow: hidden;
         }
     }
-
     .blue-background {
         position: absolute;
-        bottom: 0;
-        right: 0;
+        bottom: 5%;
+        left: 40%;
         height: 100%;
-        margin-left: 20%;
+        max-width: unset;
+        width: auto;
 
         @media screen and (max-width: $tablet) {
-            max-width: unset;
             width: 3000px;
             height: 1100px;
             bottom: -15%;
             left: -1075px ;
         }
-
     }
 
     .welcome-container {
@@ -124,9 +119,15 @@
             font-weight: 400;
             color: $color-white;
             letter-spacing: 0.2em;
+            display: flex;
+            align-items: center;
 
             @media screen and (max-width: $tablet) {
                 margin-right: 0;
+            }
+            .next-button-icon {
+                margin-left: 10px;
+                height: 1.25em;
             }
         }
 
