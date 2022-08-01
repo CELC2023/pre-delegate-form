@@ -8,6 +8,8 @@ import { blankHref } from "../../utils/constants";
 import { emailRegex } from "../../utils/regex";
 import Autocomplete from "../input/Autocomplete";
 import TextInput from "../input/TextInput";
+import FormNextButton from "./FormNextButton";
+import FormPreviousButton from "./FormPreviousButton";
 
 const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {control, handleSubmit, getValues, setValue, setError, clearErrors ,formState: { errors, touchedFields }} = useForm();
@@ -74,9 +76,10 @@ const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     return (
         <>
-            <div className="form-navigation-previous-container">
-                    <a className="previous-button" onClick={onBack}>{t('text-previous')}</a>
-            </div>
+            {
+                onBack &&
+                <FormPreviousButton onClick={onBack} /> 
+            }
             <div className="form-content">
                 <form className="form-fields" onSubmit={() =>handleSubmit}>
                 <h2>{t('text-personal')}</h2>
@@ -85,9 +88,7 @@ const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <TextInput name="lastName" label={t('field-last-name')} control={control} validation={validateName} setErrors={setError} clearErrors={clearErrors} autocomplete="family-name" />
                 </form>
             </div>
-            <div className="form-navigation-next-container">
-                    <a className="next-button" onClick={onNext}>{t('text-next')}</a>
-            </div>
+            <FormNextButton onClick={onNext} />
         </>
        
         

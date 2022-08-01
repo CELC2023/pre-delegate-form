@@ -8,7 +8,7 @@ const axiosDefaultHeaders: AxiosRequestHeaders = {
 const axiosDefaultConfig: AxiosRequestConfig = {
     timeout: 3000,
     headers: axiosDefaultHeaders,
-    baseURL: "http://localhost:3000"
+    baseURL: "http://localhost:3001"
 }
 
 const axiosInstance = axios.create(axiosDefaultConfig)

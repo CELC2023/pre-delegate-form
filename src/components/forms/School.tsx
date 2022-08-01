@@ -9,6 +9,8 @@ import FormPageProps from "../../interfaces/FormPageProps";
 import { SchoolData, SchoolOptionData } from "../../models/School";
 import { selectSchool, setSchool } from "../../redux/preDelegateReducer";
 import Autocomplete from "../input/Autocomplete";
+import FormNextButton from "./FormNextButton";
+import FormPreviousButton from "./FormPreviousButton";
 
 const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {control, register, handleSubmit, watch, getValues, setValue, formState: {errors}} = useForm()
@@ -79,17 +81,16 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     return (
         <>
-            <div className="form-navigation-previous-container">
-                    <a className="previous-button" onClick={onBack}>{t('text-previous')}</a>
-            </div>
+            {
+                onBack &&
+                <FormPreviousButton onClick={onBack} /> 
+            }
             <div className="form-content">
                 <form className="form-fields">
                     <Autocomplete name={"school"} label={t('field-school')} control={control} optionComponent={OptionComponent} fetchUrl={`/schools/`} customFilter={customFilter} customOptionData={customOptionData} />
                 </form>
             </div>
-            <div className="form-navigation-next-container">
-                    <a className="next-button" onClick={onNext}>{t('text-next')}</a>
-            </div>
+            <FormNextButton onClick={onNext} />
         </>
     )
 }

@@ -9,6 +9,7 @@ import axiosInstance from "../../utils/axios";
 import { blankHref } from "../../utils/constants";
 import { parsePreDelegateData } from "../../utils/datautils";
 import Textarea from "../input/Textarea";
+import FormPreviousButton from "./FormPreviousButton";
 
 const Feedback: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {clearErrors, control, setError} = useForm();
@@ -30,12 +31,10 @@ const Feedback: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     return (
         <>
-            <div className="form-navigation-previous-container">
-                    <a className="previous-button" href={blankHref} onClick={(e) => {
-                        e.preventDefault();
-                        onBack && onBack();
-                    }}>{t('text-previous')}</a>
-            </div>
+            {
+                onBack &&
+                <FormPreviousButton onClick={onBack} /> 
+            }
             <div className="form-content">
                 <form className="form-fields">
                     <p>{t('info-comments')}</p>

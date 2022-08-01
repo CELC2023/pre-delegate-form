@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectDelegateCount, setDelegateCount } from "../../redux/preDelegateReducer";
 import Slider from "../input/Slider";
 import { useTranslation } from "react-i18next";
+import FormNextButton from "./FormNextButton";
+import FormPreviousButton from "./FormPreviousButton";
 
 const DelegateCount: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     
@@ -27,9 +29,10 @@ const DelegateCount: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     
     return (
         <>
-            <div className="form-navigation-previous-container">
-                    <a className="previous-button" onClick={onBack}>{t('text-previous')}</a>
-            </div>
+            {
+                onBack &&
+                <FormPreviousButton onClick={onBack} /> 
+            }
             <div className="form-content">
                 <form className="form-fields">
                     <h2>{t('field-count')}</h2>
@@ -38,9 +41,7 @@ const DelegateCount: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                     <p>{t('info-more-delegates')}</p>
                 </form>  
             </div>
-            <div className="form-navigation-next-container">
-                    <a className="next-button" onClick={onNext}>{t('text-next')}</a>
-            </div>
+           <FormNextButton onClick={onNext} /> 
         </>
     )
 }

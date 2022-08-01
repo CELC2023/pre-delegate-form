@@ -2,9 +2,10 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { blankHref } from "../../utils/constants";
+import FormNextButton from "./FormNextButton";
 
 const Information: React.FC<FormPageProps> = ({onComplete}) => {
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     
     return (
         <>
@@ -15,9 +16,7 @@ const Information: React.FC<FormPageProps> = ({onComplete}) => {
                     <a className="btn btn--row" href={blankHref}>{t('text-download-package')}</a>
                 </div>
             </div>
-            <div className="form-navigation-next-container">
-                    <a className="next-button" onClick={onComplete}>{t('text-next')}</a>
-            </div>
+            <FormNextButton onClick={onComplete} />
         </>
     )
 }
