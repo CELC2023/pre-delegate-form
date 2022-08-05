@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Mountains from "../images/mountains-light.svg";
 import './Page.scss';
 import '../components/FormAdapter.scss';
+import './CompleteForm.scss';
 
 const CompleteForm: React.FC = () => {
     const {t} = useTranslation();
