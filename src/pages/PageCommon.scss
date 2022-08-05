@@ -8,6 +8,10 @@
     height: 100%;
     width: 100%;
 
+    @media screen and (min-width: $max-desktop) {
+        width: $max-desktop;
+    }
+
     .footer-container {
         position: absolute;
         bottom: 0;
