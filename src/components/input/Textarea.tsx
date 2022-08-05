@@ -3,11 +3,11 @@ import { Control, Controller, FieldValues, UseFormClearErrors, UseFormSetError }
 
 export interface TextareaInputProps {
     name: string,
-    control?: Control,
+    control?: Control<any>,
     label?: string,
     validation?: (arg0: string) => boolean,
-    setErrors?: UseFormSetError<FieldValues>,
-    clearErrors?: UseFormClearErrors<FieldValues>
+    setErrors?: UseFormSetError<any>,
+    clearErrors?: UseFormClearErrors<any>
 }
 
 const Textarea: React.FC<TextareaInputProps> = ({ clearErrors, control, label = '', name, setErrors, validation}) => {  

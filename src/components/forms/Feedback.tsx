@@ -1,10 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Trans, useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import FormPageProps from "../../interfaces/FormPageProps";
-import { selectDelegateCount, selectPreDelegateFormData, selectSchool } from "../../redux/preDelegateReducer";
+import { selectComments, selectDelegateCount, selectPreDelegateFormData, selectSchool, setComments } from "../../redux/preDelegateReducer";
 import axiosInstance from "../../utils/axios";
 import { blankHref } from "../../utils/constants";
 import { parsePreDelegateData } from "../../utils/datautils";
@@ -12,12 +12,20 @@ import Textarea from "../input/Textarea";
 import FormPreviousButton from "./FormPreviousButton";
 
 const Feedback: React.FC<FormPageProps> = ({onBack, onComplete}) => {
-    const {clearErrors, control, setError} = useForm();
+    const comments = useSelector(selectComments);
+    const {clearErrors, control, setError, getValues} = useForm({defaultValues: comments});
     
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const formData = useSelector(selectPreDelegateFormData);
+    const dispatch = useDispatch();
+
+    const onPrevious = () : void => {
+        dispatch(setComments(getValues("comments")));
+        onBack && onBack();
+    }
 
     const onSubmit = () : void => {
+        dispatch(setComments(getValues("comments")));
         console.log(parsePreDelegateData(formData))
         axiosInstance.post('/headdelegate/', parsePreDelegateData(formData))
         .then(() => navigate("/predelegate/complete", {replace: true}))
@@ -31,10 +39,7 @@ const Feedback: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     return (
         <>
-            {
-                onBack &&
-                <FormPreviousButton onClick={onBack} /> 
-            }
+            <FormPreviousButton onClick={onPrevious} /> 
             <div className="form-content">
                 <form className="form-fields">
                     <p>{t('info-comments')}</p>

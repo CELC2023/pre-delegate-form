@@ -4,11 +4,11 @@ import "./TextInput.scss";
 
 export interface TextInputProps {
     name: string,
-    control?: Control,
+    control?: Control<any>,
     label?: string,
     validation?: (arg0: string) => boolean,
-    setErrors?: UseFormSetError<FieldValues>,
-    clearErrors?: UseFormClearErrors<FieldValues>
+    setErrors?: UseFormSetError<any>,
+    clearErrors?: UseFormClearErrors<any>
     type?: string,
     autocomplete?: string
 }

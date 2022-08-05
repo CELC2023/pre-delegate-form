@@ -15,7 +15,7 @@ import FormPreviousButton from "./FormPreviousButton";
 const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {control, register, handleSubmit, watch, getValues, setValue, formState: {errors}} = useForm()
 
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
 
     const OptionComponent = (props: OptionProps) => {
 
@@ -44,6 +44,14 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             dispatch(setSchool(schoolValue))
             onComplete()
         }
+    }
+
+    const onPrevious = () => {
+        const schoolValue = getValues("school") || null
+        if(schoolValue !== null) {
+            dispatch(setSchool(schoolValue)) 
+        } 
+        onBack && onBack();
     }
 
     const defaultSchoolValue = useSelector(selectSchool)
@@ -81,10 +89,8 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     return (
         <>
-            {
-                onBack &&
-                <FormPreviousButton onClick={onBack} /> 
-            }
+
+            <FormPreviousButton onClick={onPrevious} /> 
             <div className="form-content">
                 <form className="form-fields">
                     <Autocomplete name={"school"} label={t('field-school')} control={control} optionComponent={OptionComponent} fetchUrl={`/schools/`} customFilter={customFilter} customOptionData={customOptionData} />

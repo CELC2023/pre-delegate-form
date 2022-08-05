@@ -38,11 +38,14 @@ export const preDelegateSlice = createSlice({
         },
         setDelegateCount: (state, action) => {
             state.delegates = action.payload
+        },
+        setComments: (state, action) => {
+            state.comments = action.payload
         }
     }
 })
 
-export const { setLanguagePreference, setPersonalInformation, setSchool, setDelegateCount } = preDelegateSlice.actions;
+export const { setLanguagePreference, setPersonalInformation, setSchool, setDelegateCount, setComments } = preDelegateSlice.actions;
 
 // selectors
 
@@ -52,5 +55,6 @@ export const selectLastName = (state: { preDelegate: { lastName: string; }; }) =
 export const selectSchool = (state: {preDelegate: {school: SchoolOptionData;};}) => state.preDelegate.school;
 export const selectDelegateCount = (state: {preDelegate: {delegates: number;};}) => state.preDelegate.delegates;
 export const selectPreDelegateFormData = (state: {preDelegate: preDelegateSliceInterface}) => state.preDelegate;
+export const selectComments = (state: {comments: {comments: string;};}) => state.comments;
 
 export default preDelegateSlice.reducer;
