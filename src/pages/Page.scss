@@ -5,9 +5,25 @@
 .pre-delegate-container {
 
     overflow: hidden;
+    animation-name: fadeInBackground;
+    animation-duration: 3s;
+    animation-timing-function: ease-in;
+    //background: $color-blue-light;
 
     @media screen and (min-width: $small-phone) {
         align-items: center;
+    }
+
+    @keyframes fadeInBackground {
+        0% {
+            background: $color-white;
+        }
+        65% {
+            background: $color-white;
+        }
+        80% {
+            background: $color-blue-light;
+        }
     }
 
     .form-adapter {
@@ -68,13 +84,14 @@
         animation-name: moveOutLeft;
         animation-duration: 3s;
         animation-timing-function: ease-out;
-        transform: translateX(-100vw);
+        transform: translateX(-60%);
 
         @media screen and (max-width: $tablet) {
             width: 3000px;
             height: 1100px;
-            bottom: -15%;
+            top: 0;
             left: -1075px ;
+            transform: translateX(0);
         }
     }
 }

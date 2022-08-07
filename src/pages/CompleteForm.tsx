@@ -10,7 +10,7 @@ const CompleteForm: React.FC = () => {
     const {t} = useTranslation();
 
     return (
-        <div className="page-container pre-delegate-container">
+        <div className="page-container pre-delegate-container form-complete-container">
             <div className="form-adapter">
                 <img className="mountains-background" src={Mountains} />
                 <div className="form-content">
