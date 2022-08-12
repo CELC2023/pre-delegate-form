@@ -4,7 +4,10 @@ import { Provider } from 'react-redux';
 import App from './App';
 import { store } from './redux/store';
 import reportWebVitals from './reportWebVitals';
-import './i18n'
+import './i18n';
+import ReactGA from 'react-ga';
+const TRACKING_ID = "G-XH89E1JJ75";
+ReactGA.initialize(TRACKING_ID);
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
