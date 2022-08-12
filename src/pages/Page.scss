@@ -3,16 +3,9 @@
 @import "../styles/breakpoints.scss";
 
 .pre-delegate-container {
-
-    overflow: hidden;
     animation-name: fadeInBackground;
     animation-duration: 3s;
     animation-timing-function: ease-in;
-    //background: $color-blue-light;
-
-    @media screen and (min-width: $small-phone) {
-        align-items: center;
-    }
 
     @keyframes fadeInBackground {
         0% {
@@ -24,6 +17,18 @@
         80% {
             background: $color-blue-light;
         }
+    }
+}
+
+.page-container {
+
+    overflow: hidden;
+    
+    background: $color-blue-light;
+    background: radial-gradient(35% 60% at 5% 70%, rgba($color-peach, 0.7) 0%, $color-baby-blue 75%, $color-blue-light 100%);
+
+    @media screen and (min-width: $small-phone) {
+        align-items: center;
     }
 
     .form-adapter {
