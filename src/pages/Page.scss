@@ -33,13 +33,10 @@
 
     .form-adapter {
         width: 425px;
-        height: 90%;
+        height: 750px;
         z-index: 2;
         @media screen and (max-width: 424px) {
             width: 100%;
-        }
-        @media screen and (min-width: $small-phone) {
-            height: 70%;
         }
 
         background-color: $color-white;
