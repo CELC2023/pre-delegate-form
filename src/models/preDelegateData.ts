@@ -6,4 +6,5 @@ export interface preDelegateDataModel {
     school: string,
     delegates: number,
     comments: string,
+    schoolName: string
 }
