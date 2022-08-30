@@ -8,7 +8,7 @@ const axiosDefaultHeaders: AxiosRequestHeaders = {
 const axiosDefaultConfig: AxiosRequestConfig = {
     timeout: 3000,
     headers: axiosDefaultHeaders,
-    baseURL: "http://localhost:3001"
+    baseURL: process.env.REACT_APP_CELC_API
 }
 
 const axiosInstance = axios.create(axiosDefaultConfig)
