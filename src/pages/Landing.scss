@@ -5,6 +5,7 @@
 .landing-container {
 
     overflow: hidden;
+    background: $color-white;
     background-color: $color-white;
 
     .mountain-red {
@@ -40,6 +41,7 @@
         height: 100%;
         max-width: unset;
         width: auto;
+        transform: translateX(0);
 
         @media screen and (max-width: $tablet) {
             width: 3000px;
@@ -111,7 +113,6 @@
         font-size: 1.5em;
         z-index: 1;
         display: flex;
-        justify-content: flex-end;
         text-transform: uppercase;
        
         .start-button {
