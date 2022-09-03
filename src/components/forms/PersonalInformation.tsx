@@ -6,6 +6,7 @@ import FormPageProps from "../../interfaces/FormPageProps";
 import { selectEmail, selectFirstName, selectLastName, setPersonalInformation } from "../../redux/preDelegateReducer";
 import { emailRegex } from "../../utils/regex";
 import TextInput from "../input/TextInput";
+import ProgressDots from "../ProgressDots";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
 
@@ -84,6 +85,7 @@ const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         <>
             <FormPreviousButton onClick={onPrevious} /> 
             <div className="form-content">
+                <ProgressDots steps={3} current={1} />
                 <form className="form-fields" onSubmit={() =>handleSubmit}>
                 <h2>{t('text-personal')}</h2>
                 <TextInput name="email" label={t('field-email')} control={control} validation={validateEmail} setErrors={setError} clearErrors={clearErrors} type="email" autocomplete="email" />

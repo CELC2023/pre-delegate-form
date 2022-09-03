@@ -1,0 +1,18 @@
+@import '../styles/colors.scss';
+
+.progress-dots {
+    display: flex;
+    width: 100%;
+    height: 1em;
+    justify-content: center;
+    .dot {
+        width: 1em;
+        height: 1em;
+        margin: 0 0.5em;
+        background-color: $color-grey-light;
+        border-radius: 50%;
+        &.dot-filled {
+            background-color: $color-blue-mid;
+        }
+    }
+}

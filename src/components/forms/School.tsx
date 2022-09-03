@@ -9,6 +9,7 @@ import FormPageProps from "../../interfaces/FormPageProps";
 import { SchoolData, SchoolOptionData } from "../../models/School";
 import { selectSchool, setSchool } from "../../redux/preDelegateReducer";
 import Autocomplete from "../input/Autocomplete";
+import ProgressDots from "../ProgressDots";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
 
@@ -89,10 +90,11 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     return (
         <>
-
             <FormPreviousButton onClick={onPrevious} /> 
             <div className="form-content">
+            <ProgressDots steps={3} current={2} />
                 <form className="form-fields">
+                    <h2>{t('field-school')}</h2>
                     <Autocomplete name={"school"} label={t('field-school')} control={control} optionComponent={OptionComponent} fetchUrl={`/schools/`} customFilter={customFilter} customOptionData={customOptionData} />
                 </form>
             </div>
