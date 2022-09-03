@@ -12,7 +12,7 @@ const CompleteForm: React.FC = () => {
     return (
         <div className="page-container form-complete-container">
             <div className="form-adapter">
-                <img className="mountains-background" src={Mountains} />
+                <img className="mountains-background" src={Mountains} alt="" />
                 <div className="form-content">
                     <div className="form-fields">
                         <p>{t('info-confirm-pre')}</p>

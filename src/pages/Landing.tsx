@@ -13,13 +13,13 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const Landing: React.FC = () => {
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <div className="page-container landing-container">
-            <img className="mountain-yellow" src={YellowMountain} />
-            <img className="mountain-red" src={RedMountain} />
-            <img className="blue-background" src={BlueBackground} />
+            <img className="mountain-yellow" src={YellowMountain} alt="" />
+            <img className="mountain-red" src={RedMountain} alt="" />
+            <img className="blue-background" src={BlueBackground} alt="" />
             <div className="welcome-container">
                 <div className="english-welcome welcome-text">
                     <p className="text-welcome">Welcome</p>
@@ -35,14 +35,14 @@ const Landing: React.FC = () => {
             <div className="begin-container">
                 <Link to={'/predelegate'} className="start-button">
                     <span>{t('text-start', {lng: 'en'} )} | {t('text-start', {lng: 'fr'} )}</span>
-                    <img className="next-button-icon" src={NextButton} />
+                    <img className="next-button-icon" src={NextButton} alt="" />
                 </Link>
             </div>
             <div className="footer-container">
-                <img className="tent" src={Tent} />
-                <img className="trees" src={Trees}/>
-                <img className="ground" src={Ground} />
-                <img className="logo" src={Logo} />
+                <img className="tent" src={Tent} alt="" />
+                <img className="trees" src={Trees} alt="" />
+                <img className="ground" src={Ground} alt="" />
+                <img className="logo" src={Logo} alt="" />
             </div>
         </div>
     )

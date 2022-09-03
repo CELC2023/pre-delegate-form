@@ -8,10 +8,10 @@ import Logo from "../images/logo-light.svg";
 const Footer: React.FC = () => {
     return (
         <div className="footer-container">
-            <img className="tent" src={Tent} />
-            <img className="trees" src={Trees}/>
-            <img className="ground" src={Ground} />
-            <img className="logo" src={Logo} />
+            <img className="tent" src={Tent} alt="" />
+            <img className="trees" src={Trees} alt=""/>
+            <img className="ground" src={Ground} alt="" />
+            <img className="logo" src={Logo} alt="" />
         </div>
     )
 }

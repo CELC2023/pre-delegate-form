@@ -13,7 +13,7 @@ const FormAdapter: React.FC<FormAdapterProps> = ({form: {Form, disableNext, disa
 
     return (
         <div className="form-adapter">
-            <img className="mountains-background" src={Mountains} />
+            <img className="mountains-background" src={Mountains} alt="" />
             <Form onComplete={nextForm} onBack={previousForm} />
         </div>
     )

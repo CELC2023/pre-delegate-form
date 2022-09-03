@@ -1,9 +1,8 @@
-import { getValue } from "@testing-library/user-event/dist/utils";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { components, OptionProps, Options } from "react-select";
+import { components, OptionProps } from "react-select";
 import { FilterOptionOption } from "react-select/dist/declarations/src/filters";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { SchoolData, SchoolOptionData } from "../../models/School";
@@ -14,7 +13,7 @@ import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
 
 const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
-    const {control, register, handleSubmit, watch, getValues, setValue, formState: {errors}} = useForm()
+    const {control, watch, getValues, setValue} = useForm()
 
     const {t} = useTranslation();
 
@@ -59,7 +58,7 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     useEffect(() => {
         setValue('school', defaultSchoolValue)
-    }, [])
+    }, [defaultSchoolValue, setValue])
 
     const customFilter = (option: FilterOptionOption<any>, inputValue: string) => {
         const optionData: SchoolOptionData = option.data

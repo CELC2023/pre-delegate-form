@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Control, Controller, FieldValues, UseFormClearErrors, UseFormSetError } from "react-hook-form";
+import { Control, Controller, UseFormClearErrors, UseFormSetError } from "react-hook-form";
 
 export interface TextareaInputProps {
     name: string,
@@ -22,10 +22,9 @@ const Textarea: React.FC<TextareaInputProps> = ({ clearErrors, control, label = 
         if(control) {
             (control._getWatch(name) && control._getWatch(name).length > 0) ? setPlaceholderVisibility(false) : setPlaceholderVisibility(true)
         } else {
-            console.log('here', value && value.length > 0 ? false : true)
             setPlaceholderVisibility(value && value.length > 0 ? false : true)
         }
-    }, [control, name, watchValue])
+    }, [control, name, watchValue, setPlaceholderVisibility, value])
 
     useEffect(() => {
         if(fieldError && fieldError.message) {

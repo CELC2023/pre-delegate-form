@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Control, Controller, FieldValues, UseFormClearErrors, UseFormSetError } from "react-hook-form";
+import { Control, Controller, UseFormClearErrors, UseFormSetError } from "react-hook-form";
 import "./TextInput.scss";
 
 export interface TextInputProps {
@@ -29,7 +29,7 @@ const TextInput: React.FC<TextInputProps> = ({autocomplete = "", control, label,
         } else {
             setPlaceholderVisibility(value && value.length > 0 ? false : true)
         }
-    }, [control, name, watchValue])
+    }, [control, name, watchValue, setPlaceholderVisibility, value])
 
     useEffect(() => {
         if(fieldError && fieldError.message) {
