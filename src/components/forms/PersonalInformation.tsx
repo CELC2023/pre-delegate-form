@@ -26,12 +26,15 @@ const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         }
         if(!validateName(getValues("firstName"))) {
             setError("firstName", {type: 'custom', message: 'Enter a valid value'})
+            hasErrors = true;
         }
         if(!validateName(getValues("lastName"))) {
             setError("lastName", {type: 'custom', message: 'Enter a valid value'})
+            hasErrors = true;
         }
         if(!validateEmail(getValues("email"))) {
             setError("email", {type: 'custom', message: 'Enter a valid value'})
+            hasErrors = true;
         }
         return !hasErrors;
     }
@@ -62,10 +65,8 @@ const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             firstName: getValues('firstName') || "",
             lastName: getValues('lastName') || ""
         }
-        if(isValid(values)) {
-            dispatch(setPersonalInformation(values));
-            onBack && onBack();
-        }
+        dispatch(setPersonalInformation(values));
+        onBack && onBack();
     }
 
     const onNext = () => {
