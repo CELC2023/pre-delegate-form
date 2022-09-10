@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import Footer from "../components/Footer";
 import Mountains from "../images/mountains-light.svg";
 import './Page.scss';
@@ -16,7 +16,7 @@ const CompleteForm: React.FC = () => {
                 <div className="form-content">
                     <div className="form-fields">
                         <p>{t('info-confirm-pre')}</p>
-                        <p>{t('info-inquiries')}</p>
+                        <p><Trans i18nKey={'info-inquiries'}>FOR ANY INQUIRIES, PLEASE EMAIL <a href="mailto:chair@celc.cfes.ca">CHAIR@CELC.CFES.CA</a></Trans></p>
                     </div>
                 </div>
             </div>
