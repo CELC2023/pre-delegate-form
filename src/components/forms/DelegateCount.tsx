@@ -35,7 +35,7 @@ const DelegateCount: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <FormPreviousButton onClick={onBack} /> 
             }
             <div className="form-content">
-                <ProgressDots steps={3} current={2} />
+                <ProgressDots steps={3} current={3} />
                 <form className="form-fields">
                     <h2>{t('field-count')}</h2>
                     <p>{t('question-delegate-count')}</p>
