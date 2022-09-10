@@ -19,11 +19,12 @@ export interface FormConfig {
     disableNext?: boolean,
     disablePrevious?: boolean,
     validation?: object,
-    displayNumber?: number
+    displayNumber?: string
 }
 
 const Page: React.FC = () => {
     const delegateCountValue = useSelector(selectDelegateCount);
+    const formattedDelegateCountValue: string = delegateCountValue <= 10 ? delegateCountValue.toString() : '10+';
 
     const FormList: Array<FormConfig> = [{
         Form: Language,
@@ -38,10 +39,10 @@ const Page: React.FC = () => {
         Form: School
     }, {
         Form: DelegateCount,
-        displayNumber: delegateCountValue
+        displayNumber: formattedDelegateCountValue
     }, {
         Form: Feedback,
-        displayNumber: delegateCountValue
+        displayNumber: formattedDelegateCountValue
     }]
 
     const [currentFormIndex, setCurrentFormIndex] = useState<number>(0)
