@@ -8,20 +8,18 @@
     height: 100%;
     width: 100%;
 
-    @media screen and (min-width: $max-desktop) {
-        width: $max-desktop;
-    }
-
     .footer-container {
         position: absolute;
         bottom: 0;
         width: 100%;
+        background: url('../images/ground.svg') center center no-repeat;
+        height: 150px;
 
         .tent {
             max-height: 20vh;
             position: absolute;
             left: 1em;
-            bottom: 10vw;
+            bottom: 130px;
             z-index: 1;
             pointer-events: none;
 
@@ -33,21 +31,13 @@
         .trees {
             position: absolute;
             z-index: 1;
-            bottom: 5vw;
+            bottom: 80px;
             right: 2em;
             pointer-events: none;
 
             @media screen and (max-width: $tablet) {
                 right: -30%;
             }
-        }
-
-        .ground {
-            position: absolute;
-            bottom: 0;
-            overflow: hidden;
-            width: 100%;
-            pointer-events: none;
         }
 
         .logo {

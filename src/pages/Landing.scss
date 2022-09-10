@@ -36,7 +36,7 @@
     }
     .blue-background {
         position: absolute;
-        bottom: 5%;
+        top: -10px;
         left: 40%;
         height: 100%;
         max-width: unset;
@@ -98,13 +98,12 @@
         .english-welcome {
             align-items: flex-end;
             color: $color-primary;
-            @media screen and (max-width: $tablet) {
-                text-align: right;
-            }
+            text-align: right;
         }
         .french-welcome {
             align-items: flex-start;
             color: $color-blue-mid;
+            text-align: left;
         }
     }
 
@@ -114,6 +113,7 @@
         z-index: 1;
         display: flex;
         text-transform: uppercase;
+        align-self: flex-end;
        
         .start-button {
             margin-right: 2em;
@@ -137,22 +137,7 @@
             justify-content: center;
             font-size: 1em;
             margin-bottom: 5%;
+            align-self: center;
         }
-    }
-
-    .footer-container {
-        @media screen and (max-width: $tablet) {
-            bottom: 5vh;
-        }
-
-        .ground {
-            @media screen and (max-width: $tablet) {
-                height: 15vh;
-                width: auto;
-                max-width: unset;
-                bottom: -5vh;
-            }
-        }
-
     }
 }
