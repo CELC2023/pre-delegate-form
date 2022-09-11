@@ -57,15 +57,16 @@
         font-weight: 800;
         font-family: "Roboto", Helvetica, sans-serif;
         position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 15em;
-        line-height: 2em;
+        bottom: 120px;
+        left: 65%;
+        font-size: 17vw;
+        line-height: 1.25em;
         opacity: 33.33%;
         color: $color-white;
         pointer-events: none;
-        @media screen and (max-width: $tablet) {
-            top: 55%;
+        @media screen and (max-width: $large-phone) {
+            z-index: 1;
+            bottom: 0;
         }
     }
 
@@ -84,9 +85,9 @@
         max-width: unset;
         width: auto;
         animation-name: moveOutLeft;
-        animation-duration: 3s;
+        animation-duration: 2s;
         animation-timing-function: ease-out;
-        transform: translateX(-60%);
+        transform: translateX(-21%);
 
         @media screen and (max-width: $tablet) {
             width: 3000px;
