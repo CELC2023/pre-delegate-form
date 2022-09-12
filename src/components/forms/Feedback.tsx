@@ -44,7 +44,7 @@ const Feedback: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <form className="form-fields">
                     <p>{t('info-comments')}</p>
                     <Textarea name="comments" label={t('info-enter-text')} control={control} setErrors={setError} clearErrors={clearErrors} />
-                    <Trans i18nKey={'info-confirm-school'} values={{delegateNumber: delegateCount, schoolName: school.label }}></Trans>
+                    <Trans i18nKey={'info-confirm-school'} values={{delegateNumber: delegateCount < 11 ? delegateCount : '10+', schoolName: school.label }}></Trans>
                     <a 
                         className="btn btn--row" 
                         onClick={(e) => {

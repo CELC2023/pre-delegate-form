@@ -26,7 +26,7 @@
         top: 0.5em;
         pointer-events: none;
         color: $color-grey-light;
-        transition: 0.3s ease-in-out;
+        transition: 0.15s linear;
         &.placeholder--hide, &.label--active {
             left: 1em;
             top: -0.7em;

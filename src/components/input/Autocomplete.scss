@@ -43,7 +43,7 @@
         top: 0.5em;
         pointer-events: none;
         color: $color-grey-light;
-        transition: 0.5s ease-in-out;
+        transition: 0.15s linear;
         z-index: 1;
         &.placeholder--hide, &.label--active {
             left: 1em;

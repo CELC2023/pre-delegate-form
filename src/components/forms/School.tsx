@@ -12,6 +12,7 @@ import ProgressDots from "../ProgressDots";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
 import Schools from "../../data/schools.json";
+import "./School.scss";
 
 const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {control, watch, getValues, setValue} = useForm()
@@ -48,11 +49,12 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         const value : SchoolOptionData = props.getValue()[0]
         const image = value?.image || ''
         return (
-            <div style={{display: 'flex'}}>
+            <components.Control {...props} className={`school-control-container`}>
                 {image &&
                 <img alt="" src={"https://res.cloudinary.com/celc/image/upload/v1663016071/pre-delegate-form/school-logos/"+image} style={{width: 'auto', maxWidth: 'fit-content', height: '1.5em', marginLeft: 'auto', alignSelf: 'center'}} />}
                 {props.children}
-            </div>
+            </components.Control>
+            
         )
     }
 
