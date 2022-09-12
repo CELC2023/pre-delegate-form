@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Control, Controller } from "react-hook-form";
-import ReactSelect, { OptionProps, OptionsOrGroups } from "react-select";
+import ReactSelect, { ControlProps, OptionProps, OptionsOrGroups } from "react-select";
 import { SelectComponents } from "react-select/dist/declarations/src/components";
 import { FilterOptionOption } from "react-select/dist/declarations/src/filters";
 import axiosInstance from "../../utils/axios";
@@ -11,13 +11,14 @@ export interface AutocompleteProps {
     label: string | null,
     control: Control,
     optionComponent?: (props: OptionProps) => JSX.Element,
+    controlComponent?: (props: ControlProps) => JSX.Element,
     customFilter?: ((option: FilterOptionOption<any>, inputValue: string) => boolean),
     fetchUrl?: string,
     options?: OptionsOrGroups<any, any>,
     customOptionData?: (props: any) => object
 }
 
-const Autocomplete: React.FC<AutocompleteProps> = ({control, fetchUrl, label, name, optionComponent, customFilter, options, customOptionData}) => {
+const Autocomplete: React.FC<AutocompleteProps> = ({control, fetchUrl, label, name, optionComponent, customFilter, options, customOptionData, controlComponent}) => {
     const formattedLabel = label || ""
 
     const [optionsData, setOptionsData] = useState<OptionsOrGroups<any, any>>()
@@ -56,11 +57,12 @@ const Autocomplete: React.FC<AutocompleteProps> = ({control, fetchUrl, label, na
     }, [fetchUrl, customOptionData])
 
     // flag to enable custom component functionality
-    const hasCustomComponents: boolean = optionComponent ? true : false;
+    const hasCustomComponents: boolean = optionComponent ? true : controlComponent ? true : false;
 
     // object to build custom components
     const customComponents: Partial<SelectComponents<any, false, any>> = {
-        Option: optionComponent || undefined
+        Option: optionComponent || undefined,
+        Control: controlComponent || undefined
     }
 
     const watchValue = control?._getWatch(name)
