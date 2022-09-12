@@ -20,7 +20,7 @@ const ProgressDots: React.FC<ProgressDotsProps> = ({current, steps}) => {
     return (
         <div className="progress-dots">
            {
-            Array(steps).fill(0).map((_, i) => <ProgressDot complete={i === current - 1} />)
+            Array(steps).fill(0).map((_, i) => <ProgressDot complete={i === current - 1} key={i} />)
            } 
         </div>
     )

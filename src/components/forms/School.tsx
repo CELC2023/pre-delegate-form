@@ -35,7 +35,7 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                         </div>
                         {
                             optionData.image &&
-                            <img alt="" style={{width: '1.5em', height: 'fit-content', marginLeft: 'auto', alignSelf: 'center'}} src={'https://res.cloudinary.com/celc/image/upload/v1663016071/pre-delegate-form/school-logos/'+optionData.image}></img>
+                            <img alt="" style={{width: '1.5em', height: 'auto', maxHeight: 'fit-content', marginLeft: 'auto', alignSelf: 'center'}} src={'https://res.cloudinary.com/celc/image/upload/v1663016071/pre-delegate-form/school-logos/'+optionData.image}></img>
                         }
                     </div>
                 </components.Option>
@@ -50,7 +50,7 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         return (
             <div style={{display: 'flex'}}>
                 {image &&
-                <img alt="" src={"https://res.cloudinary.com/celc/image/upload/v1663016071/pre-delegate-form/school-logos/"+image} style={{width: 'fit-content', height: '1.5em', marginLeft: 'auto', alignSelf: 'center'}} />}
+                <img alt="" src={"https://res.cloudinary.com/celc/image/upload/v1663016071/pre-delegate-form/school-logos/"+image} style={{width: 'auto', maxWidth: 'fit-content', height: '1.5em', marginLeft: 'auto', alignSelf: 'center'}} />}
                 {props.children}
             </div>
         )
