@@ -4,7 +4,7 @@ import ReactSelect, { OptionProps, OptionsOrGroups } from "react-select";
 import { SelectComponents } from "react-select/dist/declarations/src/components";
 import { FilterOptionOption } from "react-select/dist/declarations/src/filters";
 import axiosInstance from "../../utils/axios";
-import "./Autocomplete.scss"
+import "./Autocomplete.scss";
 
 export interface AutocompleteProps {
     name: string,

@@ -33,7 +33,7 @@ const Landing: React.FC = () => {
                 </div>
             </div>
             <div className="begin-container">
-                <Link to={'/predelegate'} className="start-button">
+                <Link to={'/predelegate'} className="start-button" tabIndex={1}>
                     <span>{t('text-start', {lng: 'en'} )} | {t('text-start', {lng: 'fr'} )}</span>
                     <img className="next-button-icon" src={NextButton} alt="" />
                 </Link>

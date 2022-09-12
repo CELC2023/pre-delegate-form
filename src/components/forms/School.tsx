@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,7 @@ import Autocomplete from "../input/Autocomplete";
 import ProgressDots from "../ProgressDots";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
+import Schools from "../../data/schools.json";
 
 const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {control, watch, getValues, setValue} = useForm()
@@ -24,11 +25,19 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         return (
             <>
                 <components.Option {...props}>
-                    <span>{optionData.name}</span>
-                    {
-                        optionData.division && <><br/>
-                        <span>{optionData.division}</span></>
-                    }
+                    <div style={{display: "flex"}}>
+                        <div style={{display: "flex", flexDirection: "column"}}>
+                            <span>{optionData.name}</span>
+                            {
+                                optionData.division && 
+                                <span>{optionData.division}</span>
+                            }
+                        </div>
+                        {
+                            optionData.image &&
+                            <img alt="" style={{width: '1.5em', height: 'fit-content', marginLeft: 'auto', alignSelf: 'center'}} src={'https://res.cloudinary.com/celc/image/upload/v1663016071/pre-delegate-form/school-logos/'+optionData.image}></img>
+                        }
+                    </div>
                 </components.Option>
             </>
         )
@@ -87,6 +96,8 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         return {value: s.uuid, label: s.division ? s.name + ' ' + s.division : s.name, ...s}
     }
 
+    const schoolOptions = useMemo(() => Schools.map(e => customOptionData(e)), [])
+
     return (
         <>
             <FormPreviousButton onClick={onPrevious} /> 
@@ -94,7 +105,7 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <ProgressDots steps={3} current={2} />
                 <form className="form-fields">
                     <h2>{t('field-school')}</h2>
-                    <Autocomplete name={"school"} label={t('field-school')} control={control} optionComponent={OptionComponent} fetchUrl={`/schools/`} customFilter={customFilter} customOptionData={customOptionData} />
+                    <Autocomplete name={"school"} label={t('field-school')} control={control} optionComponent={OptionComponent} options={schoolOptions} customFilter={customFilter} customOptionData={customOptionData} />
                 </form>
             </div>
             <FormNextButton onClick={onNext} />

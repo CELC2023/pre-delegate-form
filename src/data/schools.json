@@ -1,0 +1,524 @@
+[
+    {
+        "uuid": "0036ec21-5bf5-4de5-a8cc-33bc2ecaff55",
+        "name": "Acadia University",
+        "division": "",
+        "city": "Wolfville",
+        "province": "Nova Scotia",
+        "isSchool": true,
+        "image": "acadia.png"
+    },
+    {
+        "uuid": "4a6d5f11-90c6-42d8-81e9-f7ae15fd1d26",
+        "name": "British Columbia Institute of Technology",
+        "division": "",
+        "city": "Burnaby",
+        "province": "British Columbia",
+        "isSchool": true,
+        "image": "bcit.png"
+    },
+    {
+        "uuid": "3099f6c7-4f20-4917-a7e5-469a5d58affe",
+        "name": "Cape Breton University",
+        "division": "",
+        "city": "Nova Scotia",
+        "province": "Sydney",
+        "isSchool": true,
+        "image": "capebreton.png"
+    },
+    {
+        "uuid": "add1569f-8ad0-466c-bfe7-ffeb5085de2d",
+        "name": "Carleton University",
+        "division": "",
+        "city": "Ottawa",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "carelton.png"
+    },
+    {
+        "uuid": "000167e9-bc7b-4541-b780-0024cd826c27",
+        "name": "Conestoga College",
+        "division": "",
+        "city": "Kitchener",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "conestoga.png"
+    },
+    {
+        "uuid": "1975956f-3e9b-44d9-b14e-7ac24d725f8a",
+        "name": "Dalhousie University",
+        "division": "Agriculture",
+        "city": "Truro",
+        "province": "Nova Scotia",
+        "isSchool": true,
+        "image": "dalhousie.png"
+    },
+    {
+        "uuid": "9c0edec7-ef95-4da0-b425-f6c2fc10d52d",
+        "name": "Dalhousie University",
+        "division": "Sexton Campus",
+        "city": "Halifax",
+        "province": "Nova Scotia",
+        "isSchool": true,
+        "image": "dalhousie.png"
+    },
+    {
+        "uuid": "8518d91d-264f-4855-8883-ed454c4c9554",
+        "name": "Dalhousie University",
+        "division": "Studley Campus",
+        "city": "Halifax",
+        "province": "Nova Scotia",
+        "isSchool": true,
+        "image": "dalhousie.png"
+    },
+    {
+        "uuid": "94bd0f43-175f-40c0-a866-25fc5bfa9f9a",
+        "name": "École Polytechnique de Montréal\r",
+        "division": "",
+        "city": "Montreal",
+        "province": "Quebec",
+        "isSchool": true,
+        "image": "montrealpolytechnic.png"
+    },
+    {
+        "uuid": "6c7a8726-1b4b-4616-9af7-3ef524d76702",
+        "name": "Lakehead University",
+        "division": "",
+        "city": "Thunder Bay",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "lakehead.png"
+    },
+    {
+        "uuid": "37e5d10f-7a60-4090-a574-29f5286a1d00",
+        "name": "Laurentian University",
+        "division": "",
+        "city": "Greater Sudbury",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "laurentian.png"
+    },
+    {
+        "uuid": "2eb3044f-ef8f-4a17-a42d-f22ebc7036d5",
+        "name": "McGill University",
+        "division": "Engineering Undergraduate Society (EUS)",
+        "city": "Montreal",
+        "province": "Quebec",
+        "isSchool": true,
+        "image": "mcgill.png"
+    },
+    {
+        "uuid": "ebe2d167-5b71-4a3d-b9cf-fdb015bcba60",
+        "name": "McMaster University",
+        "division": "",
+        "city": "Hamilton",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "mcmaster.png"
+    },
+    {
+        "uuid": "bc2f5218-9857-4d21-932b-9b485b273041",
+        "name": "Memorial University of Newfoundland",
+        "division": "A (MUN-A)",
+        "city": "St. John's",
+        "province": "Newfoundland and Labrador",
+        "isSchool": true,
+        "image": "mun.png"
+    },
+    {
+        "uuid": "2c5e1697-562c-4796-b4c8-f95b5f66000e",
+        "name": "Memorial University of Newfoundland",
+        "division": "B (MUN-B)",
+        "city": "St. John's",
+        "province": "Newfoundland and Labrador",
+        "isSchool": true,
+        "image": "mun.png"
+    },
+    {
+        "uuid": "0357984b-e118-4c31-90ca-8cff3d81e240",
+        "name": "Ontario Tech University",
+        "division": "",
+        "city": "Oshawa",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "ontariotech.png"
+    },
+    {
+        "uuid": "2b2c9675-c974-4ded-95ed-37b2a51da392",
+        "name": "Saint Mary's University",
+        "division": "",
+        "city": "Halifax",
+        "province": "Nova Scotia",
+        "isSchool": true,
+        "image": "saintmarys.png"
+    },
+    {
+        "uuid": "143c5847-f60b-4322-99ec-7284eca5993a",
+        "name": "Simon Fraser University",
+        "division": "Burnaby (SFU-Burnaby)",
+        "city": "Burnaby",
+        "province": "British Columbia",
+        "isSchool": true,
+        "image": "sfu.png"
+    },
+    {
+        "uuid": "d1dfda04-1dba-4b89-8bbb-3e9f4d611f66",
+        "name": "Simon Fraser University",
+        "division": "Surrey (SFU-Surrey)",
+        "city": "Surrey",
+        "province": "British Columbia",
+        "isSchool": true,
+        "image": "sfu.png"
+    },
+    {
+        "uuid": "dd87631f-83a5-4195-b90e-8c00ea63a7d4",
+        "name": "St. Francis Xavier University",
+        "division": "",
+        "city": "Nova Scotia",
+        "province": "Canada",
+        "isSchool": true,
+        "image": "stfx.png"
+    },
+    {
+        "uuid": "918dff4a-5407-45fb-93bf-130760e63b6c",
+        "name": "Université de Moncton",
+        "division": "",
+        "city": "Moncton",
+        "province": "New Brunswick",
+        "isSchool": true,
+        "image": "moncton.png"
+    },
+    {
+        "uuid": "6ea98909-1bb5-4d9e-927a-02ea3d0289d2",
+        "name": "Université de Sherbrooke",
+        "division": "",
+        "city": "Sherbrooke",
+        "province": "Québec",
+        "isSchool": true,
+        "image": "sherbrooke.png"
+    },
+    {
+        "uuid": "735da47c-a67f-4399-a347-b10acf9f7af2",
+        "name": "Université Laval",
+        "division": "",
+        "city": "Laval",
+        "province": "Québec",
+        "isSchool": true,
+        "image": "laval.png"
+    },
+    {
+        "uuid": "0ea13577-1ab7-4b65-981c-2f6df4dbcafe",
+        "name": "University of British Columbia",
+        "division": "Okanagan (UBCO)",
+        "city": "Kelowna",
+        "province": "British Columbia",
+        "isSchool": true,
+        "image": "ubc.png"
+    },
+    {
+        "uuid": "cce32874-506b-447d-93c3-6f8865c6dbf8",
+        "name": "University of British Columbia",
+        "division": "Vancouver (UBCVan)",
+        "city": "Vancouver",
+        "province": "British Columbia",
+        "isSchool": true,
+        "image": "ubc.png"
+    },
+    {
+        "uuid": "466cab73-ff5d-4004-9c74-d84c130e1145",
+        "name": "University of Calgary",
+        "division": "",
+        "city": "Calgary",
+        "province": "Alberta",
+        "isSchool": true,
+        "image": "calgary.png"
+    },
+    {
+        "uuid": "c3e6c1fc-74f8-4021-8807-8a1929507549",
+        "name": "Guelph University",
+        "division": "",
+        "city": "Guelph",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "guelph.png"
+    },
+    {
+        "uuid": "93124dd1-38ef-4919-8826-b82a56b17636",
+        "name": "University of Manitoba",
+        "division": "",
+        "city": "Winnipeg",
+        "province": "Manitoba",
+        "isSchool": true,
+        "image": "manitoba.png"
+    },
+    {
+        "uuid": "0dd87a72-83b7-471b-976b-a3ef9877c488",
+        "name": "University of New Brunswick",
+        "division": "Fredericton",
+        "city": "Fredericton",
+        "province": "New Brunswick",
+        "isSchool": true,
+        "image": "unb.png"
+    },
+    {
+        "uuid": "92adeb3b-55c1-4690-9116-5d59bd535da8",
+        "name": "University of New Brunswick",
+        "division": "St. John",
+        "city": "St. Johns",
+        "province": "New Brunswick",
+        "isSchool": true,
+        "image": "unb.png"
+    },
+    {
+        "uuid": "7bb247b2-e86f-4122-99dc-faf5c9024f2b",
+        "name": "University of Ottawa",
+        "division": "",
+        "city": "Ottawa",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "ottawa.png"
+    },
+    {
+        "uuid": "1e7a5996-4ba7-43e5-b5e3-faf5feba47f0",
+        "name": "University of Prince Edward Island",
+        "division": "",
+        "city": "Charlottetown",
+        "province": "Prince Edward Island",
+        "isSchool": true,
+        "image": "pei.png"
+    },
+    {
+        "uuid": "3d40ca61-d684-495e-b653-033113691f29",
+        "name": "University of Regina",
+        "division": "",
+        "city": "Regina",
+        "province": "Saskatchewan",
+        "isSchool": true,
+        "image": "regina.png"
+    },
+    {
+        "uuid": "a5d0f455-9db2-4a75-b7e2-037835553d3d",
+        "name": "University of Saskatchewan",
+        "division": "",
+        "city": "Saskatoon",
+        "province": "Saskatchewan",
+        "isSchool": true,
+        "image": "saskatchewan.png"
+    },
+    {
+        "uuid": "98467d20-4439-42fd-b891-82f0530e0a58",
+        "name": "University of Toronto",
+        "division": "",
+        "city": "Toronto",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "toronto.png"
+    },
+    {
+        "uuid": "c693b366-ebe0-4338-8a00-06fc64f90dd1",
+        "name": "University of Waterloo",
+        "division": "A",
+        "city": "Waterloo",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "waterloo.png"
+    },
+    {
+        "uuid": "0f47d4ef-1962-41f0-b4d8-c2e4c42ba11d",
+        "name": "University of Waterloo",
+        "division": "B",
+        "city": "Waterloo",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "waterloo.png"
+    },
+    {
+        "uuid": "eeb99e8c-6061-48ea-bee4-84c37b098217",
+        "name": "University of Western Ontario",
+        "division": "",
+        "city": "London",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "western.png"
+    },
+    {
+        "uuid": "b0e10a0c-bff7-4d57-9ad2-6f86ad3557c8",
+        "name": "University of Windsor",
+        "division": "",
+        "city": "Windsor",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "windsor.png"
+    },
+    {
+        "uuid": "dc95c082-909e-40c0-8607-e6b0fe6d5e4b",
+        "name": "York University",
+        "division": "",
+        "city": "Toronto",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "york.png"
+    },
+    {
+        "uuid": "e3bcf498-1900-42ff-91cd-78a7cff8707d",
+        "name": "University of Alberta",
+        "division": "",
+        "city": "Edmonton",
+        "province": "Alberta",
+        "isSchool": true,
+        "image": "alberta.png"
+    },
+    {
+        "uuid": "1769435a-f96b-4698-ba5c-c98a1d0db0f6",
+        "name": "Toronto Metropolitan University",
+        "division": "",
+        "city": "Toronto",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "tmu.png"
+    },
+    {
+        "uuid": "a8ee73b4-76a3-4cdb-87b2-f30173c48a4e",
+        "name": "Royal Military College of Canada",
+        "division": "",
+        "city": "Kingston",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "rmc.png"
+    },
+    {
+        "uuid": "d6e8ec23-11cd-4c0b-a9c4-286d8e381b29",
+        "name": "Queen's University",
+        "division": "",
+        "city": "Kingston",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "queens.png"
+    },
+    {
+        "uuid": "0e8ec502-65dc-4eba-a035-c9c5bffc04ae",
+        "name": "Ecole de Technologie Superieure\r",
+        "division": "",
+        "city": "Montreal",
+        "province": "Ontario",
+        "isSchool": true,
+        "image": "ets.png"
+    },
+    {
+        "uuid": "aca2731c-981b-4d95-9302-6e0f9b618724",
+        "name": "Universite du Quebec",
+        "division": "Trois-Rivieres",
+        "city": "Trois-Rivieres",
+        "province": "Quebec",
+        "isSchool": true,
+        "image": "quebec.png"
+    },
+    {
+        "uuid": "d1f032ff-1331-4922-a8dc-f7f7bfd3be10",
+        "name": "Universite du Quebec",
+        "division": "Rimouski",
+        "city": "Rimouski",
+        "province": "Quebec",
+        "isSchool": true,
+        "image": "quebec.png"
+    },
+    {
+        "uuid": "66a5ef55-2c9f-4cd6-9322-c8c149ddccc4",
+        "name": "Universite du Quebec",
+        "division": "Outaouais",
+        "city": "Gatineau",
+        "province": "Quebec",
+        "isSchool": true,
+        "image": "quebec.png"
+    },
+    {
+        "uuid": "ad959885-5f3f-49d8-b3e0-2f90aa1ebb4e",
+        "name": "Universite du Quebec",
+        "division": "Chicoutimi",
+        "city": "Saguenay",
+        "province": "Quebec",
+        "isSchool": true,
+        "image": "quebec.png"
+    },
+    {
+        "uuid": "1527a751-ce83-4565-82eb-46d11deb5c2a",
+        "name": "Universite du Quebec",
+        "division": "Abitibi-Temiscamingue",
+        "city": "Rouyn-Noranda",
+        "province": "Quebec",
+        "isSchool": true,
+        "image": "quebec.png"
+    },
+    {
+        "uuid": "c9452b94-9c21-4a61-93a6-109cbe0e38a3",
+        "name": "Concordia University\r",
+        "division": "",
+        "city": "Montreal",
+        "province": "Quebec",
+        "isSchool": true,
+        "image": "concordia.png"
+    },
+    {
+        "uuid": "e5dde0ba-0753-4630-a4b3-a836805a9b12",
+        "name": "University of Victoria\r",
+        "division": "",
+        "city": "Victoria",
+        "province": "British Columbia",
+        "isSchool": true,
+        "image": "victoria.png"
+    },
+    {
+        "uuid": "0b5a76a3-3aab-4864-9326-4f34156a6028",
+        "name": "University of Northern British Columbia",
+        "division": "",
+        "city": "Prince George",
+        "province": "British Columbia",
+        "isSchool": true,
+        "image": "unbc.png"
+    },
+    {
+        "uuid": "eff8f16c-8184-43da-b501-e244cf4e9271",
+        "name": "Board of European Students of Technology",
+        "division": "",
+        "city": "",
+        "province": "",
+        "isSchool": false,
+        "image": ""
+    },
+    {
+        "uuid": "b2dc0a60-9752-4ba4-b35a-6c85dd1059ff",
+        "name": "Bonding",
+        "division": "",
+        "city": "",
+        "province": "",
+        "isSchool": false,
+        "image": ""
+    },
+    {
+        "uuid": "e05b8217-c17a-4d75-a713-16e7a6ffadd2",
+        "name": "Canadian Association of Business Students",
+        "division": "",
+        "city": "",
+        "province": "",
+        "isSchool": false,
+        "image": "cabs.png"
+    },
+    {
+        "uuid": "03088ac8-d85b-462a-98a0-d4515620c011",
+        "name": "EngiQueers Canada",
+        "division": "",
+        "city": "",
+        "province": "",
+        "isSchool": false,
+        "image": "engiqueers.png"
+    },
+    {
+        "uuid": "54a630f9-78c0-4fd0-bf78-faca18a917ac",
+        "name": "National Association of Engineering Student Councils",
+        "division": "",
+        "city": "",
+        "province": "",
+        "isSchool": false,
+        "image": ""
+    }
+]

@@ -3,7 +3,9 @@ export interface SchoolData {
     name: string,
     division: string,
     city: string,
-    province: string
+    province: string,
+    isSchool: boolean,
+    image: string,
 }
 
 export interface SchoolOptionData {
@@ -12,6 +14,8 @@ export interface SchoolOptionData {
     division: string,
     city: string,
     province: string,
+    isSchool: boolean,
+    image: string,
     value: string,
-    label: string
+    label: string,
 }
