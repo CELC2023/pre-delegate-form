@@ -1,6 +1,6 @@
 [build]
     command = "yarn run build"
-    publish = "/deploy"
+    publish = "/build"
     base = "/"
 
 [[redirects]]
