@@ -15,7 +15,7 @@ const CompleteForm: React.FC = () => {
                 <img className="form-background" src={FormBackground} alt="" />
                 <div className="form-content">
                     <div className="form-fields">
-                        <p>{t('info-confirm-pre')}</p>
+                        <p className="confirm-message">{t('info-confirm-pre')}</p>
                         <p><Trans i18nKey={'info-inquiries'}>FOR ANY INQUIRIES, PLEASE EMAIL <a href="mailto:chair@celc.cfes.ca">CHAIR@CELC.CFES.CA</a></Trans></p>
                     </div>
                 </div>
