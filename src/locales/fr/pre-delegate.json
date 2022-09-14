@@ -8,7 +8,7 @@
 	"field-society-name": "Nom de société",
 	"info-comments": "Avez-vous des commentaires ou des suggestions que vous aimeriez partager avec nous?",
 	"info-confirm-pre": "Merci pour votre soumission du formulaire pre-délégué(e)s pour CCLI 2023.",
-	"info-confirm-school": "Je comprends qu'en soumettant ce formulaire, je m'engage à envoyer {{delegateNumber}} délégués spécifié au CCLI 2022 de {{schoolName}}",
+	"info-confirm-school": "Je comprends qu'en soumettant ce formulaire, je m'engage à envoyer <0>{{delegateNumber}}</0> délégués spécifié au CCLI 2022 de <1>{{schoolName}}</1>",
 	"info-description-pre": "Sur ce formulaire, déclarer combien de délégué(e)s vous anticiper envoyer à CCLI 2023.",
 	"info-email-chair": "S'il vous plait contactez <1>chair@celc.cfes.ca</1>",
 	"info-enter-text": "Texte ici",
