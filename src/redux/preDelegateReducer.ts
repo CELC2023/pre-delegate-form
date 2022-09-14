@@ -17,7 +17,7 @@ const initialState: preDelegateSliceInterface = {
     firstName: '',
     lastName: '',
     school: null,
-    delegates: 0,
+    delegates: 1,
     comments: ''
 }
 

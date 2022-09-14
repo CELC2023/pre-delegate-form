@@ -1,6 +1,6 @@
 import React from "react";
 import { FormConfig } from "../pages/Page";
-import Mountains from "../images/mountains-light.svg";
+import FormBackground from "../images/form-background.svg";
 import "./FormAdapter.scss";
 
 export interface FormAdapterProps {
@@ -13,7 +13,7 @@ const FormAdapter: React.FC<FormAdapterProps> = ({form: {Form, disableNext, disa
 
     return (
         <div className="form-adapter">
-            <img className="mountains-background" src={Mountains} alt="" />
+            <img className="form-background " src={FormBackground} alt="" />
             <Form onComplete={nextForm} onBack={previousForm} />
         </div>
     )

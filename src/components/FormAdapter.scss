@@ -11,10 +11,11 @@
         flex-direction: column;
     }
 
-    .mountains-background {
+    .form-background {
         position: absolute;
         bottom: -1em;
         width: 100%;
+        pointer-events: none; 
     }
 
     div[class^='form-navigation'] {

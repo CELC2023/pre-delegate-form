@@ -32,17 +32,17 @@ const Landing: React.FC = () => {
                     <p className="text-portal">portail d'inscription CCLI</p>
                 </div>
             </div>
-            <div className="begin-container">
-                <Link to={'/predelegate'} className="start-button" tabIndex={1}>
-                    <span>{t('text-start', {lng: 'en'} )} | {t('text-start', {lng: 'fr'} )}</span>
-                    <img className="next-button-icon" src={NextButton} alt="" />
-                </Link>
-            </div>
             <div className="footer-container">
                 <img className="tent" src={Tent} alt="" />
                 <img className="trees" src={Trees} alt="" />
                 <img className="ground" src={Ground} alt="" />
                 <img className="logo" src={Logo} alt="" />
+            </div>
+            <div className="begin-container">
+                <Link to={'/predelegate'} className="start-button" tabIndex={1}>
+                    <span>{t('text-start', {lng: 'en'} )} | {t('text-start', {lng: 'fr'} )}</span>
+                    <img className="next-button-icon" src={NextButton} alt="" />
+                </Link>
             </div>
         </div>
     )

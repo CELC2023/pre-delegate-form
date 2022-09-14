@@ -1,7 +1,7 @@
 import React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import Footer from "../components/Footer";
-import Mountains from "../images/mountains-light.svg";
+import FormBackground from "../images/form-background.svg";
 import './Page.scss';
 import '../components/FormAdapter.scss';
 import './CompleteForm.scss';
@@ -12,7 +12,7 @@ const CompleteForm: React.FC = () => {
     return (
         <div className="page-container form-complete-container">
             <div className="form-adapter">
-                <img className="mountains-background" src={Mountains} alt="" />
+                <img className="form-background" src={FormBackground} alt="" />
                 <div className="form-content">
                     <div className="form-fields">
                         <p>{t('info-confirm-pre')}</p>

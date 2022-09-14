@@ -1,18 +1,15 @@
-<svg width="7646" height="1079" viewBox="0 0 7646 1079" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_b_508_1781)">
-<path d="M99.9365 756.196C140.64 737.82 172.392 704.048 188.224 662.289L232.878 544.511C260.31 472.158 327.825 422.785 405.089 418.575V418.575C508.801 412.924 590 327.18 590 223.314V210.054C590 94.3203 683.82 0.5 799.554 0.5H7432.5C7550.14 0.5 7645.5 95.8634 7645.5 213.5V457V865.5C7645.5 983.137 7550.14 1078.5 7432.5 1078.5H169.317C-12.2628 1078.5 -65.5599 830.908 99.9365 756.196V756.196Z" fill="url(#paint0_radial_508_1781)"/>
-</g>
-<defs>
-<filter id="filter0_b_508_1781" x="-25670.5" y="-25670.5" width="58987" height="52420" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feGaussianBlur in="BackgroundImage" stdDeviation="12835.5"/>
-<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_508_1781"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_508_1781" result="shape"/>
-</filter>
-<radialGradient id="paint0_radial_508_1781" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(622.001 899) rotate(-70.026) scale(806.514 806.514)">
-<stop stop-color="#E4ADA3" stop-opacity="0.71"/>
-<stop offset="0.734375" stop-color="#77ADE2"/>
-<stop offset="1" stop-color="#527AAB"/>
-</radialGradient>
-</defs>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 7647.66 1078">
+    <defs>
+        <style>.cls-1{fill:url(#radial-gradient);}</style>
+        <radialGradient id="radial-gradient" cx="3482.93" cy="939.99" r="1" gradientTransform="matrix(275.5, -758, -758, -275.5, -246412.99, 2899930.09)" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#e3ada3" stop-opacity="0.71" />
+            <stop offset="0.73" stop-color="#79addd" />
+            <stop offset="1" stop-color="#527bac" />
+        </radialGradient>
+    </defs>
+    <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+            <path class="cls-1" d="M99.47,755.7c155-72.15,78.21-320.6,305.16-337.62,109-5.52,191.19-100.26,184.9-208.53C589.53,93.82,683.35,0,799.09,0H7432c117.64,0,213,95.36,213,213,8.18,147.85-5.89,500.64,0,652,0,117.64-95.38,213-213,213H168.85C-12.73,1078-66,830.41,99.47,755.7Z" />
+        </g>
+    </g>
 </svg>

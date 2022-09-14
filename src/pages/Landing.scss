@@ -23,7 +23,7 @@
 
     .mountain-yellow {
         position: absolute;
-        left: 0%;
+        left: 10%;
         bottom: 0;
         height: 60%;
 
@@ -42,6 +42,7 @@
         max-width: unset;
         width: auto;
         transform: translateX(0);
+        pointer-events: none;
 
         @media screen and (max-width: $tablet) {
             width: 3000px;

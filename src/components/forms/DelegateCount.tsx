@@ -39,7 +39,7 @@ const DelegateCount: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <form className="form-fields">
                     <h2>{t('field-count')}</h2>
                     <p>{t('question-delegate-count')}</p>
-                    <Slider min={1} step={1} max={11} marks={marks} onChange={onSliderUpdate} dots={true} value={delegateCountValue} />
+                    <Slider min={1} step={1} max={11} marks={marks} onChange={onSliderUpdate} dots={true} value={delegateCountValue} defaultValue={1} />
                     <p>{t('info-more-delegates')}</p>
                     <p><Trans i18nKey={'info-email-chair'}>Please email <a href="mailto:chair@celc.cfes.ca">chair@celc.cfes.ca</a></Trans></p>
                 </form>  

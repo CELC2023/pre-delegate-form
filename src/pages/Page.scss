@@ -92,6 +92,7 @@
         animation-duration: 2s;
         animation-timing-function: ease-out;
         transform: translateX(-21%);
+        pointer-events: none;
 
         @media screen and (max-width: $tablet) {
             width: 3000px;
