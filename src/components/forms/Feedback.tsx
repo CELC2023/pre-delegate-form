@@ -26,7 +26,6 @@ const Feedback: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     const onSubmit = () : void => {
         dispatch(setComments(getValues("comments")));
-        console.log(parsePreDelegateData(formData))
         axiosInstance.post('/headdelegate/', parsePreDelegateData(formData))
         .then(() => navigate("/predelegate/complete", {replace: true}))
         .catch((e) => console.error(e))

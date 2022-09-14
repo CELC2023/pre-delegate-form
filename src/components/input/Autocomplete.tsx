@@ -35,10 +35,6 @@ const Autocomplete: React.FC<AutocompleteProps> = ({control, fetchUrl, label, na
         } 
     }, [options])
 
-    useEffect(() => {
-        console.log(optionsData)
-    }, [optionsData])
-
     // fetch dynamic options from api and format
     useEffect(() => {
         // if fetch url provided get options

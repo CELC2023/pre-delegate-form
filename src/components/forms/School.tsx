@@ -58,8 +58,6 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         )
     }
 
-    console.log(watch('school'))
-
     const dispatch = useDispatch()
 
     const onNext = () => {
