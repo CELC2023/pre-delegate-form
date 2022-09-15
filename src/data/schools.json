@@ -520,5 +520,14 @@
         "province": "",
         "isSchool": false,
         "image": ""
-    }
+    },
+    {
+        "uuid": "43868944-6627-488f-927c-c5a3a972edb4",
+        "name": "Canadian Federation of Engineering Students",
+        "division": "",
+        "city": "",
+        "province": "",
+        "isSchool": false,
+        "image": "cfes.png"
+        }
 ]
