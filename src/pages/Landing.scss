@@ -48,7 +48,6 @@
             width: 3000px;
             height: 1100px;
             bottom: -15%;
-            left: -1075px ;
         }
     }
 
@@ -139,6 +138,14 @@
             font-size: 1em;
             margin-bottom: 5%;
             align-self: center;
+        }
+    }
+
+    .footer-container {
+        @media screen and (max-width: $small-desktop) {
+            .trees {
+                display: block;
+            }
         }
     }
 }

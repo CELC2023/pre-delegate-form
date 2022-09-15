@@ -57,6 +57,12 @@
                 width: 150%;
             }
         }
+
+        @media screen and (max-width: $large-phone) {
+            .tent, .trees {
+                display: block;
+            } 
+        }
     }
 
     .form-background-number {
@@ -106,7 +112,6 @@
             width: 3000px;
             height: 1100px;
             top: 0;
-            left: -1075px ;
         }
     }
 }
