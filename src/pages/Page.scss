@@ -43,6 +43,12 @@
     }
 
     .footer-container {
+        @media screen and (max-width: $small-desktop) {
+            .trees {
+                display: none;
+            }
+        }
+
         @media screen and (max-width: $tablet) {
             .tent, .trees {
                 display: none;
