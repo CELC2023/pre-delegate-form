@@ -13,13 +13,15 @@ import { useSelector } from "react-redux";
 import { selectDelegateCount } from "../redux/preDelegateReducer";
 import Footer from "../components/Footer";
 import BlueBackground from "../images/back-blue.svg";
+import GettingStarted from "../components/forms/GettingStarted";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
     disableNext?: boolean,
     disablePrevious?: boolean,
     validation?: object,
-    displayNumber?: string
+    displayNumber?: string,
+    customParentClass?: string,
 }
 
 const Page: React.FC = () => {
@@ -30,9 +32,12 @@ const Page: React.FC = () => {
         Form: Language,
         disableNext: true,
         disablePrevious: true
-    }, {
+    }, {    
         Form: Information,
 
+    }, {
+        Form: GettingStarted,
+        customParentClass: 'full-page-form-adapter'
     }, {
         Form: PersonalInformation
     }, {

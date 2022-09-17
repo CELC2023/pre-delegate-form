@@ -9,10 +9,10 @@ export interface FormAdapterProps {
     previousForm: () => void
 }
 
-const FormAdapter: React.FC<FormAdapterProps> = ({form: {Form, disableNext, disablePrevious}, nextForm, previousForm}) => {
+const FormAdapter: React.FC<FormAdapterProps> = ({form: {Form, disableNext, disablePrevious, customParentClass}, nextForm, previousForm}) => {
 
     return (
-        <div className="form-adapter">
+        <div className={`form-adapter ${customParentClass ? customParentClass : ''}`} >
             <img className="form-background " src={FormBackground} alt="" />
             <Form onComplete={nextForm} onBack={previousForm} />
         </div>

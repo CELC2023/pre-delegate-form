@@ -6,6 +6,17 @@
     border-radius: 0 0 16em 16em;
     overflow: hidden;
 
+    &.full-page-form-adapter {
+        border-radius: 1.5em;
+        margin: 5%;
+        padding: 2em;
+        display: flex;
+        flex-direction: column;
+        .form-background {
+            display: none;
+        }
+    }
+
     >form {
         display: flex;
         flex-direction: column;
