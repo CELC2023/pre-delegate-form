@@ -35,6 +35,13 @@
         width: 425px;
         height: 750px;
         z-index: 2;
+
+        &.full-page-form-adapter {
+            width: 90%;
+            height: 90%;
+            background-color: rgba($color-white, 0.75);
+        }
+
         @media screen and (max-width: 424px) {
             width: 100%;
         }
