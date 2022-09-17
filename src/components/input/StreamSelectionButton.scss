@@ -1,0 +1,28 @@
+@import "../../styles/colors.scss";
+
+.stream-selection-button {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    background-color: $color-grey-lighter;
+    color: $color-grey-dark;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 0.5em 0;
+    cursor: pointer;
+    user-select: none;
+    &:hover {
+        border: 3px solid $color-blue-dark;
+    }
+    &.selected {
+        background-color: $color-red;
+        color: $color-white;
+    }
+    .stream-selection-title {
+        font-size: .9em;
+    }
+    .stream-selection-description {
+        font-size: 0.6em;
+        line-height: 1.15em;
+    }
+}

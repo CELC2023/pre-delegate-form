@@ -1,19 +1,31 @@
 import React, { useState } from "react";
 import FormPageProps from "../interfaces/FormPageProps";
 import FormAdapter from "../components/FormAdapter";
-import DelegateCount from "../components/forms/DelegateCount";
 import Information from "../components/forms/Information";
 import Language from "../components/forms/Language";
 import PersonalInformation from "../components/forms/PersonalInformation";
 import School from "../components/forms/School";
 import './Page.scss';
 
-import Feedback from "../components/forms/Feedback";
-import { useSelector } from "react-redux";
-import { selectDelegateCount } from "../redux/preDelegateReducer";
 import Footer from "../components/Footer";
 import BlueBackground from "../images/back-blue.svg";
 import GettingStarted from "../components/forms/GettingStarted";
+import StreamSelection from "../components/forms/StreamSelection";
+import DegreeInformation from "../components/forms/DegreeInformation";
+import TravelInformation from "../components/forms/TravelInformation";
+import EmergencyContact from "../components/forms/EmergencyContact";
+import DietaryRestrictions from "../components/forms/DietaryRestrictions";
+import Medical from "../components/forms/Medical";
+import Accessibility from "../components/forms/Accessibility";
+import RoomInfo from "../components/forms/RoomInfo";
+import SingleRoom from "../components/forms/SingleRoom";
+import DelegateGender from "../components/forms/DelegateGender";
+import RoomGender from "../components/forms/RoomGender";
+import RoomEnvironment from "../components/forms/RoomEnvironment";
+import RoomAlcoholDrugs from "../components/forms/RoomAlcoholDrugs";
+import RoomRequests from "../components/forms/RoomRequests";
+import ActivityLanguage from "../components/forms/ActivityLanguage";
+import FileUpload from "../components/forms/FileUpload";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
@@ -25,14 +37,12 @@ export interface FormConfig {
 }
 
 const Page: React.FC = () => {
-    const delegateCountValue = useSelector(selectDelegateCount);
-    const formattedDelegateCountValue: string = delegateCountValue <= 10 ? delegateCountValue.toString() : '10+';
 
     const FormList: Array<FormConfig> = [{
         Form: Language,
         disableNext: true,
         disablePrevious: true
-    }, {    
+    }, {
         Form: Information,
 
     }, {
@@ -43,11 +53,37 @@ const Page: React.FC = () => {
     }, {
         Form: School
     }, {
-        Form: DelegateCount,
-        displayNumber: formattedDelegateCountValue
+        Form: DegreeInformation
     }, {
-        Form: Feedback,
-        displayNumber: formattedDelegateCountValue
+        Form: StreamSelection
+    }, {
+        Form: TravelInformation
+    }, {
+        Form: EmergencyContact
+    }, {
+        Form: DietaryRestrictions
+    }, {
+        Form: Medical
+    }, {
+        Form: Accessibility
+    }, {
+        Form: RoomInfo
+    }, {
+        Form: SingleRoom
+    }, {
+        Form: DelegateGender
+    }, {
+        Form: RoomGender
+    }, {
+        Form: RoomEnvironment 
+    }, {
+        Form: RoomAlcoholDrugs
+    }, {
+        Form: RoomRequests
+    }, {
+        Form: ActivityLanguage
+    }, {
+        Form: FileUpload,
     }]
 
     const [currentFormIndex, setCurrentFormIndex] = useState<number>(0)
