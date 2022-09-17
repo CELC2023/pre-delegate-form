@@ -1,19 +1,20 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-import translationEN from './locales/en/pre-delegate.json';
-import translationFR from './locales/fr/pre-delegate.json';
+import delegateEn from './locales/en/delegate.json';
+import delegateFr from './locales/fr/delegate.json';
 
 const resources = {
     en: {
-        translation: translationEN
+        delegate: delegateEn,
     },
     fr: {
-        translation: translationFR
+        delegate: delegateFr,
     }
 }
 
 i18n.use(initReactI18next).init({ 
+    defaultNS: 'delegate',
     lng: "en",
     fallbackLng: "en",
     resources
