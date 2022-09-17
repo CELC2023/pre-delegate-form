@@ -13,9 +13,10 @@ import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
 import Schools from "../../data/schools.json";
 import "./School.scss";
+import TextInput from "../input/TextInput";
 
 const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
-    const {control, watch, getValues, setValue} = useForm()
+    const {control, getValues, setValue} = useForm()
 
     const {t} = useTranslation();
 
@@ -119,6 +120,8 @@ const School: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <form className="form-fields">
                     <h2>{t('field-school')}</h2>
                     <Autocomplete name={"school"} label={t('field-school')} control={control} optionComponent={OptionComponent} controlComponent={ControlComponent} options={schoolOptions} customFilter={customFilter} customOptionData={customOptionData} />
+                    <TextInput name={'cfes-position'} label={t('text-cfes-position')}  />
+                    <TextInput name={'head-delegate'} label={t('field-head-delegate')}  />
                 </form>
             </div>
             <FormNextButton onClick={onNext} />

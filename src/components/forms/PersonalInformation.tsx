@@ -92,6 +92,10 @@ const PersonalInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <TextInput name="email" label={t('field-email')} control={control} validation={validateEmail} setErrors={setError} clearErrors={clearErrors} type="email" autocomplete="email" />
                 <TextInput name="firstName" label={t('field-first-name')} control={control} validation={validateName} setErrors={setError} clearErrors={clearErrors} autocomplete="given-name" />
                 <TextInput name="lastName" label={t('field-last-name')} control={control} validation={validateName} setErrors={setError} clearErrors={clearErrors} autocomplete="family-name" />
+                <TextInput name="preferredName" label={t('field-preferred-name')} control={control} />
+                <TextInput name="pronouns" label={t('field-pronouns')} control={control} />
+                <TextInput name="phone" label={t('field-phone-number')} control={control} />
+                <TextInput name="dateOfBirth" label={t('field-pronouns')} control={control} type="date" autocomplete="bday" />
                 </form>
             </div>
             <FormNextButton onClick={onNext} />
