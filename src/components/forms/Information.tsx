@@ -1,14 +1,18 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation, I18nContext  } from "react-i18next";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { blankHref } from "../../utils/constants";
 import FormNextButton from "./FormNextButton";
 
 const Information: React.FC<FormPageProps> = ({onComplete}) => {
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
 
     const downloadPackage = () => {
-       window.open('https://res.cloudinary.com/celc/image/upload/v1659654394/pre-delegate-form/testletter.pdf')
+        if(i18n.language === 'fr') {
+            window.open('https://celc.cfes.ca/predelegues')
+        } else {
+            window.open('https://celc.cfes.ca/predelegate')
+        }
     }
     
     return (
