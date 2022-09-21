@@ -4,21 +4,6 @@
     base = "/"
 
 [[redirects]]
-    from = "brand"
-    to = "https://drive.google.com/file/d/1dZQvR_Cf-RKH8NZQmVGB__B_AODmI8wt/view?usp=sharing"
-    status = 200
-
-[[redirects]]
-    from = "predelegate"
-    to = "https://drive.google.com/file/d/1dZQvR_Cf-RKH8NZQmVGB__B_AODmI8wt/view?usp=sharing"
-    status = 200
-
-[[redirects]]
-    from = "predelegues"
-    to = "https://drive.google.com/file/d/1dZQvR_Cf-RKH8NZQmVGB__B_AODmI8wt/view?usp=sharing"
-    status = 200
-
-[[redirects]]
     from = "/*"
     to = "/index.html"
     status = 200
