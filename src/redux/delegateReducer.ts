@@ -22,6 +22,7 @@ export interface delegateSliceInterface {
     emergencyContactPhone: string,
     emergencyContactRelationship: string,
     dietaryRestrictions: Array<String>,
+    allergies: string,
     medicalInformation: string,
     accessibilityNeeds: string,
     gender: string,
@@ -61,6 +62,7 @@ const initialState: delegateSliceInterface = {
     emergencyContactPhone: '',
     emergencyContactRelationship: '',
     dietaryRestrictions: [],
+    allergies: '',
     medicalInformation: '',
     accessibilityNeeds: '',
     gender: '',
@@ -82,7 +84,23 @@ const initialState: delegateSliceInterface = {
 export const delegateSlice = createSlice({
     name: "delegate",
     initialState,
-    reducers: {    }
+    reducers: {
+        setDietaryRestrictions: (state, action) => {
+            state.dietaryRestrictions = action.payload.dietaryRestrictions;
+            state.allergies = action.payload.allergies;
+        },
+        setLanguagesPreference: (state, action) => {
+            state.languages = action.payload.languages;
+            state.frenchCaseCompetition = action.payload.frenchCaseCompetition;
+        }
+    }
 })
+
+export const { setDietaryRestrictions, setLanguagesPreference } = delegateSlice.actions;
+
+// selectors
+export const selectAllergies = (state: {delegate: { allergies: string}}) => state.delegate.allergies;
+export const selectDietaryRestrictions = (state: {delegate: { dietaryRestrictions: Array<string>}}) => state.delegate.dietaryRestrictions;
+export const selectLanguagesPreference = (state: {delegate: { languages: Array<string>}}) => state.delegate.languages;
 
 export default delegateSlice.reducer;
