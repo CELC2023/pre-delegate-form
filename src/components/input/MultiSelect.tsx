@@ -1,88 +1,81 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { Control, UseFormClearErrors, UseFormSetError } from "react-hook-form";
-import "./TextInput.scss";
+import React, { useEffect, useState } from "react";
+import {
+  Control,
+  Controller,
+  UseFormClearErrors,
+  UseFormSetError,
+} from "react-hook-form";
+import Checkbox from "./Checkbox";
+import "./MultiSelect.scss";
+
+export interface MultiSelectOptionProps {
+  name: string;
+  label: string;
+}
 
 export interface MultiSelectProps {
-    name: string,
-    control?: Control<any>,
-    label?: string,
-    validation?: (arg0: string) => boolean,
-    setErrors?: UseFormSetError<any>,
-    clearErrors?: UseFormClearErrors<any>
-    options: Array<String>
-    autocomplete?: string
+  name: string;
+  label?: string;
+  validation?: (arg0: string) => boolean;
+  options: Array<MultiSelectOptionProps>;
+  autocomplete?: string;
+  horizontal?: boolean;
+  onChange?: (arg0: Array<string>) => void;
+  value: Array<string>;
 }
 
-const MultiSelect: React.FC<MultiSelectProps> = ({autocomplete = "", control, label, name, validation, setErrors, clearErrors, options}) => {
-    const formattedLabel = label || ""
+const MultiSelect: React.FC<MultiSelectProps> = ({
+  autocomplete = "",
+  horizontal = false,
+  label,
+  name,
+  validation,
+  options,
+  onChange,
+  value,
+}) => {
+  const formattedLabel = label || "";
 
-    const opt = useMemo(() => [{
-        name: 'male',
-        label: 'Male'
-    }, {
-        name: 'female',
-        label: 'Female'
-    }, {
-        name: 'nonBinary',
-        label: 'Non-Binary'
-    }, {
-        name: 'other',
-        label: 'Other'
-    }, {
-        name: 'preferNotToSay',
-        label: 'Prefer Not to Say'
-    }], [])
+  const [error, setError] = useState<string>("");
+  const [selected, setSelected] = useState<any>({});
 
-    const [value, setValue] = useState<Array<string>>([]);
-    const [error, setError] = useState<string>('');
-    const fieldError = control?.getFieldState(name)?.error
-    const [selected, setSelected] = useState<any>();
-    useEffect(() => {
-        setSelected(Object.fromEntries(opt.map((e) => [e.name, false])))
-    }, [opt])
+  useEffect(() => {
+    setSelected(Object.fromEntries(options.map((e) => [e.name, false])));
+  }, [options]);
 
-    useEffect(() => {
-        if(selected) {
-            setValue(Object.keys(selected).filter(e => {
-                return e in selected && selected[e]
-            }))
-        } else {
-            setValue([])
-        }
-    }, [selected])
-    
-    useEffect(() => {
-        if(fieldError && fieldError.message) {
-            setError(fieldError.message)
-        } else {
-            setError('')
-        }
-    }, [fieldError])
+  useEffect(() => {
+    setSelected(Object.fromEntries(options.map((e) => [e.name, value?.includes(e.name) || false])));
+  }, [])
 
-    return (
-        <div className={`multiselect ${error !== '' ? 'error' : ''}`}>
-            <label className={`multiselect--label`}>
-                <span className={`multiselect--span`}>
-                    {formattedLabel}
-                </span>
-            </label>
-            <div className="multiselect--option-area">
-            {
-                opt.map((e, i) => {
-                    const optionValue =  (selected && e.name in selected) ? selected[e.name] : false
-                    return (
-                        <div className="multiselect--option-row" key={i}>
-                             <input className="multiselect--option-checkbox" id={`${e.name}-${i}`} type={'checkbox'} name={e.name} onClick={() => {
-                                setSelected({...selected, [e.name]: !optionValue })
-                            }} value={optionValue} />
-                            <label className="multiselect--option-label" htmlFor={`${e.name}-${i}`}>{e.label} {selected && selected[e.name].toString()}</label>
-                        </div>
-                    )
-                })
-            }
-            </div>
+  const getSelected = () => {
+    return selected
+  }
+
+  useEffect(() => {
+    onChange !== undefined && onChange(Object.keys(selected).filter((v) => selected[v]))
+  }, [selected])
+
+  const updateValue = (name: string, value: boolean) => {
+    const updatedSelected = { ...getSelected(), [name]: value }
+    setSelected(updatedSelected);
+  }
+
+  return (
+    <div className={`multiselect ${error !== "" ? "error" : ""}`}>
+      <label className={`multiselect--label`}>
+        <span className={`multiselect--span`}>{formattedLabel}</span>
+      </label>
+        <div
+          className={`multiselect--option-area${
+            horizontal ? " multiselect--horizontal" : ""
+          }`}
+        >
+          {
+            options.map((e, i) => <Checkbox {...e} key={i} value={selected[e.name]} onChange={updateValue} />)
+          }
         </div>
-    )
-}
+    </div>
+  );
+};
 
-export default MultiSelect
+export default MultiSelect;
