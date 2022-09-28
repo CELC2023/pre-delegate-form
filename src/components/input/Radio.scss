@@ -1,0 +1,32 @@
+@import "../../styles/colors.scss";
+
+.radio-option {
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    &:hover {
+        .radio-option-container {
+           .radio-option-input {
+                background-color: rgba($color-red, 0.7); 
+           } 
+        } 
+    }
+    .radio-option-container {
+        margin-right: 1em;
+            height: 1.25em;
+            width: 1.25em;
+            border: 1.5px solid $color-grey-dark;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            .radio-option-input {
+                height: 11px;
+                width: 11px;
+                border-radius: 50%;
+                &.selected {
+                    background-color: $color-red;
+                }
+            }
+    }
+}

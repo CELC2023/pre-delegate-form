@@ -27,6 +27,7 @@
         pointer-events: none;
         color: $color-grey-light;
         transition: 0.15s linear;
+        font-size: 0.8em;
         &.placeholder--hide, &.label--active {
             left: 1em;
             top: -0.7em;
