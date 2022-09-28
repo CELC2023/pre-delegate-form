@@ -11,6 +11,8 @@ export interface delegateSliceInterface {
     pronouns: string,
     dateOfBirth: string,
     cfesOfficer: boolean,
+    cfesPosition: string,
+    headDelegate: string,
     yearOfStudy: number,
     major: string,
     stream: string,
@@ -51,6 +53,8 @@ const initialState: delegateSliceInterface = {
     pronouns: '',
     dateOfBirth: '',
     cfesOfficer: false,
+    cfesPosition: '',
+    headDelegate: '',
     yearOfStudy: 0,
     major: '',
     stream: '',
@@ -101,11 +105,17 @@ export const delegateSlice = createSlice({
             state.pronouns = action.payload.pronouns;
             state.phone = action.payload.phone;
             state.dateOfBirth = action.payload.dateOfBirth;
+        },
+        setSchoolInformation: (state, action) => {
+            state.school = action.payload.school;
+            state.cfesPosition = action.payload.position;
+            state.headDelegate = action.payload.headDelegate;
+            state.cfesOfficer = action.payload.isOfficer;
         }
     }
 })
 
-export const { setDietaryRestrictions, setLanguagesPreference, setPersonalInformation } = delegateSlice.actions;
+export const { setDietaryRestrictions, setLanguagesPreference, setPersonalInformation, setSchoolInformation } = delegateSlice.actions;
 
 // selectors
 export const selectEmail = (state: {delegate: {email: string}}) => state.delegate.email;
@@ -118,5 +128,9 @@ export const selectDateOfBirth = (state: {delegate: {dateOfBirth: string}}) => s
 export const selectAllergies = (state: {delegate: { allergies: string}}) => state.delegate.allergies;
 export const selectDietaryRestrictions = (state: {delegate: { dietaryRestrictions: Array<string>}}) => state.delegate.dietaryRestrictions;
 export const selectLanguagesPreference = (state: {delegate: { languages: Array<string>}}) => state.delegate.languages;
+export const selectSchool = (state: {delegate: { school: SchoolOptionData | null}}) => state.delegate.school;
+export const selectCfesOfficer = (state: {delegate: { cfesOfficer: boolean}}) => state.delegate.cfesOfficer;
+export const selectCfesPosition = (state: {delegate: { cfesPosition: string}}) => state.delegate.cfesPosition;
+export const selectHeadDelegate = (state: {delegate: { headDelegate: string}}) => state.delegate.headDelegate;
 
 export default delegateSlice.reducer;

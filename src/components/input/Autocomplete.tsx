@@ -9,7 +9,7 @@ import "./Autocomplete.scss";
 export interface AutocompleteProps {
     name: string,
     label: string | null,
-    control: Control,
+    control: Control<any>,
     optionComponent?: (props: OptionProps) => JSX.Element,
     controlComponent?: (props: ControlProps) => JSX.Element,
     customFilter?: ((option: FilterOptionOption<any>, inputValue: string) => boolean),

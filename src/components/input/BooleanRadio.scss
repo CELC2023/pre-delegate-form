@@ -1,0 +1,10 @@
+.boolean-radio {
+    display: flex;
+    flex-direction: column;
+    .boolean-radio-container {
+        display: flex;
+        .radio-option {
+            margin-right: 1em;
+        }
+    }
+}
