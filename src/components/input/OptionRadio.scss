@@ -1,0 +1,13 @@
+.option-radio {
+    display: flex;
+    flex-direction: column;
+    .option-radio-container {
+        &.vertical {
+            flex-direction: column;
+        }
+        display: flex;
+        .radio-option {
+            margin-right: 1em;
+        }
+    }
+}
