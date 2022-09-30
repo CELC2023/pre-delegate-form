@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
+import { selectStream, setStream } from "../../redux/delegateReducer";
 import StreamSelectionButton from "../input/StreamSelectionButton";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
@@ -9,6 +11,7 @@ import FormPreviousButton from "./FormPreviousButton";
 const StreamSelection: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     const {t} = useTranslation();
+    const dispatch = useDispatch();
 
     const streams = [
         {
@@ -30,25 +33,27 @@ const StreamSelection: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         }
     ]
 
-    const [selectedStream, setSelectedStream] = useState<String>('');
-
     const onPrevious = () => {
         onBack && onBack();
     }
 
+    const selectedStream = useSelector(selectStream);
+
     const onNext = () => {
-        onComplete && onComplete();
+        if(selectedStream !== '') {
+            onComplete && onComplete();
+        }
     }
 
     const onSelectStream = (uuid: string) => {
-        setSelectedStream(uuid);
+       dispatch(setStream(uuid))
     }
 
     return (
         <>
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
-            <h2>{t('text-school-info')}</h2>
+            {/* <h2>{t('text-school-info')}</h2> */}
                     <p>{t('field-stream')}</p>
                     <div className="stream-selection-container">
                         {

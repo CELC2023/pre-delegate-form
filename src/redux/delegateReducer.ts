@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { SchoolOptionData } from "../models/School";
+import { Major } from "../models/major";
 
 export interface delegateSliceInterface {
     language: string,
@@ -14,11 +15,14 @@ export interface delegateSliceInterface {
     cfesPosition: string,
     headDelegate: string,
     yearOfStudy: number,
-    major: string,
+    major: Major | null,
+    minor: string,
     stream: string,
     travelMethod: string,
     parkingPass: boolean,
-    arrivalTime: Date | null,
+    arrivalTime: string,
+    departureTime: string,
+    flightNumber: string,
     school: SchoolOptionData | null,
     emergencyContactName: string,
     emergencyContactPhone: string,
@@ -56,11 +60,14 @@ const initialState: delegateSliceInterface = {
     cfesPosition: '',
     headDelegate: '',
     yearOfStudy: 0,
-    major: '',
+    major: null,
+    minor: '',
     stream: '',
     travelMethod: '',
     parkingPass: false,
-    arrivalTime: null,
+    arrivalTime: '',
+    departureTime: '',
+    flightNumber: '',
     school: null,
     emergencyContactName: '',
     emergencyContactPhone: '',
@@ -111,11 +118,25 @@ export const delegateSlice = createSlice({
             state.cfesPosition = action.payload.position;
             state.headDelegate = action.payload.headDelegate;
             state.cfesOfficer = action.payload.isOfficer;
+        },
+        setDegreeInformation: (state, action) => {
+            state.major = action.payload.major;
+            state.minor = action.payload.minor;
+            state.yearOfStudy = action.payload.yearOfStudy;
+        },
+        setStream: (state, action) => {
+            state.stream = action.payload;
+        },
+        setTravelInformation: (state, action) => {
+            state.travelMethod = action.payload.travelMethod;
+            state.departureTime = action.payload.departureTime;
+            state.arrivalTime = action.payload.arrivalTime;
+            state.flightNumber = action.payload.flightNumber;
         }
     }
 })
 
-export const { setDietaryRestrictions, setLanguagesPreference, setPersonalInformation, setSchoolInformation } = delegateSlice.actions;
+export const { setDietaryRestrictions, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setStream, setTravelInformation } = delegateSlice.actions;
 
 // selectors
 export const selectEmail = (state: {delegate: {email: string}}) => state.delegate.email;
@@ -132,5 +153,16 @@ export const selectSchool = (state: {delegate: { school: SchoolOptionData | null
 export const selectCfesOfficer = (state: {delegate: { cfesOfficer: boolean}}) => state.delegate.cfesOfficer;
 export const selectCfesPosition = (state: {delegate: { cfesPosition: string}}) => state.delegate.cfesPosition;
 export const selectHeadDelegate = (state: {delegate: { headDelegate: string}}) => state.delegate.headDelegate;
+export const selectDegreeMajor = (state: {delegate: { major: Major}}) => state.delegate.major;
+export const selectDegreeMinor = (state: {delegate: { minor: string}}) => state.delegate.minor;
+export const selectDegreeYear = (state: {delegate: { yearOfStudy: number}}) => state.delegate.yearOfStudy;
+export const selectStream = (state: {delegate: { stream: string}}) => state.delegate.stream;
+export const selectArrivalTime = (state: {delegate: { arrivalTime: string}}) => state.delegate.arrivalTime;
+export const selectDepartureTime = (state: {delegate: { departureTime: string}}) => state.delegate.departureTime;
+export const selectFlightNumber = (state: {delegate: { flightNumber: string}}) => state.delegate.flightNumber;
+export const selectTravelMethod = (state: {delegate: { travelMethod: string}}) => state.delegate.travelMethod;
+
+
+
 
 export default delegateSlice.reducer;
