@@ -170,6 +170,4 @@ export const selectEmergencyContactName = (state: {delegate: { emergencyContactN
 export const selectEmergencyContactPhone = (state: {delegate: { emergencyContactPhone: string}}) => state.delegate.emergencyContactPhone;
 export const selectEmergencyContactRelation = (state: {delegate: { emergencyContactRelationship: string}}) => state.delegate.emergencyContactRelationship;
 
-
-
 export default delegateSlice.reducer;

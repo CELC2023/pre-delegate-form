@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   Control,
   Controller,
-  UseFormClearErrors,
-  UseFormSetError,
 } from "react-hook-form";
 import Checkbox from "./Checkbox";
 import "./MultiSelect.scss";
@@ -21,11 +19,13 @@ export interface MultiSelectProps {
   autocomplete?: string;
   horizontal?: boolean;
   onChange?: (arg0: Array<string>) => void;
-  value: Array<string>;
+  value?: Array<string>;
+  control?: Control<any>;
 }
 
 const MultiSelect: React.FC<MultiSelectProps> = ({
   autocomplete = "",
+  control,
   horizontal = false,
   label,
   name,
@@ -65,15 +65,46 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
       <label className={`multiselect--label`}>
         <span className={`multiselect--span`}>{formattedLabel}</span>
       </label>
-        <div
-          className={`multiselect--option-area${
-            horizontal ? " multiselect--horizontal" : ""
-          }`}
-        >
-          {
-            options.map((e, i) => <Checkbox {...e} key={i} value={selected[e.name]} onChange={updateValue} />)
-          }
-        </div>
+        {
+          control ?
+            <Controller 
+              name={name}
+              control={control}
+              render={({ field: { onChange, value } })=>{
+                const val: Array<string> = value || []
+
+                const change = (name: string, value: boolean) => {
+                  if(value === true) {
+                    onChange(val.concat([name]))
+                  } else {
+                    onChange(val.filter((e) => e !== name))
+                  }
+                }
+
+                return (
+                  <div
+                    className={`multiselect--option-area${
+                      horizontal ? " multiselect--horizontal" : ""
+                    }`}
+                  >
+                    {
+                      options.map((e, i) => <Checkbox {...e} key={i} value={val.includes(e.name)} onChange={change} />)
+                    }
+                  </div> 
+                )
+              }}
+            />
+          :
+          <div
+            className={`multiselect--option-area${
+              horizontal ? " multiselect--horizontal" : ""
+            }`}
+          >
+            {
+              options.map((e, i) => <Checkbox {...e} key={i} value={selected[e.name]} onChange={updateValue} />)
+            }
+          </div>
+        }
     </div>
   );
 };

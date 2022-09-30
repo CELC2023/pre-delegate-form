@@ -66,8 +66,6 @@ const TravelInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         onBack && onBack();
     }
 
-    console.log(watch('departureTime'), watch('arrivalTime'))
-
     return (
         <>
             <FormPreviousButton onClick={onPrevious} />
