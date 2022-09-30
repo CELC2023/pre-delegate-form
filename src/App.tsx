@@ -15,9 +15,7 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Landing />} />
-        <Route path='/predelegate' element={<Page />} />
-        <Route path='/predelegate/complete' element={<CompleteForm />} />
+        <Route path='/' element={<Landing />} /> 
         <Route path="/*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
