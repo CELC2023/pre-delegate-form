@@ -40,11 +40,9 @@ const EmergencyContact: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             name: watch('emergencyContactName'),
             phone: watch('emergencyContactPhone'),
             relation: watch('emergencyContactRelationship')
-        }
-        console.log(values)
+        } 
 
-        if(values.name !== '' && values.phone !== '' && values.relation !== '' && validatePhone(values.phone)) {
-            console.log(values)
+        if(values.name !== '' && values.phone !== '' && values.relation !== '' && validatePhone(values.phone)) { 
             dispatch(setEmergencyContact(values));
             onComplete && onComplete();
         }
