@@ -132,11 +132,16 @@ export const delegateSlice = createSlice({
             state.departureTime = action.payload.departureTime;
             state.arrivalTime = action.payload.arrivalTime;
             state.flightNumber = action.payload.flightNumber;
+        },
+        setEmergencyContact: (state, action) => {
+            state.emergencyContactName = action.payload.name;
+            state.emergencyContactPhone = action.payload.phone;
+            state.emergencyContactRelationship = action.payload.relation;
         }
     }
 })
 
-export const { setDietaryRestrictions, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setStream, setTravelInformation } = delegateSlice.actions;
+export const { setDietaryRestrictions, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setStream, setTravelInformation, setEmergencyContact } = delegateSlice.actions;
 
 // selectors
 export const selectEmail = (state: {delegate: {email: string}}) => state.delegate.email;
@@ -161,7 +166,9 @@ export const selectArrivalTime = (state: {delegate: { arrivalTime: string}}) => 
 export const selectDepartureTime = (state: {delegate: { departureTime: string}}) => state.delegate.departureTime;
 export const selectFlightNumber = (state: {delegate: { flightNumber: string}}) => state.delegate.flightNumber;
 export const selectTravelMethod = (state: {delegate: { travelMethod: string}}) => state.delegate.travelMethod;
-
+export const selectEmergencyContactName = (state: {delegate: { emergencyContactName: string}}) => state.delegate.emergencyContactName;
+export const selectEmergencyContactPhone = (state: {delegate: { emergencyContactPhone: string}}) => state.delegate.emergencyContactPhone;
+export const selectEmergencyContactRelation = (state: {delegate: { emergencyContactRelationship: string}}) => state.delegate.emergencyContactRelationship;
 
 
 
