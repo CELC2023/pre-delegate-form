@@ -65,9 +65,9 @@ const EmergencyContact: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <FormContent>
                 <h2>{t('text-conference-details')}</h2>
                 <p>{t('text-emergency-contact-info')}</p>
-                <TextInput name="emergencyContactName" label={t('field-name')} control={control} />
-                <TextInput name="emergencyContactPhone" label={t('field-phone-number')} control={control} setErrors={setError} clearErrors={clearErrors} validation={validatePhone} />
-                <TextInput name="emergencyContactRelationship" label={t('field-relationship')} control={control} />
+                <TextInput name="emergencyContactName" label={t('field-name')} control={control} setErrors={setError} clearErrors={clearErrors} required={true} />
+                <TextInput name="emergencyContactPhone" label={t('field-phone-number')} control={control} setErrors={setError} clearErrors={clearErrors} validation={validatePhone} required={true} />
+                <TextInput name="emergencyContactRelationship" label={t('field-relationship')} control={control} setErrors={setError} clearErrors={clearErrors} required={true} />
             </FormContent>
             <FormNextButton onClick={onNext} />
         </>

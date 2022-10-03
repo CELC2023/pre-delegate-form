@@ -113,7 +113,7 @@
 	"text-room-requests": "Do you have any particular rooming requests you would like the Organizing Committee to know about (medical, religious, etc.)?",
 	"text-rooming-questionnaire": "ROOMING QUESTIONNAIRE",
 	"text-school-info": "School and Arrival Information",
-	"text-shared-beds": "By checking this box, I am confirming that I am familiar and comfortable with the rooming arrangements described in the Pre-Delegate Package. I understand that four (4) delegates will be sharing a room containing two (2) queen-size beds, therefore delegates will be sharing a bed. I also understand that the Organizing Committee will attempt to accommodate my rooming preferences but no guarantees can be made.",
+	"text-shared-beds": "By checking this box, I am confirming that I am familiar and comfortable with the rooming arrangements described in the Pre-Delegate Package. I understand that <0>four (4) delegates</0> will be sharing a room containing <1>two (2) queen-size beds</1>, therefore delegates will be sharing a bed. I also understand that the Organizing Committee will attempt to accommodate my rooming preferences but no guarantees can be made.",
 	"text-single-room": "Would you like to have your own room? This option is subject to the hotel’s availability. You will have to pay the difference.You will be contacted by the Hospitality team and your head delegate to make arrangements.",
 	"text-start": "START",
 	"text-uploads": "UPLOADS",

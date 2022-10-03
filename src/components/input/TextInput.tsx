@@ -10,11 +10,12 @@ export interface TextInputProps {
     setErrors?: UseFormSetError<any>,
     clearErrors?: UseFormClearErrors<any>
     type?: string,
-    autocomplete?: string
+    autocomplete?: string,
+    required?: boolean,
 }
 
-const TextInput: React.FC<TextInputProps> = ({autocomplete = "", control, label, name, validation, setErrors, clearErrors, type = "text"}) => {
-    const formattedLabel = label || ""
+const TextInput: React.FC<TextInputProps> = ({autocomplete = "", control, label, name, validation, setErrors, clearErrors, type = "text", required = false}) => {
+    const formattedLabel = label ? (required ? `${label}*` : label ) : ""
 
     const [isActive, setIsActive] = useState<boolean>(false);
     const [value, setValue] = useState<string>('');
@@ -45,6 +46,16 @@ const TextInput: React.FC<TextInputProps> = ({autocomplete = "", control, label,
                 if(setErrors !== undefined) {
                     setErrors(name, {type: 'custom', message: 'Enter a valid value'})
                 }
+            } else {
+                if(clearErrors !== undefined) {
+                    clearErrors(name)
+                }
+            }
+        } else if(required === true) {
+            if(value.length <= 0) {
+                if(setErrors !== undefined) {
+                    setErrors(name, {type: 'custom', message: 'Enter a valid value'})
+                } 
             } else {
                 if(clearErrors !== undefined) {
                     clearErrors(name)

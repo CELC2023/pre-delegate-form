@@ -160,6 +160,7 @@ const PersonalInformation: React.FC<FormPageProps> = ({
             clearErrors={clearErrors}
             type="email"
             autocomplete="email"
+            required={true}
           />
           <TextInput
             name="firstName"
@@ -169,6 +170,7 @@ const PersonalInformation: React.FC<FormPageProps> = ({
             setErrors={setError}
             clearErrors={clearErrors}
             autocomplete="given-name"
+            required={true}
           />
           <TextInput
             name="lastName"
@@ -178,6 +180,7 @@ const PersonalInformation: React.FC<FormPageProps> = ({
             setErrors={setError}
             clearErrors={clearErrors}
             autocomplete="family-name"
+            required={true}
           />
           <TextInput
             name="preferredName"
@@ -200,6 +203,7 @@ const PersonalInformation: React.FC<FormPageProps> = ({
             clearErrors={clearErrors}
             validation={validatePhone}
             control={control}
+            required={true}
           />
           <TextInput
             name="dateOfBirth"
@@ -210,6 +214,7 @@ const PersonalInformation: React.FC<FormPageProps> = ({
             validation={validateDateOfBirth}
             type="date"
             autocomplete="bday"
+            required={true}
           />
         </form>
       </div>

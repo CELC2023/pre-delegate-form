@@ -36,7 +36,7 @@ const TravelInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         label: t('option-transport-fly')
     }]
 
-    const {control, watch} = useForm({defaultValues: defaultValues})
+    const {control, watch, setError, clearErrors} = useForm({defaultValues: defaultValues})
 
     const onNext = () => {
         const values: TravelInformationForm = {
@@ -77,8 +77,8 @@ const TravelInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                     <TextInput name="flightNumber" label={t('field-flight-number')} control={control} />
                 }
                 <p>{t('text-local-time')}</p>
-                <TextInput name="departureTime" label={t('field-departure-time')} control={control} type={'time'} />
-                <TextInput name="arrivalTime" label={t('field-arrival-time')} control={control} type={'time'} />
+                <TextInput name="departureTime" label={t('field-departure-time')} control={control} type={'time'} setErrors={setError} clearErrors={clearErrors} required={true} />
+                <TextInput name="arrivalTime" label={t('field-arrival-time')} control={control} type={'time'} setErrors={setError} clearErrors={clearErrors} required={true} />
             </FormContent>
             <FormNextButton onClick={onNext} />
         </>

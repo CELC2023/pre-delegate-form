@@ -37,7 +37,7 @@ const School: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
     headDelegate: useSelector(selectHeadDelegate),
   };
 
-  const { control, getValues, setValue, watch } = useForm({
+  const { control, getValues, setValue, watch, setError, clearErrors } = useForm({
     defaultValues: defaultValues,
   });
 
@@ -114,8 +114,17 @@ const School: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
     };
 
     if (values.school !== null && values.headDelegate !== "") {
-      dispatch(setSchoolInformation(values));
-      onComplete();
+      if(values.isOfficer) {
+        if(values.position !== "") {
+          dispatch(setSchoolInformation(values));
+          onComplete(); 
+        } else {
+          setError("position", {type: 'custom', message: 'Enter a valid value'})
+        }
+      } else {
+        dispatch(setSchoolInformation(values));
+        onComplete();
+      }
     }
   };
 
@@ -205,12 +214,18 @@ const School: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
               name={"position"}
               label={t("text-cfes-position")}
               control={control}
+              required={watch("isOfficer")}
+              setErrors={setError}
+              clearErrors={clearErrors}
             />
           )}
           <TextInput
             name={"headDelegate"}
             label={t("field-head-delegate")}
             control={control}
+            required={true}
+            setErrors={setError}
+            clearErrors={clearErrors}
           />
         </form>
       </div>
