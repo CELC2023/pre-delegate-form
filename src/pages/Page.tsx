@@ -22,7 +22,7 @@ import SingleRoom from "../components/forms/SingleRoom";
 import DelegateGender from "../components/forms/DelegateGender";
 import RoomGender from "../components/forms/RoomGender";
 import RoomEnvironment from "../components/forms/RoomEnvironment";
-import RoomAlcoholDrugs from "../components/forms/RoomAlcoholDrugs";
+import RoomAlcoholDrugs from "../components/forms/RoomAlcohol";
 import RoomRequests from "../components/forms/RoomRequests";
 import ActivityLanguage from "../components/forms/ActivityLanguage";
 import FileUpload from "../components/forms/FileUpload";

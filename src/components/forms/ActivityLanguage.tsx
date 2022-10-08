@@ -1,25 +1,44 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
-import { selectLanguagesPreference } from "../../redux/delegateReducer";
+import { selectFrenchCaseCompetition, selectLanguages, setActivityLanguage } from "../../redux/delegateReducer";
+import BooleanRadio from "../input/BooleanRadio";
 import MultiSelect from "../input/MultiSelect";
+import OptionRadio from "../input/OptionRadio";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
 
 const ActivityLanguage: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {t} = useTranslation();
+    const dispatch = useDispatch();
 
-    const defaultLanguagesPref = useSelector(selectLanguagesPreference);
+    interface ActivityLanguageForm {
+        frenchCaseCompetition: boolean,
+        languages: Array<string>
+    }
 
-    const [languagesPref, setLanguagesPref] = useState<Array<string>>(defaultLanguagesPref);
+    const defaultValues: ActivityLanguageForm = {
+        frenchCaseCompetition: useSelector(selectFrenchCaseCompetition),
+        languages: useSelector(selectLanguages)
+    }
+
+    const {control, watch} = useForm({defaultValues: defaultValues});
 
     const onNext = () => {
-        onComplete && onComplete();
+        const values: ActivityLanguageForm = watch();
+        if(values.languages.length > 0 && values.frenchCaseCompetition !== undefined) {
+            dispatch(setActivityLanguage(values));
+            onComplete && onComplete();
+        }
+        
     }
 
     const onPrevious = () => {
+        const values: ActivityLanguageForm = watch();
+        dispatch(setActivityLanguage(values));
         onBack && onBack();
     }
 
@@ -36,7 +55,8 @@ const ActivityLanguage: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
                 <h2>{t('text-conference-activity')}</h2>
-                <MultiSelect name="delegate-language-preference" label={'field-speak-language'} options={options} value={languagesPref} />
+                <BooleanRadio name="frenchCaseCompetition" label={t('field-case-comp-language')} control={control} optionLabels={[t('text-french'), t('text-english')]} required={true} />
+                <MultiSelect name="languages" label={t('field-speak-language')} options={options} control={control} />
             </FormContent>
             <FormNextButton onClick={onNext} />
         </>

@@ -19,7 +19,7 @@ const Radio: React.FC<RadioProps> = ({label, name, onChange, value}) => {
             <div className="radio-option-container">
                 <input className={`radio-option-input${value ? ' selected' : ''}`} name={name} type={'radio'} value={name} />
             </div>
-            <label htmlFor={name}>{label}</label>
+            <label className="radio-option-label" htmlFor={name}>{label}</label>
         </div>
     )
 }

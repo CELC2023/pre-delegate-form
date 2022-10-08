@@ -1,7 +1,10 @@
 import React, { useMemo, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 import { getGenders } from "../../data/genders";
 import FormPageProps from "../../interfaces/FormPageProps";
+import { selectGenders, selectOtherGenders, setGenders } from "../../redux/delegateReducer";
 import MultiSelect from "../input/MultiSelect";
 import TextInput from "../input/TextInput";
 import FormContent from "./FormContent";
@@ -10,14 +13,31 @@ import FormPreviousButton from "./FormPreviousButton";
 
 const DelegateGender: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {t} = useTranslation();
+    const dispatch = useDispatch();
 
-    const [delegateGender, setDelegateGender]= useState<Array<string>>([])
+    interface DelegateGenderForm {
+        genders: Array<string>,
+        otherGenders: string
+    }
+
+    const defaultValues: DelegateGenderForm = {
+        genders: useSelector(selectGenders),
+        otherGenders: useSelector(selectOtherGenders)
+    }
+
+    const {control, watch} = useForm({defaultValues: defaultValues});
 
     const onNext = () => {
-        onComplete && onComplete();
+        const values: DelegateGenderForm = watch();
+        if(values.genders.length > 0) {
+            dispatch(setGenders(values))
+            onComplete && onComplete();
+        }
     }
 
     const onPrevious = () => {
+        const values: DelegateGenderForm = watch();
+        dispatch(setGenders(values))
         onBack && onBack();
     }
 
@@ -26,8 +46,11 @@ const DelegateGender: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
                 <h2>{t('text-rooming-questionnaire')}</h2>
-                <MultiSelect name="delegate-gender" label={t('field-gender')} options={getGenders(t)} value={delegateGender} />
-                <TextInput name="genders" label={t('field-other-genders')} />
+                <MultiSelect name="genders" label={t('field-gender')} options={getGenders(t)} control={control} />
+                {
+                    watch('genders').includes('other') &&
+                    <TextInput name="otherGenders" label={t('field-other-genders')} control={control} />
+                }
             </FormContent>
             <FormNextButton onClick={onNext} />
         </>
