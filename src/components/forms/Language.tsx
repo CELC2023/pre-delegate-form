@@ -3,7 +3,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
-import { setLanguagePreference } from "../../redux/preDelegateReducer";
+import { setLanguagePreference } from "../../redux/delegateReducer";
 import { blankHref } from "../../utils/constants";
 
 const Language: React.FC<FormPageProps> = ({onComplete}) => {
@@ -12,7 +12,7 @@ const Language: React.FC<FormPageProps> = ({onComplete}) => {
     const selectLanguage = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,lang: string) => {
         e.preventDefault();
         changeLanguage(lang);
-        dispatch(setLanguagePreference(lang));
+        dispatch(setLanguagePreference);
         onComplete();
     }
 
