@@ -27,19 +27,23 @@ export interface delegateSliceInterface {
     emergencyContactName: string,
     emergencyContactPhone: string,
     emergencyContactRelationship: string,
-    dietaryRestrictions: Array<String>,
+    dietaryRestrictions: Array<string>,
     allergies: string,
     medicalInformation: string,
     accessibilityNeeds: string,
-    gender: string,
-    roomingGenders: Array<String>,
+    roomingAgreement: boolean,
+    singleRoom: boolean,
+    genders: Array<string>,
+    otherGenders: string,
+    roomingGenders: Array<string>,
+    otherRoomingGenders: string,
     noiseLevel: string,
     alcohol: string,
     drugs: string,
     roomingRequests: string,
     refuseToRoomWith: string,
     frenchCaseCompetition: boolean,
-    languages: Array<String>,
+    languages: Array<string>,
     linkedin: string,
     discord: string,
     headShot: string,
@@ -76,8 +80,12 @@ const initialState: delegateSliceInterface = {
     allergies: '',
     medicalInformation: '',
     accessibilityNeeds: '',
-    gender: '',
+    roomingAgreement: false,
+    singleRoom: false,
+    genders: [],
+    otherGenders: '',
     roomingGenders: [],
+    otherRoomingGenders: '',
     noiseLevel: '',
     alcohol: '',
     drugs: '',
@@ -137,11 +145,45 @@ export const delegateSlice = createSlice({
             state.emergencyContactName = action.payload.name;
             state.emergencyContactPhone = action.payload.phone;
             state.emergencyContactRelationship = action.payload.relation;
+        },
+        setMedicalInformation: (state, action) => {
+            state.medicalInformation = action.payload;
+        },
+        setAccessibilityNeeds: (state, action) => {
+            state.accessibilityNeeds = action.payload;
+        },
+        setRoomAgreement: (state, action) => {
+            state.roomingAgreement = action.payload;
+        },
+        setRoomNoise: (state, action) => {
+            state.noiseLevel = action.payload;
+        },
+        setRoomAlcohol: (state, action) => {
+            state.alcohol = action.payload.alcohol;
+        },
+        setRoomRequests: (state, action) => {
+            state.roomingRequests = action.payload.requests;
+            state.refuseToRoomWith = action.payload.block;
+        },
+        setGenders: (state, action) => {
+            state.genders = action.payload.genders;
+            state.otherGenders = action.payload.otherGenders;
+        },
+        setRoomingGenders: (state, action) => {
+            state.roomingGenders = action.payload.roomingGenders;
+            state.otherRoomingGenders = action.payload.otherRoomingGenders;
+        },
+        setActivityLanguage: (state, action) => {
+            state.languages = action.payload.languages;
+            state.frenchCaseCompetition = action.payload.frenchCaseCompetition;
+        },
+        setSingleRoom: (state, action) => {
+            state.singleRoom = action.payload.singleRoom;
         }
     }
 })
 
-export const { setDietaryRestrictions, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setStream, setTravelInformation, setEmergencyContact } = delegateSlice.actions;
+export const { setDietaryRestrictions, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setStream, setTravelInformation, setEmergencyContact, setRoomAgreement, setMedicalInformation, setAccessibilityNeeds, setRoomNoise, setRoomAlcohol, setRoomRequests, setGenders, setRoomingGenders, setActivityLanguage, setSingleRoom } = delegateSlice.actions;
 
 // selectors
 export const selectEmail = (state: {delegate: {email: string}}) => state.delegate.email;
@@ -153,7 +195,6 @@ export const selectPhone = (state: {delegate: {phone: string}}) => state.delegat
 export const selectDateOfBirth = (state: {delegate: {dateOfBirth: string}}) => state.delegate.dateOfBirth;
 export const selectAllergies = (state: {delegate: { allergies: string}}) => state.delegate.allergies;
 export const selectDietaryRestrictions = (state: {delegate: { dietaryRestrictions: Array<string>}}) => state.delegate.dietaryRestrictions;
-export const selectLanguagesPreference = (state: {delegate: { languages: Array<string>}}) => state.delegate.languages;
 export const selectSchool = (state: {delegate: { school: SchoolOptionData | null}}) => state.delegate.school;
 export const selectCfesOfficer = (state: {delegate: { cfesOfficer: boolean}}) => state.delegate.cfesOfficer;
 export const selectCfesPosition = (state: {delegate: { cfesPosition: string}}) => state.delegate.cfesPosition;
@@ -169,5 +210,19 @@ export const selectTravelMethod = (state: {delegate: { travelMethod: string}}) =
 export const selectEmergencyContactName = (state: {delegate: { emergencyContactName: string}}) => state.delegate.emergencyContactName;
 export const selectEmergencyContactPhone = (state: {delegate: { emergencyContactPhone: string}}) => state.delegate.emergencyContactPhone;
 export const selectEmergencyContactRelation = (state: {delegate: { emergencyContactRelationship: string}}) => state.delegate.emergencyContactRelationship;
+export const selectRoomingAgreement = (state: {delegate: { roomingAgreement: boolean}}) => state.delegate.roomingAgreement;
+export const selectMedicalInformation = (state: {delegate: { medicalInformation: string}}) => state.delegate.medicalInformation;
+export const selectAccessibilityNeeds = (state: {delegate: { accessibilityNeeds: string}}) => state.delegate.accessibilityNeeds;
+export const selectRoomNoise = (state: {delegate: { noiseLevel: string}}) => state.delegate.noiseLevel;
+export const selectRoomAlcohol = (state: {delegate: { alcohol: string}}) => state.delegate.alcohol;
+export const selectRoomRequests = (state: {delegate: { roomingRequests: string}}) => state.delegate.roomingRequests;
+export const selectRoomBlocks = (state: {delegate: {refuseToRoomWith: string}}) => state.delegate.refuseToRoomWith;
+export const selectGenders = (state: {delegate: { genders: Array<string>}}) => state.delegate.genders;
+export const selectOtherGenders = (state: {delegate: { otherGenders: string}}) => state.delegate.otherGenders;
+export const selectRoomingGenders = (state: {delegate: { roomingGenders: Array<string>}}) => state.delegate.roomingGenders;
+export const selectOtherRoomingGenders = (state: {delegate: { otherRoomingGenders: string}}) => state.delegate.otherRoomingGenders;
+export const selectLanguages = (state: {delegate: { languages: Array<string>}}) => state.delegate.languages;
+export const selectFrenchCaseCompetition = (state: {delegate: { frenchCaseCompetition: boolean}}) => state.delegate.frenchCaseCompetition;
+export const selectSingleRoom = (state: {delegate: { singleRoom: boolean }}) => state.delegate.singleRoom
 
 export default delegateSlice.reducer;

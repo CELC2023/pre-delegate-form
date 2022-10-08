@@ -11,6 +11,7 @@ export interface BooleanRadioProps {
   onChange?: (arg1: boolean) => void;
   required?: boolean;
   control?: Control<any>;
+  optionLabels?: Array<string>;
 }
 
 const BooleanRadio: React.FC<BooleanRadioProps> = ({
@@ -18,6 +19,7 @@ const BooleanRadio: React.FC<BooleanRadioProps> = ({
   label,
   name,
   onChange,
+  optionLabels,
   required = false,
   value = false,
 }) => {
@@ -30,6 +32,10 @@ const BooleanRadio: React.FC<BooleanRadioProps> = ({
       onChange && onChange(false);
     }
   };
+
+  const optionYesLabel = (optionLabels && optionLabels.length >= 1) ? optionLabels[0] : t("option-yes"); 
+  const optionNoLabel = (optionLabels && optionLabels.length >= 2) ? optionLabels[1] : t("option-no"); 
+
 
   return (
     <>
@@ -56,13 +62,13 @@ const BooleanRadio: React.FC<BooleanRadioProps> = ({
                 <div className="boolean-radio-container">
                   <Radio
                     name={`${name}-yes`}
-                    label={t("option-yes")}
+                    label={optionYesLabel}
                     value={value}
                     onChange={change}
                   />
                   <Radio
                     name={`${name}-no`}
-                    label={t("option-no")}
+                    label={optionNoLabel}
                     value={!value}
                     onChange={change}
                   />
@@ -80,13 +86,13 @@ const BooleanRadio: React.FC<BooleanRadioProps> = ({
           <div className="boolean-radio-container">
             <Radio
               name={`${name}-yes`}
-              label={t("option-yes")}
+              label={optionYesLabel}
               value={value}
               onChange={change}
             />
             <Radio
               name={`${name}-no`}
-              label={t("option-no")}
+              label={optionNoLabel}
               value={!value}
               onChange={change}
             />
