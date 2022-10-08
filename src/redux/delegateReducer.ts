@@ -39,7 +39,6 @@ export interface delegateSliceInterface {
     otherRoomingGenders: string,
     noiseLevel: string,
     alcohol: string,
-    drugs: string,
     roomingRequests: string,
     refuseToRoomWith: string,
     frenchCaseCompetition: boolean,
@@ -47,7 +46,10 @@ export interface delegateSliceInterface {
     linkedin: string,
     discord: string,
     headShot: string,
+    headShotUrl: string,
     resume: string,
+    resumeUrl: string,
+    shareResume: boolean,
     comments: string,
 }
 
@@ -88,7 +90,6 @@ const initialState: delegateSliceInterface = {
     otherRoomingGenders: '',
     noiseLevel: '',
     alcohol: '',
-    drugs: '',
     roomingRequests: '',
     refuseToRoomWith: '',
     frenchCaseCompetition: false,
@@ -96,7 +97,10 @@ const initialState: delegateSliceInterface = {
     linkedin: '',
     discord: '',
     headShot: '',
+    headShotUrl: '',
     resume: '',
+    resumeUrl: '',
+    shareResume: false,
     comments: ''
 }
 
@@ -104,6 +108,9 @@ export const delegateSlice = createSlice({
     name: "delegate",
     initialState,
     reducers: {
+        setLanguagePreference: (state, action) => {
+            state.language = action.payload
+        },
         setDietaryRestrictions: (state, action) => {
             state.dietaryRestrictions = action.payload.dietaryRestrictions;
             state.allergies = action.payload.allergies;
@@ -179,11 +186,20 @@ export const delegateSlice = createSlice({
         },
         setSingleRoom: (state, action) => {
             state.singleRoom = action.payload.singleRoom;
+        },
+        setFileUploads: (state, action) => {
+            state.resume = action.payload.resume;
+            state.resumeUrl = action.payload.resumeUrl;
+            state.headShot = action.payload.headShot;
+            state.headShotUrl = action.payload.headShotUrl;
+            state.linkedin = action.payload.linkedin;
+            state.discord = action.payload.discord;
+            state.shareResume = action.payload.shareResume;
         }
     }
 })
 
-export const { setDietaryRestrictions, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setStream, setTravelInformation, setEmergencyContact, setRoomAgreement, setMedicalInformation, setAccessibilityNeeds, setRoomNoise, setRoomAlcohol, setRoomRequests, setGenders, setRoomingGenders, setActivityLanguage, setSingleRoom } = delegateSlice.actions;
+export const { setDietaryRestrictions, setLanguagePreference, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setStream, setTravelInformation, setEmergencyContact, setRoomAgreement, setMedicalInformation, setAccessibilityNeeds, setRoomNoise, setRoomAlcohol, setRoomRequests, setGenders, setRoomingGenders, setActivityLanguage, setSingleRoom, setFileUploads } = delegateSlice.actions;
 
 // selectors
 export const selectEmail = (state: {delegate: {email: string}}) => state.delegate.email;
@@ -224,5 +240,13 @@ export const selectOtherRoomingGenders = (state: {delegate: { otherRoomingGender
 export const selectLanguages = (state: {delegate: { languages: Array<string>}}) => state.delegate.languages;
 export const selectFrenchCaseCompetition = (state: {delegate: { frenchCaseCompetition: boolean}}) => state.delegate.frenchCaseCompetition;
 export const selectSingleRoom = (state: {delegate: { singleRoom: boolean }}) => state.delegate.singleRoom
+export const selectResume = (state: {delegate: { resume: string }}) => state.delegate.resume;
+export const selectResumeUrl = (state: {delegate: { resumeUrl: string }}) => state.delegate.resumeUrl;
+export const selectHeadShot = (state: {delegate: { headShot: string }}) => state.delegate.headShot;
+export const selectHeadShotUrl = (state: {delegate: { headShotUrl: string }}) => state.delegate.headShotUrl;
+export const selectShareResume = (state: {delegate: { shareResume: boolean }}) => state.delegate.shareResume;
+export const selectLinkedin = (state: {delegate: { linkedin: string }}) => state.delegate.linkedin;
+export const selectDiscord = (state: {delegate: { discord: string }}) => state.delegate.discord;
+export const selectDelegateData = (state: {delegate: delegateSliceInterface}) => state.delegate;
 
 export default delegateSlice.reducer;
