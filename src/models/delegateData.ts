@@ -15,7 +15,6 @@ export interface delegateDataModel {
     minor: string,
     stream: string,
     travelMethod: string,
-    parkingPass: boolean,
     arrivalTime: string,
     departureTime: string,
     flightNumber: string,

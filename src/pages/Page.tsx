@@ -25,7 +25,8 @@ import RoomEnvironment from "../components/forms/RoomEnvironment";
 import RoomAlcoholDrugs from "../components/forms/RoomAlcohol";
 import RoomRequests from "../components/forms/RoomRequests";
 import ActivityLanguage from "../components/forms/ActivityLanguage";
-import FileUpload from "../components/forms/FileUpload";
+import FileUploads from "../components/forms/FileUploads";
+import Review from "../components/forms/Review";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
@@ -83,7 +84,9 @@ const Page: React.FC = () => {
     }, {
         Form: ActivityLanguage
     }, {
-        Form: FileUpload,
+        Form: FileUploads,
+    }, {
+        Form: Review,
     }]
 
     const [currentFormIndex, setCurrentFormIndex] = useState<number>(0)
