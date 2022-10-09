@@ -12,7 +12,7 @@ const Language: React.FC<FormPageProps> = ({onComplete}) => {
     const selectLanguage = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,lang: string) => {
         e.preventDefault();
         changeLanguage(lang);
-        dispatch(setLanguagePreference);
+        dispatch(setLanguagePreference(lang));
         onComplete();
     }
 
