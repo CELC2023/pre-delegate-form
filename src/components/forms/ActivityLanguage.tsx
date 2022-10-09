@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,7 +6,6 @@ import FormPageProps from "../../interfaces/FormPageProps";
 import { selectFrenchCaseCompetition, selectLanguages, setActivityLanguage } from "../../redux/delegateReducer";
 import BooleanRadio from "../input/BooleanRadio";
 import MultiSelect from "../input/MultiSelect";
-import OptionRadio from "../input/OptionRadio";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";

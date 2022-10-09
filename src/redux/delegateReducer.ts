@@ -51,6 +51,7 @@ export interface delegateSliceInterface {
     resumeUrl: string,
     shareResume: boolean,
     comments: string,
+    socialActivity: string,
 }
 
 const initialState: delegateSliceInterface = {
@@ -101,7 +102,8 @@ const initialState: delegateSliceInterface = {
     resume: '',
     resumeUrl: '',
     shareResume: false,
-    comments: ''
+    comments: '',
+    socialActivity: '',
 }
 
 export const delegateSlice = createSlice({
@@ -195,11 +197,14 @@ export const delegateSlice = createSlice({
             state.linkedin = action.payload.linkedin;
             state.discord = action.payload.discord;
             state.shareResume = action.payload.shareResume;
+        },
+        setSocialActivity: (state, action) => {
+            state.socialActivity = action.payload.socialActivity;
         }
     }
 })
 
-export const { setDietaryRestrictions, setLanguagePreference, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setStream, setTravelInformation, setEmergencyContact, setRoomAgreement, setMedicalInformation, setAccessibilityNeeds, setRoomNoise, setRoomAlcohol, setRoomRequests, setGenders, setRoomingGenders, setActivityLanguage, setSingleRoom, setFileUploads } = delegateSlice.actions;
+export const { setDietaryRestrictions, setLanguagePreference, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setStream, setTravelInformation, setEmergencyContact, setRoomAgreement, setMedicalInformation, setAccessibilityNeeds, setRoomNoise, setRoomAlcohol, setRoomRequests, setGenders, setRoomingGenders, setActivityLanguage, setSingleRoom, setFileUploads, setSocialActivity } = delegateSlice.actions;
 
 // selectors
 export const selectEmail = (state: {delegate: {email: string}}) => state.delegate.email;
@@ -248,5 +253,6 @@ export const selectShareResume = (state: {delegate: { shareResume: boolean }}) =
 export const selectLinkedin = (state: {delegate: { linkedin: string }}) => state.delegate.linkedin;
 export const selectDiscord = (state: {delegate: { discord: string }}) => state.delegate.discord;
 export const selectDelegateData = (state: {delegate: delegateSliceInterface}) => state.delegate;
+export const selectSocialActivity = (state: {delegate: {socialActivity: string}}) => state.delegate.socialActivity;
 
 export default delegateSlice.reducer;

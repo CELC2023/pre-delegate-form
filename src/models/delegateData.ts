@@ -44,4 +44,5 @@ export interface delegateDataModel {
     resumeUrl: string,
     shareResume: boolean,
     schoolName: string,
+    socialActivity: string,
 }
