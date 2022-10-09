@@ -27,6 +27,7 @@ import RoomRequests from "../components/forms/RoomRequests";
 import ActivityLanguage from "../components/forms/ActivityLanguage";
 import FileUploads from "../components/forms/FileUploads";
 import Review from "../components/forms/Review";
+import SocialActivity from "../components/forms/SocialActivity";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
@@ -83,6 +84,8 @@ const Page: React.FC = () => {
         Form: RoomRequests
     }, {
         Form: ActivityLanguage
+    }, {
+        Form: SocialActivity
     }, {
         Form: FileUploads,
     }, {
