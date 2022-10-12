@@ -204,6 +204,7 @@ const PersonalInformation: React.FC<FormPageProps> = ({
             validation={validatePhone}
             control={control}
             required={true}
+            type={'tel'}
           />
           <TextInput
             name="dateOfBirth"
