@@ -1,0 +1,35 @@
+
+@import "../../styles/colors.scss";
+.custom-scene-footer {
+    position: absolute;
+    left: -3em;
+    bottom: 0;
+    display: flex;
+    margin-bottom: 1em;
+    width: fit-content;
+    padding-left: 5em;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.32) 19.22%, rgba(0, 0, 0, 0.2208) 96.2%);
+    border-radius: 5em;
+    align-items: center;
+    height: 6em;
+    .footer-logo {
+        margin-right: 1.5em;
+        height: 90%;
+        >img {
+            height: 100%;
+        }
+    }
+    .footer-text {
+        color: $color-white;
+        font-weight: 700;
+        padding-right: 2em;
+        text-transform: uppercase;
+        .primary-text {
+            font-size: 1em;
+        }
+        .secondary-text {
+            font-size: 2em;
+            line-height: 1.25em;
+        }
+    }
+}
