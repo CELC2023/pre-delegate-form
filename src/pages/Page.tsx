@@ -7,7 +7,6 @@ import PersonalInformation from "../components/forms/PersonalInformation";
 import School from "../components/forms/School";
 import './Page.scss';
 
-import Footer from "../components/Footer";
 import BlueBackground from "../images/back-blue.svg";
 import GettingStarted from "../components/forms/GettingStarted";
 import StreamSelection from "../components/forms/StreamSelection";
@@ -28,6 +27,11 @@ import ActivityLanguage from "../components/forms/ActivityLanguage";
 import FileUploads from "../components/forms/FileUploads";
 import Review from "../components/forms/Review";
 import SocialActivity from "../components/forms/SocialActivity";
+import { FoothillsFooter, FoothillsScene } from "../components/scenes/Foothills";
+import { NorthernLightsFooter, NorthernLightsScene } from "../components/scenes/NorthernLights";
+import { FarmlandFooter, FarmlandScene } from "../components/scenes/Farmland";
+import { PeaceBridgeFooter, PeaceBridgeScene } from "../components/scenes/PeaceBridge";
+import { BadlandsFooter, BadlandsScene } from "../components/scenes/Badlands";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
@@ -36,6 +40,8 @@ export interface FormConfig {
     validation?: object,
     displayNumber?: string,
     customParentClass?: string,
+    Scene?: React.FC,
+    Footer?: React.FC
 }
 
 const Page: React.FC = () => {
@@ -43,53 +49,97 @@ const Page: React.FC = () => {
     const FormList: Array<FormConfig> = [{
         Form: Language,
         disableNext: true,
-        disablePrevious: true
+        disablePrevious: true,
+        Scene: FoothillsScene,
     }, {
         Form: Information,
-
+        Scene: FoothillsScene,
+        Footer: FoothillsFooter
     }, {
         Form: GettingStarted,
-        customParentClass: 'full-page-form-adapter'
+        customParentClass: 'full-page-form-adapter',
+        Scene: FoothillsScene,
+        Footer: FoothillsFooter
     }, {
-        Form: PersonalInformation
+        Form: PersonalInformation,
+        Scene: FoothillsScene,
+        Footer: FoothillsFooter
     }, {
-        Form: School
+        Form: School,
+        Scene: NorthernLightsScene,
+        Footer: NorthernLightsFooter
     }, {
-        Form: DegreeInformation
+        Form: DegreeInformation,
+        Scene: NorthernLightsScene,
+        Footer: NorthernLightsFooter
     }, {
-        Form: StreamSelection
+        Form: StreamSelection,
+        Scene: NorthernLightsScene,
+        Footer: NorthernLightsFooter
     }, {
-        Form: TravelInformation
+        Form: TravelInformation,
+        Scene: NorthernLightsScene,
+        Footer: NorthernLightsFooter
     }, {
-        Form: EmergencyContact
+        Form: EmergencyContact,
+        Scene: NorthernLightsScene,
+        Footer: NorthernLightsFooter
     }, {
-        Form: DietaryRestrictions
+        Form: DietaryRestrictions,
+        Scene: NorthernLightsScene,
+        Footer: NorthernLightsFooter
     }, {
-        Form: Medical
+        Form: Medical,
+        Scene: NorthernLightsScene,
+        Footer: NorthernLightsFooter
     }, {
-        Form: Accessibility
+        Form: Accessibility,
+        Scene: NorthernLightsScene,
+        Footer: NorthernLightsFooter
     }, {
-        Form: RoomInfo
+        Form: RoomInfo,
+        Scene: FarmlandScene,
+        Footer: FarmlandFooter
     }, {
-        Form: SingleRoom
+        Form: SingleRoom,
+        Scene: FarmlandScene,
+        Footer: FarmlandFooter
     }, {
-        Form: DelegateGender
+        Form: DelegateGender,
+        Scene: FarmlandScene,
+        Footer: FarmlandFooter
     }, {
-        Form: RoomGender
+        Form: RoomGender,
+        Scene: FarmlandScene,
+        Footer: FarmlandFooter
     }, {
-        Form: RoomEnvironment 
+        Form: RoomEnvironment,
+        Scene: FarmlandScene,
+        Footer: FarmlandFooter
     }, {
-        Form: RoomAlcoholDrugs
+        Form: RoomAlcoholDrugs,
+        Scene: FarmlandScene,
+        Footer: FarmlandFooter
     }, {
-        Form: RoomRequests
+        Form: RoomRequests,
+        Scene: FarmlandScene,
+        Footer: FarmlandFooter
     }, {
-        Form: ActivityLanguage
+        Form: ActivityLanguage,
+        Scene: PeaceBridgeScene,
+        Footer: PeaceBridgeFooter
     }, {
-        Form: SocialActivity
+        Form: SocialActivity,
+        Scene: PeaceBridgeScene,
+        Footer: PeaceBridgeFooter
     }, {
         Form: FileUploads,
+        Scene: BadlandsScene,
+        Footer: BadlandsFooter
     }, {
         Form: Review,
+        Scene: BadlandsScene,
+        Footer: BadlandsFooter,
     }]
 
     const [currentFormIndex, setCurrentFormIndex] = useState<number>(0)
@@ -106,14 +156,24 @@ const Page: React.FC = () => {
         }
     }
 
+    const BGScene = FormList[currentFormIndex]?.Scene
+    const FooterScene = FormList[currentFormIndex]?.Footer 
+
     return (
-        <div className="page-container pre-delegate-container">
-            <img className="blue-background" src={BlueBackground} alt="" />
+        <div className="page-container delegate-container">
+            {
+                BGScene ?
+                <BGScene /> :
+                <img className="blue-background" src={BlueBackground} alt="" />
+            }
             <FormAdapter form={FormList[currentFormIndex]} nextForm={next} previousForm={prev} />
             {   FormList[currentFormIndex].displayNumber !== undefined &&
                 <p className="form-background-number">{FormList[currentFormIndex].displayNumber}</p>
             }
-            <Footer />
+            {
+                FooterScene &&
+                <FooterScene />
+            }
         </div>
     )
 }
