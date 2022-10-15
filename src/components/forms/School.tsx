@@ -65,7 +65,7 @@ const School: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
                   alignSelf: "center",
                 }}
                 src={
-                  "https://res.cloudinary.com/celc/image/upload/v1663016071/pre-delegate-form/school-logos/" +
+                  "https://celcassets.cfes.ca/logos/" +
                   optionData.image
                 }
               ></img>
