@@ -12,6 +12,8 @@ import TextInput from "../input/TextInput";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
+import HeadshotIcon from "../../images/headshot-red.svg";
+import ResumeIcon from "../../images/resume-red.svg";
 
 const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {t} = useTranslation();
@@ -144,13 +146,13 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
                 <h2>{t('text-uploads')}</h2>
-                <FileUpload name="resumeFile" label={t('field-resume')} accept={"pdf"} control={control} />
-                <FileUpload name="headShotFile" label={t('field-headshots')} accept={"pdf"} control={control} />
-                <div>
-                    <p>I will allow CELC 2023 to distribute my resume to its event sponsors.</p>
-                    <Checkbox name="shareResume" label="" control={control} />
+                <FileUpload name="resumeFile" label={t('field-resume')} accept={{'application/pdf': []}} control={control} icon={ResumeIcon} />
+                <FileUpload name="headShotFile" label={t('field-headshots')} accept={{'image/jpeg': [], 'image/png': []}} control={control} icon={HeadshotIcon} />
+                <div className="resume-consent">
+                    <p className="resume-consent--text">I will allow CELC 2023 to distribute my resume to its event sponsors.</p>
+                    <Checkbox name="shareResume" label={t('option-yes')} control={control} />
                 </div>
-                <TextInput name="linkedin" label={t('field-linkedin')} control={control} />
+                <TextInput name="linkedin" label={t('field-linkedin')} control={control} type={'url'} />
                 <TextInput name="discord" label={t('field-discord')} required={true} control={control} />
             </FormContent>
             <FormNextButton onClick={onNext} />
