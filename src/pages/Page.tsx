@@ -58,8 +58,7 @@ const Page: React.FC = () => {
     }, {
         Form: GettingStarted,
         customParentClass: 'full-page-form-adapter',
-        Scene: FoothillsScene,
-        Footer: FoothillsFooter
+        Scene: FoothillsScene
     }, {
         Form: PersonalInformation,
         Scene: FoothillsScene,
