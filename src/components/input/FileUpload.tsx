@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./FileUpload.scss";
 import { Accept, useDropzone } from "react-dropzone";
 import { Control, useController } from "react-hook-form";
-import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 
 export interface FileUploadProps {
