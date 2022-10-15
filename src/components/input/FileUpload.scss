@@ -8,12 +8,43 @@
             height: 4em;
             background-color: $color-grey-lighter;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             color: $color-grey-dark;
             border-radius: 5px;
+            align-items: center;
+            cursor: pointer;
         }
         &element {
             display: none;
         }
+        &icon {
+            height: 1.5em;
+            width: 1.5em;
+            color: $color-red;
+            margin: 0 1em;
+        }
+        &labelarea {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            >.label-name {
+                font-size: 0.8em;
+            }
+            >.label-accepted {
+                font-size: 0.5em;
+            }
+        }
+    }
+}
+
+.resume-consent {
+    display: flex;
+    align-items: center;
+    &--text {
+        text-align: left;
+        padding-right: 1em;
+        font-size: 0.8em;
+        font-style: italic;
+        color: $color-grey-dark;
     }
 }

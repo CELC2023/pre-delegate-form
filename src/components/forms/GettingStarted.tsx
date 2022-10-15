@@ -2,8 +2,8 @@ import React from "react";
 import FormPageProps from "../../interfaces/FormPageProps";
 import FormNextButton from "./FormNextButton";
 import "./GettingStarted.scss";
-import Resume from "../../images/resume.svg";
-import Headshot from "../../images/headshot.svg";
+import Resume from "../../images/resume-white.svg";
+import Headshot from "../../images/headshot-white.svg";
 import Plane from "../../images/plane.svg";
 
 const GettingStarted: React.FC<FormPageProps> = ({onComplete}) => {
