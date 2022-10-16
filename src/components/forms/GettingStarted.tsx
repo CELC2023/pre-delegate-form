@@ -5,9 +5,12 @@ import "./GettingStarted.scss";
 import Resume from "../../images/resume-white.svg";
 import Headshot from "../../images/headshot-white.svg";
 import Plane from "../../images/plane.svg";
+import { useTranslation } from "react-i18next";
 
 const GettingStarted: React.FC<FormPageProps> = ({onComplete}) => {
     
+    const {t} = useTranslation();
+
     interface FormTaskProps {
         id: string,
         icon: string | JSX.Element,
@@ -17,26 +20,26 @@ const GettingStarted: React.FC<FormPageProps> = ({onComplete}) => {
     const formTasks: Array<FormTaskProps> = [{
         id: 'headshot',
         icon: <img alt="" src={Headshot} />,
-        text: 'Headshot Submission'
+        text: t("text-headshot-submission")
     }, {
         id: 'resume',
         icon: <img alt="" src={Resume} />,
-        text: 'Resume Upload'
+        text: t("text-resume-upload")
     }, {
         id: 'time',
         icon: <p>25</p>,
-        text: 'Minutes to Complete'
+        text: t("text-minutes-complete")
     }, {
         id: 'flight',
         icon: <img alt="" src={Plane} />,
-        text: 'Flight Information'
+        text: t("text-travel-info")
     }]
 
     return (
         <div className="form-box-content">
             <div className="form-tasks-heading">
-                <h2>Information</h2>
-                <p>Before you get started, take note of the following:</p>
+                <h2>{t("text-information")}</h2>
+                <p>{t("text-getting-started")}</p>
             </div>
             <div className="form-tasks-container">
                 {
