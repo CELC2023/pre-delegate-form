@@ -190,7 +190,7 @@ const School: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
     <>
       <FormPreviousButton onClick={onPrevious} />
       <div className="form-content">
-        <ProgressDots steps={3} current={2} />
+        <ProgressDots steps={5} current={2} />
         <form className="form-fields">
           <h2>{t("field-school")}</h2>
           <Autocomplete

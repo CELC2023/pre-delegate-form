@@ -6,6 +6,7 @@ import FormPageProps from "../../interfaces/FormPageProps";
 import { selectArrivalTime, selectDepartureTime, selectFlightNumber, selectTravelMethod, setTravelInformation } from "../../redux/delegateReducer";
 import OptionRadio from "../input/OptionRadio";
 import TextInput from "../input/TextInput";
+import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -70,6 +71,7 @@ const TravelInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         <>
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
+                <ProgressDots steps={5} current={2} />
                 <h2>{t('text-school-info')}</h2>
                 <OptionRadio name="travelMethod" label={t('field-transport')} control={control} options={options} value={watch('travelMethod')} />
                 {

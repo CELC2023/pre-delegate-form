@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { selectRoomAlcohol, setRoomAlcohol } from "../../redux/delegateReducer";
 import OptionRadio from "../input/OptionRadio";
+import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -55,6 +56,7 @@ const RoomAlcoholDrugs: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         <>
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
+                <ProgressDots steps={5} current={3} />
                 <h2>{t('text-rooming-questionnaire')}</h2>
                 <OptionRadio name="alcohol" label={t('field-alcohol')} options={options} control={control} />
             </FormContent>

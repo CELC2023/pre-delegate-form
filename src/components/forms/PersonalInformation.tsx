@@ -148,7 +148,7 @@ const PersonalInformation: React.FC<FormPageProps> = ({
     <>
       <FormPreviousButton onClick={onPrevious} />
       <div className="form-content">
-        <ProgressDots steps={3} current={1} />
+        <ProgressDots steps={5} current={1} />
         <form className="form-fields" onSubmit={() => handleSubmit}>
           <h2>{t("text-personal")}</h2>
           <TextInput

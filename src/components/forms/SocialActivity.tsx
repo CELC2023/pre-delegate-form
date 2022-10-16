@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { selectSocialActivity, setSocialActivity } from "../../redux/delegateReducer";
 import OptionRadio from "../input/OptionRadio";
+import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -53,6 +54,7 @@ const SocialActivity: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         <>
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
+                <ProgressDots steps={5} current={4} />
                 <h2>{t('text-conference-activity')}</h2>
                 <p>{t('text-social-survey')}</p>
                 <OptionRadio name="socialActivity" label={t('field-social-activity')}  control={control} options={options} />

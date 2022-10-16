@@ -6,6 +6,7 @@ import FormPageProps from "../../interfaces/FormPageProps";
 import { selectEmergencyContactName, selectEmergencyContactPhone, selectEmergencyContactRelation, setEmergencyContact } from "../../redux/delegateReducer";
 import { phoneRegex } from "../../utils/regex";
 import TextInput from "../input/TextInput";
+import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -63,6 +64,7 @@ const EmergencyContact: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         <>
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
+                <ProgressDots steps={5} current={2} />
                 <h2>{t('text-conference-details')}</h2>
                 <p>{t('text-emergency-contact-info')}</p>
                 <TextInput name="emergencyContactName" label={t('field-name')} control={control} setErrors={setError} clearErrors={clearErrors} required={true} />

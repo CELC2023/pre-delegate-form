@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { selectStream, setStream } from "../../redux/delegateReducer";
 import StreamSelectionButton from "../input/StreamSelectionButton";
+import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -53,7 +54,7 @@ const StreamSelection: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         <>
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
-            {/* <h2>{t('text-school-info')}</h2> */}
+            <ProgressDots steps={5} current={2} /> 
                     <p>{t('field-stream')}</p>
                     <div className="stream-selection-container">
                         {

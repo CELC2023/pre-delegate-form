@@ -7,6 +7,7 @@ import FormPageProps from "../../interfaces/FormPageProps";
 import { selectOtherRoomingGenders, selectRoomingGenders, setRoomingGenders } from "../../redux/delegateReducer";
 import MultiSelect from "../input/MultiSelect";
 import TextInput from "../input/TextInput";
+import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -46,6 +47,7 @@ const RoomGender: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         <>
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
+                <ProgressDots steps={5} current={3} />
                 <h2>{t('text-rooming-questionnaire')}</h2>
                 <MultiSelect name="roomingGenders" label={t('field-room-gender')} options={getGenders(t)} control={control} />
                 {

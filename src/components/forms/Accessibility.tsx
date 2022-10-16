@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { selectAccessibilityNeeds, setAccessibilityNeeds } from "../../redux/delegateReducer";
 import Textarea from "../input/Textarea";
+import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -31,6 +32,7 @@ const Accessibility: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         <>
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
+                <ProgressDots steps={5} current={2} />
                 <h2>{t('text-conference-details')}</h2>
                 <p>{t('text-accessibility-needs')}</p> 
                 <Textarea name="accessibilityNeeds" label={t('info-enter-text')} control={control} />

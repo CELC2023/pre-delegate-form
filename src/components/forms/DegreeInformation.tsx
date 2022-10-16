@@ -8,6 +8,7 @@ import { selectDegreeMajor, selectDegreeMinor, selectDegreeYear, setDegreeInform
 import Autocomplete from "../input/Autocomplete";
 import OptionRadio from "../input/OptionRadio";
 import TextInput from "../input/TextInput";
+import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -109,6 +110,7 @@ const DegreeInformation: React.FC<FormPageProps> = ({onComplete, onBack}) => {
         <>
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
+                <ProgressDots steps={5} current={2} />
                 <h2>{t('text-school-info')}</h2>
                 <OptionRadio name="yearOfStudy" label={t('field-study-year')} options={degreeYears} control={control} value={watch('yearOfStudy')} />
                 <Autocomplete name="major" label={t('field-major')} control={control} options={majors} />
