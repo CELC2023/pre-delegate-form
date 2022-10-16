@@ -11,6 +11,7 @@ export interface delegateSliceInterface {
     preferredName: string,
     pronouns: string,
     dateOfBirth: string,
+    address: string,
     cfesOfficer: boolean,
     cfesPosition: string,
     headDelegate: string,
@@ -21,18 +22,18 @@ export interface delegateSliceInterface {
     travelMethod: string,
     parkingPass: boolean,
     arrivalTime: string,
-    departureTime: string,
     flightNumber: string,
     school: SchoolOptionData | null,
     emergencyContactName: string,
     emergencyContactPhone: string,
     emergencyContactRelationship: string,
     dietaryRestrictions: Array<string>,
+    otherDietaryRestrictions: string,
     allergies: string,
     medicalInformation: string,
     accessibilityNeeds: string,
     roomingAgreement: boolean,
-    singleRoom: boolean,
+    singleRoom: boolean | null,
     genders: Array<string>,
     otherGenders: string,
     roomingGenders: Array<string>,
@@ -52,6 +53,7 @@ export interface delegateSliceInterface {
     shareResume: boolean,
     comments: string,
     socialActivity: string,
+    mosqueTrip: boolean | null,
 }
 
 const initialState: delegateSliceInterface = {
@@ -63,28 +65,29 @@ const initialState: delegateSliceInterface = {
     preferredName: '',
     pronouns: '',
     dateOfBirth: '',
+    address: '',
     cfesOfficer: false,
     cfesPosition: '',
     headDelegate: '',
-    yearOfStudy: 0,
+    yearOfStudy: 1,
     major: null,
     minor: '',
     stream: '',
     travelMethod: '',
     parkingPass: false,
     arrivalTime: '',
-    departureTime: '',
     flightNumber: '',
     school: null,
     emergencyContactName: '',
     emergencyContactPhone: '',
     emergencyContactRelationship: '',
     dietaryRestrictions: [],
+    otherDietaryRestrictions: '',
     allergies: '',
     medicalInformation: '',
     accessibilityNeeds: '',
     roomingAgreement: false,
-    singleRoom: false,
+    singleRoom: null,
     genders: [],
     otherGenders: '',
     roomingGenders: [],
@@ -104,6 +107,7 @@ const initialState: delegateSliceInterface = {
     shareResume: false,
     comments: '',
     socialActivity: '',
+    mosqueTrip: null,
 }
 
 export const delegateSlice = createSlice({
@@ -115,6 +119,7 @@ export const delegateSlice = createSlice({
         },
         setDietaryRestrictions: (state, action) => {
             state.dietaryRestrictions = action.payload.dietaryRestrictions;
+            state.otherDietaryRestrictions = action.payload.otherDietaryRestrictions;
             state.allergies = action.payload.allergies;
         },
         setLanguagesPreference: (state, action) => {
@@ -146,7 +151,6 @@ export const delegateSlice = createSlice({
         },
         setTravelInformation: (state, action) => {
             state.travelMethod = action.payload.travelMethod;
-            state.departureTime = action.payload.departureTime;
             state.arrivalTime = action.payload.arrivalTime;
             state.flightNumber = action.payload.flightNumber;
         },
@@ -200,11 +204,14 @@ export const delegateSlice = createSlice({
         },
         setSocialActivity: (state, action) => {
             state.socialActivity = action.payload.socialActivity;
+        },
+        setMosqueTrip: (state, action) => {
+            state.mosqueTrip = action.payload.mosqueTrip;
         }
     }
 })
 
-export const { setDietaryRestrictions, setLanguagePreference, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setStream, setTravelInformation, setEmergencyContact, setRoomAgreement, setMedicalInformation, setAccessibilityNeeds, setRoomNoise, setRoomAlcohol, setRoomRequests, setGenders, setRoomingGenders, setActivityLanguage, setSingleRoom, setFileUploads, setSocialActivity } = delegateSlice.actions;
+export const { setDietaryRestrictions, setLanguagePreference, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setStream, setTravelInformation, setEmergencyContact, setRoomAgreement, setMedicalInformation, setAccessibilityNeeds, setRoomNoise, setRoomAlcohol, setRoomRequests, setGenders, setRoomingGenders, setActivityLanguage, setSingleRoom, setFileUploads, setSocialActivity, setMosqueTrip } = delegateSlice.actions;
 
 // selectors
 export const selectEmail = (state: {delegate: {email: string}}) => state.delegate.email;
@@ -214,8 +221,10 @@ export const selectPreferredName = (state: {delegate: {preferredName: string}}) 
 export const selectPronouns = (state: {delegate: {pronouns: string}}) => state.delegate.pronouns;
 export const selectPhone = (state: {delegate: {phone: string}}) => state.delegate.phone;
 export const selectDateOfBirth = (state: {delegate: {dateOfBirth: string}}) => state.delegate.dateOfBirth;
+export const selectAddress = (state: {delegate: {address: string}}) => state.delegate.address;
 export const selectAllergies = (state: {delegate: { allergies: string}}) => state.delegate.allergies;
 export const selectDietaryRestrictions = (state: {delegate: { dietaryRestrictions: Array<string>}}) => state.delegate.dietaryRestrictions;
+export const selectOtherDietaryRestrictions = (state: {delegate: { otherDietaryRestrictions: string}}) => state.delegate.otherDietaryRestrictions;
 export const selectSchool = (state: {delegate: { school: SchoolOptionData | null}}) => state.delegate.school;
 export const selectCfesOfficer = (state: {delegate: { cfesOfficer: boolean}}) => state.delegate.cfesOfficer;
 export const selectCfesPosition = (state: {delegate: { cfesPosition: string}}) => state.delegate.cfesPosition;
@@ -254,5 +263,6 @@ export const selectLinkedin = (state: {delegate: { linkedin: string }}) => state
 export const selectDiscord = (state: {delegate: { discord: string }}) => state.delegate.discord;
 export const selectDelegateData = (state: {delegate: delegateSliceInterface}) => state.delegate;
 export const selectSocialActivity = (state: {delegate: {socialActivity: string}}) => state.delegate.socialActivity;
+export const selectMosqueTrip = (state: {delegate: {mosqueTrip: boolean}}) => state.delegate.mosqueTrip;
 
 export default delegateSlice.reducer;

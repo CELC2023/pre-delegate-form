@@ -7,7 +7,7 @@ import { Control, Controller } from "react-hook-form";
 export interface BooleanRadioProps {
   name: string;
   label: string;
-  value?: boolean;
+  value?: boolean | null;
   onChange?: (arg1: boolean) => void;
   required?: boolean;
   control?: Control<any>;
@@ -63,13 +63,13 @@ const BooleanRadio: React.FC<BooleanRadioProps> = ({
                   <Radio
                     name={`${name}-yes`}
                     label={optionYesLabel}
-                    value={value}
+                    value={value===true}
                     onChange={change}
                   />
                   <Radio
                     name={`${name}-no`}
                     label={optionNoLabel}
-                    value={!value}
+                    value={value===false}
                     onChange={change}
                   />
                 </div>
@@ -87,13 +87,13 @@ const BooleanRadio: React.FC<BooleanRadioProps> = ({
             <Radio
               name={`${name}-yes`}
               label={optionYesLabel}
-              value={value}
+              value={value===true}
               onChange={change}
             />
             <Radio
               name={`${name}-no`}
               label={optionNoLabel}
-              value={!value}
+              value={value===false}
               onChange={change}
             />
           </div>

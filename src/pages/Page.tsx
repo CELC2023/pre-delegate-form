@@ -32,6 +32,7 @@ import { NorthernLightsFooter, NorthernLightsScene } from "../components/scenes/
 import { FarmlandFooter, FarmlandScene } from "../components/scenes/Farmland";
 import { PeaceBridgeFooter, PeaceBridgeScene } from "../components/scenes/PeaceBridge";
 import { BadlandsFooter, BadlandsScene } from "../components/scenes/Badlands";
+import MosqueVisit from "../components/forms/MosqueVisit";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
@@ -125,6 +126,10 @@ const Page: React.FC = () => {
         Footer: FarmlandFooter
     }, {
         Form: ActivityLanguage,
+        Scene: PeaceBridgeScene,
+        Footer: PeaceBridgeFooter
+    }, {
+        Form: MosqueVisit,
         Scene: PeaceBridgeScene,
         Footer: PeaceBridgeFooter
     }, {
