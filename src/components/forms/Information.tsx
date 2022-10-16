@@ -20,7 +20,7 @@ const Information: React.FC<FormPageProps> = ({onComplete}) => {
             <div className="form-content">
                 <div className="form-fields">
                     <h2>{t('text-information')}</h2>
-                    <p>{t('info-description-pre')}</p>
+                    <p>{t('text-description-delegate')}</p>
                     <a className="btn btn--row" href={blankHref} onClick={(e) => {
                         e.preventDefault()
                         downloadPackage()

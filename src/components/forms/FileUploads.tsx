@@ -149,7 +149,7 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <FileUpload name="resumeFile" label={t('field-resume')} accept={{'application/pdf': []}} control={control} icon={ResumeIcon} />
                 <FileUpload name="headShotFile" label={t('field-headshots')} accept={{'image/jpeg': [], 'image/png': []}} control={control} icon={HeadshotIcon} />
                 <div className="resume-consent">
-                    <p className="resume-consent--text">I will allow CELC 2023 to distribute my resume to its event sponsors.</p>
+                    <p className="resume-consent--text">{t("field-allow-resume")}</p>
                     <Checkbox name="shareResume" label={t('option-yes')} control={control} />
                 </div>
                 <TextInput name="linkedin" label={t('field-linkedin')} control={control} type={'url'} />
