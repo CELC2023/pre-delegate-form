@@ -14,6 +14,7 @@ import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
 import HeadshotIcon from "../../images/headshot-red.svg";
 import ResumeIcon from "../../images/resume-red.svg";
+import ProgressDots from "../ProgressDots";
 
 const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {t} = useTranslation();
@@ -145,6 +146,7 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         <>
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
+                <ProgressDots steps={5} current={5} />
                 <h2>{t('text-uploads')}</h2>
                 <FileUpload name="resumeFile" label={t('field-resume')} accept={{'application/pdf': []}} control={control} icon={ResumeIcon} />
                 <FileUpload name="headShotFile" label={t('field-headshots')} accept={{'image/jpeg': [], 'image/png': []}} control={control} icon={HeadshotIcon} />

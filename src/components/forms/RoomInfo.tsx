@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { selectRoomingAgreement, setRoomAgreement } from "../../redux/delegateReducer";
 import Checkbox from "../input/Checkbox";
+import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -35,6 +36,7 @@ const RoomInfo: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
     <>
       <FormPreviousButton onClick={onPrevious} />
       <FormContent>
+        <ProgressDots steps={5} current={3} />
         <h2>{t("text-rooming-questionnaire")}</h2>
         <p>
           <Trans

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { selectSingleRoom, setSingleRoom } from "../../redux/delegateReducer";
 import BooleanRadio from "../input/BooleanRadio";
+import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -39,6 +40,7 @@ const SingleRoom: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         <>
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
+                <ProgressDots steps={5} current={3} />
                 <h2>{t('text-rooming-questionnaire')}</h2>
                 <p>{t('text-single-room')}</p>
                 <BooleanRadio name="singleRoom" label="" control={control} /> 

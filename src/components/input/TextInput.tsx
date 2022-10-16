@@ -24,6 +24,8 @@ const TextInput: React.FC<TextInputProps> = ({autocomplete = "", control, label,
     const watchValue = control?._getWatch(name)
     const fieldError = control?.getFieldState(name)?.error
 
+    const alwaysActive: boolean = type === "date" || type === "time"
+
     useEffect(() => {
         if(control) {
             (control._getWatch(name) && control._getWatch(name).length > 0) ? setPlaceholderVisibility(false) : setPlaceholderVisibility(true)
@@ -66,7 +68,7 @@ const TextInput: React.FC<TextInputProps> = ({autocomplete = "", control, label,
 
     return (
         <div className={`textinput ${error !== '' ? 'error' : ''}`}>
-            <label className={`textinput--label ${isActive ? 'label--active' : ''} placeholder--${placeholderVisibility ? 'show' : 'hide'}`}>
+            <label className={`textinput--label ${isActive || alwaysActive ? 'label--active' : ''} placeholder--${placeholderVisibility ? 'show' : 'hide'}`}>
                 <span className={`textinput--span`}>
                     {formattedLabel}
                 </span>

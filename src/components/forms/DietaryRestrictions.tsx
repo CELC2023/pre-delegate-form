@@ -6,6 +6,7 @@ import FormPageProps from "../../interfaces/FormPageProps";
 import { selectAllergies, selectDietaryRestrictions, setDietaryRestrictions } from "../../redux/delegateReducer";
 import MultiSelect from "../input/MultiSelect";
 import TextInput from "../input/TextInput";
+import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -58,12 +59,13 @@ const DietaryRestrictions: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     }, {
         name: 'gluten-free',
         label: t('option-dietary-gluten')
-    }],[])
+    }],[t])
 
     return (
         <>
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
+                <ProgressDots steps={5} current={2} />
                 <h2>{t('text-conference-details')}</h2>
                 <MultiSelect name="dietaryRestrictions" label={t('field-dietary-restrictions')} options={dietaryRestrictions} control={control} />
                 <TextInput name="allergies" label={t('field-allergies')} control={control} />

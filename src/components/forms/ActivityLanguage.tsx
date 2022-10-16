@@ -6,6 +6,7 @@ import FormPageProps from "../../interfaces/FormPageProps";
 import { selectFrenchCaseCompetition, selectLanguages, setActivityLanguage } from "../../redux/delegateReducer";
 import BooleanRadio from "../input/BooleanRadio";
 import MultiSelect from "../input/MultiSelect";
+import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -53,6 +54,7 @@ const ActivityLanguage: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         <>
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
+                <ProgressDots steps={5} current={4} />
                 <h2>{t('text-conference-activity')}</h2>
                 <BooleanRadio name="frenchCaseCompetition" label={t('field-case-comp-language')} control={control} optionLabels={[t('text-french'), t('text-english')]} required={true} />
                 <MultiSelect name="languages" label={t('field-speak-language')} options={options} control={control} />
