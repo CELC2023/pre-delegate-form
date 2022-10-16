@@ -1,40 +1,50 @@
 @import "../../styles/colors.scss";
 
-.multiselect--option-area {
-    display: flex;
-    flex-direction: column;
-    &.multiselect--horizontal {
-        flex-direction: row;
-    }
-    .multiselect--option-row {
+.multiselect {
+    width: 100%;
+    .multiselect--option-area {
         display: flex;
-        cursor: pointer;
-        user-select: none;
-        &:hover {
-            .multiselect--option-container {
-               .multiselect--option-checkbox {
-                    background-color: rgba($color-red, 0.7);
-               } 
-            } 
+        flex-direction: column;
+
+        &.multiselect--horizontal {
+            flex-direction: row;
         }
-        .multiselect--option-container {
-            margin-right: 1em;
-            height: 1.25em;
-            width: 1.25em;
-            border: 1.5px solid $color-grey-dark;
+
+        .multiselect--option-row {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 0.2em;
-            .multiselect--option-checkbox {
-                height: 11px;
-                width: 11px;
+            cursor: pointer;
+            user-select: none;
+
+            &:hover {
+                .multiselect--option-container {
+                    .multiselect--option-checkbox {
+                        background-color: rgba($color-red, 0.7);
+                    }
+                }
+            }
+
+            .multiselect--option-container {
+                margin-right: 1em;
+                height: 1.25em;
+                width: 1.25em;
+                border: 1.5px solid $color-grey-dark;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 border-radius: 0.2em;
-                &.selected {
-                    background-color: $color-red;
-                    &:hover {
-                        background: none;
-                        border: 2px solid $color-red;
+
+                .multiselect--option-checkbox {
+                    height: 11px;
+                    width: 11px;
+                    border-radius: 0.2em;
+
+                    &.selected {
+                        background-color: $color-red;
+
+                        &:hover {
+                            background: none;
+                            border: 2px solid $color-red;
+                        }
                     }
                 }
             }

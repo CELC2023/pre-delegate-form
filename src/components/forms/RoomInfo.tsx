@@ -47,7 +47,7 @@ const RoomInfo: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
             ]}
           ></Trans>
         </p>
-        <Checkbox name="sharedBeds" label={t('option-yes')} value={acknowledge} onChange={changeAcknowledge} />
+        <Checkbox name="sharedBeds" label={t('option-yes')} value={acknowledge} onChange={changeAcknowledge} required={true} />
       </FormContent>
       <FormNextButton onClick={onNext} isActive={acknowledge} />
     </>

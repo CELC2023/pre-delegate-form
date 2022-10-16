@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
-import { selectAllergies, selectDietaryRestrictions, setDietaryRestrictions } from "../../redux/delegateReducer";
+import { selectAllergies, selectDietaryRestrictions, selectOtherDietaryRestrictions, setDietaryRestrictions } from "../../redux/delegateReducer";
 import MultiSelect from "../input/MultiSelect";
 import TextInput from "../input/TextInput";
 import ProgressDots from "../ProgressDots";
@@ -15,12 +15,14 @@ const DietaryRestrictions: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     interface DietaryRestrictionsForm {
         dietaryRestrictions: Array<string>
+        otherDietaryRestrictions: string
         allergies: string
     }
 
     const defaultValues: DietaryRestrictionsForm = {
         dietaryRestrictions: useSelector(selectDietaryRestrictions),
-        allergies: useSelector(selectAllergies)
+        allergies: useSelector(selectAllergies),
+        otherDietaryRestrictions: useSelector(selectOtherDietaryRestrictions),
     }
 
     const {t} = useTranslation();
@@ -33,6 +35,7 @@ const DietaryRestrictions: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         const values: DietaryRestrictionsForm = {
             dietaryRestrictions: watch('dietaryRestrictions'),
             allergies: watch('allergies'),
+            otherDietaryRestrictions: watch('otherDietaryRestrictions')
         }
         dispatch(setDietaryRestrictions(values))
         onComplete && onComplete();
@@ -42,6 +45,7 @@ const DietaryRestrictions: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         const values: DietaryRestrictionsForm = {
             dietaryRestrictions: watch('dietaryRestrictions'),
             allergies: watch('allergies'),
+            otherDietaryRestrictions: watch('otherDietaryRestrictions')
         }
         dispatch(setDietaryRestrictions(values)) 
         onBack && onBack();
@@ -59,6 +63,9 @@ const DietaryRestrictions: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     }, {
         name: 'gluten-free',
         label: t('option-dietary-gluten')
+    }, {
+        name: 'other',
+        label: t('option-other')
     }],[t])
 
     return (
@@ -68,6 +75,10 @@ const DietaryRestrictions: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <ProgressDots steps={5} current={2} />
                 <h2>{t('text-conference-details')}</h2>
                 <MultiSelect name="dietaryRestrictions" label={t('field-dietary-restrictions')} options={dietaryRestrictions} control={control} />
+                {
+                    watch('dietaryRestrictions').includes('other') &&
+                    <TextInput name="otherDietaryRestrictions" label={t('field-dietary-other')} control={control} /> 
+                }
                 <TextInput name="allergies" label={t('field-allergies')} control={control} />
             </FormContent>
             <FormNextButton onClick={onNext} />

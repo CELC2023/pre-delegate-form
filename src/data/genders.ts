@@ -13,8 +13,5 @@ export const getGenders = (t: TFunction<"translation", undefined>) => {
     }, {
         name: 'other',
         label: t('option-other')
-    }, {
-        name: 'prefer-not-to-say',
-        label: t('option-prefer-not-to-say')
     }]
 }

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
-import { selectArrivalTime, selectDepartureTime, selectFlightNumber, selectTravelMethod, setTravelInformation } from "../../redux/delegateReducer";
+import { selectArrivalTime, selectFlightNumber, selectTravelMethod, setTravelInformation } from "../../redux/delegateReducer";
 import OptionRadio from "../input/OptionRadio";
 import TextInput from "../input/TextInput";
 import ProgressDots from "../ProgressDots";
@@ -18,14 +18,12 @@ const TravelInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     interface TravelInformationForm {
         travelMethod: string,
         flightNumber: string,
-        departureTime: string,
         arrivalTime: string
     }
 
     const defaultValues: TravelInformationForm = {
         travelMethod: useSelector(selectTravelMethod),
         flightNumber: useSelector(selectFlightNumber),
-        departureTime: useSelector(selectDepartureTime),
         arrivalTime: useSelector(selectArrivalTime)
     }
 
@@ -43,11 +41,10 @@ const TravelInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         const values: TravelInformationForm = {
             travelMethod: watch('travelMethod'),
             flightNumber: watch('flightNumber'),
-            departureTime: watch('departureTime'),
             arrivalTime: watch('arrivalTime')
         }
 
-        if(values.travelMethod !== "" && values.departureTime !== "" && values.arrivalTime !== "") {
+        if(values.travelMethod !== "" && values.arrivalTime !== "") {
             if((values.travelMethod === 'fly' && values.flightNumber !== "") || values.travelMethod === 'drive') {
                 dispatch(setTravelInformation(values))
                 onComplete && onComplete();
@@ -59,7 +56,6 @@ const TravelInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         const values: TravelInformationForm = {
             travelMethod: watch('travelMethod'),
             flightNumber: watch('flightNumber'),
-            departureTime: watch('departureTime'),
             arrivalTime: watch('arrivalTime')
         }
 
@@ -78,8 +74,7 @@ const TravelInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                     watch('travelMethod') === 'fly' &&
                     <TextInput name="flightNumber" label={t('field-flight-number')} control={control} />
                 }
-                <p>{t('text-local-time')}</p>
-                <TextInput name="departureTime" label={t('field-departure-time')} control={control} type={'time'} setErrors={setError} clearErrors={clearErrors} required={true} />
+                <p>{t('text-local-time')}</p> 
                 <TextInput name="arrivalTime" label={t('field-arrival-time')} control={control} type={'time'} setErrors={setError} clearErrors={clearErrors} required={true} />
             </FormContent>
             <FormNextButton onClick={onNext} />

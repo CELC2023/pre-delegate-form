@@ -3,6 +3,7 @@
     flex-direction: column;
     .boolean-radio-container {
         display: flex;
+        justify-content: center;
         .radio-option {
             margin-right: 1em;
         }

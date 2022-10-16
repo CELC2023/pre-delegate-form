@@ -1,6 +1,7 @@
 .option-radio {
     display: flex;
     flex-direction: column;
+    width: 100%;
     .option-radio-container {
         &.vertical {
             flex-direction: column;
@@ -8,6 +9,10 @@
         display: flex;
         .radio-option {
             margin-right: 1em;
+            align-items: flex-start;
+            .radio-option-label {
+                text-align: left;
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ export interface delegateDataModel {
     preferredName: string,
     pronouns: string,
     dateOfBirth: string,
+    address: string,
     cfesOfficer: boolean,
     cfesPosition: string,
     headDelegate: string,
@@ -15,8 +16,7 @@ export interface delegateDataModel {
     minor: string,
     stream: string,
     travelMethod: string,
-    arrivalTime: string,
-    departureTime: string,
+    arrivalTime: string, 
     flightNumber: string,
     school: string,
     emergencyContactName: string,
@@ -45,4 +45,5 @@ export interface delegateDataModel {
     shareResume: boolean,
     schoolName: string,
     socialActivity: string,
+    mosqueTrip: boolean,
 }

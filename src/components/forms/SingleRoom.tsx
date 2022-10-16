@@ -26,8 +26,10 @@ const SingleRoom: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     const onNext = () => {
         const values = watch();
-        dispatch(setSingleRoom(values));
-        onComplete && onComplete();
+        if(values.singleRoom === true || values.singleRoom === false) {
+            dispatch(setSingleRoom(values));
+            onComplete && onComplete();
+        }
     }
 
     const onPrevious = () => {
