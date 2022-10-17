@@ -9,7 +9,6 @@ import './Page.scss';
 
 import BlueBackground from "../images/back-blue.svg";
 import GettingStarted from "../components/forms/GettingStarted";
-import StreamSelection from "../components/forms/StreamSelection";
 import DegreeInformation from "../components/forms/DegreeInformation";
 import TravelInformation from "../components/forms/TravelInformation";
 import EmergencyContact from "../components/forms/EmergencyContact";
@@ -70,10 +69,6 @@ const Page: React.FC = () => {
         Footer: NorthernLightsFooter
     }, {
         Form: DegreeInformation,
-        Scene: NorthernLightsScene,
-        Footer: NorthernLightsFooter
-    }, {
-        Form: StreamSelection,
         Scene: NorthernLightsScene,
         Footer: NorthernLightsFooter
     }, {

@@ -49,7 +49,7 @@ const RoomEnvironment: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <FormContent>
                 <ProgressDots steps={5} current={3} />
                 <h2>{t('text-rooming-questionnaire')}</h2>
-                <OptionRadio name="roomNoise" label={t('field-noise-level')} options={options} onChange={onChangeEnvironment} value={roomEnvironment} />
+                <OptionRadio name="roomNoise" label={t('field-noise-level')} options={options} onChange={onChangeEnvironment} value={roomEnvironment} required={true} />
             </FormContent>
             <FormNextButton onClick={onNext} />
         </>

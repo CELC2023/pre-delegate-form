@@ -57,7 +57,7 @@ const ActivityLanguage: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <ProgressDots steps={5} current={4} />
                 <h2>{t('text-conference-activity')}</h2>
                 <BooleanRadio name="frenchCaseCompetition" label={t('field-case-comp-language')} control={control} optionLabels={[t('text-french'), t('text-english')]} required={true} />
-                <MultiSelect name="languages" label={t('field-speak-language')} options={options} control={control} />
+                <MultiSelect name="languages" label={t('field-speak-language')} options={options} control={control} required={true} />
             </FormContent>
             <FormNextButton onClick={onNext} />
         </>

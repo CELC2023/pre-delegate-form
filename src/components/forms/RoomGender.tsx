@@ -49,7 +49,7 @@ const RoomGender: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <FormContent>
                 <ProgressDots steps={5} current={3} />
                 <h2>{t('text-rooming-questionnaire')}</h2>
-                <MultiSelect name="roomingGenders" label={t('field-room-gender')} options={getGenders(t)} control={control} />
+                <MultiSelect name="roomingGenders" label={t('field-room-gender')} options={getGenders(t)} control={control} required={true} />
                 {
                     watch('roomingGenders').includes('other') &&
                     <TextInput name="otherRoomingGenders" label={t('field-other-genders')} control={control} />

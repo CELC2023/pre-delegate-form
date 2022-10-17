@@ -202,6 +202,7 @@ const School: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
             options={schoolOptions}
             customFilter={customFilter}
             customOptionData={customOptionData}
+            required={true}
           />
           <BooleanRadio
             name={"isOfficer"}
