@@ -148,8 +148,8 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <FormContent>
                 <ProgressDots steps={5} current={5} />
                 <h2>{t('text-uploads')}</h2>
-                <FileUpload name="resumeFile" label={t('field-resume')} accept={{'application/pdf': []}} control={control} icon={ResumeIcon} />
-                <FileUpload name="headShotFile" label={t('field-headshots')} accept={{'image/jpeg': [], 'image/png': []}} control={control} icon={HeadshotIcon} />
+                <FileUpload name="resumeFile" label={t('field-resume')} accept={{'application/pdf': []}} control={control} icon={ResumeIcon} required={true} />
+                <FileUpload name="headShotFile" label={t('field-headshots')} accept={{'image/jpeg': [], 'image/png': []}} control={control} icon={HeadshotIcon} required={true} />
                 <div className="resume-consent">
                     <p className="resume-consent--text">{t("field-allow-resume")}</p>
                     <Checkbox name="shareResume" label={t('option-yes')} control={control} />

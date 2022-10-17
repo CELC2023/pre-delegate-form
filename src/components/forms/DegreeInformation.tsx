@@ -94,9 +94,9 @@ const DegreeInformation: React.FC<FormPageProps> = ({onComplete, onBack}) => {
             <FormContent>
                 <ProgressDots steps={5} current={2} />
                 <h2>{t('text-school-info')}</h2>
-                <Autocomplete name="major" label={t('field-major')} control={control} options={majors} />
+                <Autocomplete name="major" label={t('field-major')} control={control} options={majors} required={true} />
                 <TextInput name="minor" label={t('field-minor')} control={control} />
-                <Slider name="yearOfStudy" label={t('field-study-year')} control={control}  count={6} min={1} step={1} max={6} marks={marks} dots={true} />
+                <Slider name="yearOfStudy" label={t('field-study-year')} control={control}  count={6} min={1} step={1} max={6} marks={marks} dots={true} required={true} />
             </FormContent>
             <FormNextButton onClick={onNext} />
         </>

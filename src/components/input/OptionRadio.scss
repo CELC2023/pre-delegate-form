@@ -1,3 +1,5 @@
+@import "../../styles/colors.scss";
+
 .option-radio {
     display: flex;
     flex-direction: column;
@@ -12,6 +14,15 @@
             align-items: flex-start;
             .radio-option-label {
                 text-align: left;
+            }
+        }
+    }
+
+    &.disabled {
+        .radio-option {
+            color: $color-grey-mid;
+            .radio-option-container {
+                border-color: $color-grey-mid;
             }
         }
     }

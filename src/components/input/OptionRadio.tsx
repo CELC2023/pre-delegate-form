@@ -12,6 +12,7 @@ export interface OptionRadioProps {
   control?: Control<any>;
   options: Array<any>;
   horizontal?: boolean;
+  disable?: boolean;
 }
 
 const OptionRadio: React.FC<OptionRadioProps> = ({
@@ -23,9 +24,12 @@ const OptionRadio: React.FC<OptionRadioProps> = ({
   value = [],
   options,
   horizontal = false,
+  disable = false
 }) => {
   const change = (radioName: string, value: boolean) => {
-    onChange && onChange(radioName)
+    if(!disable) {
+      onChange && onChange(radioName)
+    }
   };
 
   return (
@@ -37,18 +41,20 @@ const OptionRadio: React.FC<OptionRadioProps> = ({
           render={({ field: { name, onChange, value } }) => {
             
             const change = (radioName: string) => {
-                onChange(radioName)
+                if(!disable) {
+                  onChange(radioName)
+                }
               };
 
             return (
-              <div className="option-radio">
+              <div className={`option-radio${disable ? ' disabled' : ''}`}>
                 <p className="option-radio-label">
                   {label}
                   {required && "*"}
                 </p>
                 <div className={`option-radio-container${horizontal ? '' : ' vertical'}`}>
                     {
-                        options.map((e, i) => <Radio name={e.name} label={e.label} value={value === e.name} onChange={change} key={i} />)
+                        options.map((e, i) => <Radio name={e.name} label={e.label} value={value === e.name} onChange={change} key={i} disable={disable} />)
                     } 
                 </div>
               </div>
@@ -56,14 +62,14 @@ const OptionRadio: React.FC<OptionRadioProps> = ({
           }}
         />
       ) : (
-        <div className="option-radio">
+        <div className={`option-radio${disable ? ' disabled' : ''}`}>
           <p className="option-radio-label">
             {label}
             {required && "*"}
           </p>
           <div className={`option-radio-container${horizontal ? '' : ' vertical'}`}>
             {
-                options.map((e, i) => <Radio name={e.name} label={e.label} value={value === e.name} onChange={change} key={i} />)
+                options.map((e, i) => <Radio name={e.name} label={e.label} value={value === e.name} onChange={change} key={i} disable={disable} />)
             }
           </div>
         </div>

@@ -44,7 +44,7 @@ const MosqueVisit: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         <FormContent>
         <ProgressDots steps={5} current={4} />
                 <h2>{t('text-conference-activity')}</h2>
-                <BooleanRadio name='mosqueTrip' label={t('field-mosque')} control={control} />
+                <BooleanRadio name='mosqueTrip' label={t('field-mosque')} control={control} required={true} />
         </FormContent>
         
         <FormNextButton onClick={onNext} />

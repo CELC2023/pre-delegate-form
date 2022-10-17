@@ -7,14 +7,17 @@ interface SliderInputProps {
   control?: Control<any>;
   name: string;
   label: string;
+  required?: boolean;
 }
 
 export interface SliderProps extends RCSliderProps, SliderInputProps {}
 
 const Slider: React.FC<SliderProps> = (props) => {
+  const required = props?.required || false
+
   return (
     <>
-      <p>{props.label}</p>
+      <p>{props.label}{required ? '*' : ''}</p>
       {props?.control ? (
         <Controller
           name={props.name || ""}

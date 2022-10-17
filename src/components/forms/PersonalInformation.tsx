@@ -106,8 +106,9 @@ const PersonalInformation: React.FC<FormPageProps> = ({
   };
 
   const validateDateOfBirth = (value: string): boolean => {
+    const oldDate = new Date("01 Jan 1900 00:00:00 MST")
     const dob = new Date(value)
-    if (dob < new Date()) {
+    if (dob < new Date() && dob > oldDate) {
       return true;
     }
     return false;

@@ -69,10 +69,10 @@ const TravelInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <FormContent>
                 <ProgressDots steps={5} current={2} />
                 <h2>{t('text-school-info')}</h2>
-                <OptionRadio name="travelMethod" label={t('field-transport')} control={control} options={options} value={watch('travelMethod')} />
+                <OptionRadio name="travelMethod" label={t('field-transport')} control={control} options={options} value={watch('travelMethod')} required={true} />
                 {
                     watch('travelMethod') === 'fly' &&
-                    <TextInput name="flightNumber" label={t('field-flight-number')} control={control} />
+                    <TextInput name="flightNumber" label={t('field-flight-number')} control={control} required={true} />
                 }
                 <p>{t('text-local-time')}</p> 
                 <TextInput name="arrivalTime" label={t('field-arrival-time')} control={control} type={'time'} setErrors={setError} clearErrors={clearErrors} required={true} />

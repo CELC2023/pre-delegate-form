@@ -48,7 +48,7 @@ const DelegateGender: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <FormContent>
                 <ProgressDots steps={5} current={3} />
                 <h2>{t('text-rooming-questionnaire')}</h2>
-                <MultiSelect name="genders" label={t('field-gender')} options={getGenders(t)} control={control} />
+                <MultiSelect name="genders" label={t('field-gender')} options={getGenders(t)} control={control} required={true} />
                 {
                     watch('genders').includes('other') &&
                     <TextInput name="otherGenders" label={t('field-other-genders')} control={control} />

@@ -45,7 +45,7 @@ const SingleRoom: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <ProgressDots steps={5} current={3} />
                 <h2>{t('text-rooming-questionnaire')}</h2>
                 <p>{t('text-single-room')}</p>
-                <BooleanRadio name="singleRoom" label="" control={control} /> 
+                <BooleanRadio name="singleRoom" label="" control={control} required={true} /> 
             </FormContent>
             <FormNextButton onClick={onNext} />
         </>

@@ -15,10 +15,11 @@ export interface AutocompleteProps {
     customFilter?: ((option: FilterOptionOption<any>, inputValue: string) => boolean),
     fetchUrl?: string,
     options?: OptionsOrGroups<any, any>,
-    customOptionData?: (props: any) => object
+    customOptionData?: (props: any) => object,
+    required?: boolean
 }
 
-const Autocomplete: React.FC<AutocompleteProps> = ({control, fetchUrl, label, name, optionComponent, customFilter, options, customOptionData, controlComponent}) => {
+const Autocomplete: React.FC<AutocompleteProps> = ({control, fetchUrl, label, name, optionComponent, customFilter, options, customOptionData, controlComponent, required = false}) => {
     const formattedLabel = label || ""
 
     const [optionsData, setOptionsData] = useState<OptionsOrGroups<any, any>>()
@@ -73,7 +74,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({control, fetchUrl, label, na
         <div className="autocompleteinput">
             <label className={`autocompleteinput--label ${isActive ? 'label--active' : ''} placeholder--${placeholderVisibility ? 'show' : 'hide'}`}>
                 <span className={`autocompleteinput--span`}>
-                    {formattedLabel}
+                    {formattedLabel}{required ? '*' : ''}
                 </span>
             </label>
             <Controller

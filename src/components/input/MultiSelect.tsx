@@ -21,6 +21,7 @@ export interface MultiSelectProps {
   onChange?: (arg0: Array<string>) => void;
   value?: Array<string>;
   control?: Control<any>;
+  required?: boolean;
 }
 
 const MultiSelect: React.FC<MultiSelectProps> = ({
@@ -33,10 +34,11 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   options,
   onChange,
   value,
+  required = false,
 }) => {
   const formattedLabel = label || "";
 
-  const [error, setError] = useState<string>("");
+  const [error, ] = useState<string>("");
   const [selected, setSelected] = useState<any>({});
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
 
   useEffect(() => {
     setSelected(Object.fromEntries(options.map((e) => [e.name, value?.includes(e.name) || false])));
-  }, [])
+  }, [options, value])
 
   const getSelected = () => {
     return selected
@@ -53,7 +55,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
 
   useEffect(() => {
     onChange !== undefined && onChange(Object.keys(selected).filter((v) => selected[v]))
-  }, [selected])
+  }, [selected, onChange])
 
   const updateValue = (name: string, value: boolean) => {
     const updatedSelected = { ...getSelected(), [name]: value }
@@ -63,7 +65,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   return (
     <div className={`multiselect ${error !== "" ? "error" : ""}`}>
       <label className={`multiselect--label`}>
-        <span className={`multiselect--span`}>{formattedLabel}</span>
+        <span className={`multiselect--span`}>{formattedLabel}{required ? "*" : ''}</span>
       </label>
         {
           control ?

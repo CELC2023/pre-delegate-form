@@ -6,16 +6,19 @@ export interface RadioProps {
     label: string,
     onChange?: (arg1: string, arg2: boolean) => void,
     value: boolean,
+    disable?: boolean
 }
 
-const Radio: React.FC<RadioProps> = ({label, name, onChange, value}) => {
+const Radio: React.FC<RadioProps> = ({label, name, onChange, value, disable = false}) => {
     
     const change = () => {
-        onChange && onChange(name, !value)
+        if(!disable) {
+            onChange && onChange(name, !value)
+        }
     }
 
     return (
-        <div className="radio-option" onClick={change}>
+        <div className={`radio-option${disable ? ' disabled' : ''}`} onClick={change}>
             <div className="radio-option-container">
                 <input className={`radio-option-input${value ? ' selected' : ''}`} name={name} type={'radio'} value={name} />
             </div>
