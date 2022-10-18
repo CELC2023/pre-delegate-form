@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormPageProps from "../interfaces/FormPageProps";
 import FormAdapter from "../components/FormAdapter";
 import Information from "../components/forms/Information";
@@ -33,6 +33,12 @@ import { BadlandsFooter, BadlandsScene } from "../components/scenes/Badlands";
 import MosqueVisit from "../components/forms/MosqueVisit";
 import ContactInformation from "../components/forms/ContactInformation";
 import ShirtSize from "../components/forms/ShirtSize";
+import { useNavigate } from "react-router-dom";
+import { useCallbackPrompt } from "../hooks/useCallbackPrompt";
+import Alert from "../components/Alert";
+import { useTranslation } from "react-i18next";
+import Review from "../components/forms/Review";
+import { UCalgaryFooter, UCalgaryScene } from "../components/scenes/UCalgary";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
@@ -46,6 +52,8 @@ export interface FormConfig {
 }
 
 const Page: React.FC = () => {
+
+    const {t} = useTranslation();
 
     const FormList: Array<FormConfig> = [{
         Form: Language,
@@ -144,6 +152,10 @@ const Page: React.FC = () => {
         Form: FileUploads,
         Scene: BadlandsScene,
         Footer: BadlandsFooter
+    }, {
+        Form: Review,
+        Scene: UCalgaryScene,
+        Footer: UCalgaryFooter
     }]
 
     const [currentFormIndex, setCurrentFormIndex] = useState<number>(0)
@@ -161,7 +173,18 @@ const Page: React.FC = () => {
     }
 
     const BGScene = FormList[currentFormIndex]?.Scene
-    const FooterScene = FormList[currentFormIndex]?.Footer 
+    const FooterScene = FormList[currentFormIndex]?.Footer
+
+    const [showPopup, setShowPopup] = useState<boolean>(false);
+    const [showPrompt, confirmNavigation, cancelNavigation] = useCallbackPrompt(showPopup);
+
+    useEffect(() => {
+        if(currentFormIndex > 2 && currentFormIndex < 24) {
+            setShowPopup(true);
+        } else {
+            setShowPopup(false)
+        }
+    }, [currentFormIndex, showPopup])
 
     return (
         <div className="page-container delegate-container">
@@ -177,6 +200,10 @@ const Page: React.FC = () => {
             {
                 FooterScene &&
                 <FooterScene />
+            }
+            {
+                showPrompt &&
+                <Alert text={t('text-leave-page')} title={t('text-warning')} onNo={cancelNavigation} onYes={confirmNavigation} yesText={t('option-yes')} noText={t('option-no')} />
             }
         </div>
     )
