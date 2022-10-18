@@ -24,7 +24,6 @@ import RoomAlcoholDrugs from "../components/forms/RoomAlcohol";
 import RoomRequests from "../components/forms/RoomRequests";
 import ActivityLanguage from "../components/forms/ActivityLanguage";
 import FileUploads from "../components/forms/FileUploads";
-import Review from "../components/forms/Review";
 import SocialActivity from "../components/forms/SocialActivity";
 import { FoothillsFooter, FoothillsScene } from "../components/scenes/Foothills";
 import { NorthernLightsFooter, NorthernLightsScene } from "../components/scenes/NorthernLights";
@@ -32,6 +31,8 @@ import { FarmlandFooter, FarmlandScene } from "../components/scenes/Farmland";
 import { PeaceBridgeFooter, PeaceBridgeScene } from "../components/scenes/PeaceBridge";
 import { BadlandsFooter, BadlandsScene } from "../components/scenes/Badlands";
 import MosqueVisit from "../components/forms/MosqueVisit";
+import ContactInformation from "../components/forms/ContactInformation";
+import ShirtSize from "../components/forms/ShirtSize";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
@@ -63,6 +64,14 @@ const Page: React.FC = () => {
         Form: PersonalInformation,
         Scene: FoothillsScene,
         Footer: FoothillsFooter
+    }, {
+        Form: ContactInformation,
+        Scene: FoothillsScene,
+        Footer: FoothillsFooter
+    }, {
+        Form: ShirtSize,
+        Scene: FoothillsScene,
+        Footer: FoothillsFooter 
     }, {
         Form: School,
         Scene: NorthernLightsScene,
@@ -135,10 +144,6 @@ const Page: React.FC = () => {
         Form: FileUploads,
         Scene: BadlandsScene,
         Footer: BadlandsFooter
-    }, {
-        Form: Review,
-        Scene: BadlandsScene,
-        Footer: BadlandsFooter,
     }]
 
     const [currentFormIndex, setCurrentFormIndex] = useState<number>(0)

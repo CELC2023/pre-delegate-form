@@ -14,7 +14,6 @@ export interface delegateDataModel {
     yearOfStudy: number,
     major: string,
     minor: string,
-    stream: string,
     travelMethod: string,
     arrivalTime: string, 
     flightNumber: string,
@@ -46,4 +45,5 @@ export interface delegateDataModel {
     schoolName: string,
     socialActivity: string,
     mosqueTrip: boolean,
+    shirtSize: string,
 }
