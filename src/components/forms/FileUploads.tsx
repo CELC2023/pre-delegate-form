@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,12 +17,10 @@ import ProgressDots from "../ProgressDots";
 import Loader from "../../images/loader.gif";
 import "./FileUploads.scss";
 import { parseDelegateData } from "../../utils/datautils";
-import { useNavigate } from "react-router-dom";
 
 const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {t} = useTranslation();
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     interface FileUploadsForm {
         resume: string,
@@ -56,12 +54,23 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const uploadFiles = async (resume: File | null, headShot: File | null) => {
+    interface UploadResult {
+        resumeUrl: string,
+        headShotUrl: string
+    }
+
+    interface IUploadFiles {
+        (resume: File | null, headShot: File | null): Promise<UploadResult>
+    }
+
+    const uploadFiles: IUploadFiles = async (resume, headShot) => {
+        var resumeUrl = watch('resumeUrl'), headShotUrl = watch('headShotUrl')
         if(resume !== null) {
             await uploadFile(resume, 'resume').then((res) => {
                 setValue("resumeUrl", res)
                 setValue("resume", resume.name)
-                setValue("resumeFile", new File([""], resume.name)) 
+                setValue("resumeFile", new File([""], resume.name))
+                resumeUrl = res
             })
         }
         if(headShot !== null) {
@@ -69,8 +78,10 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 setValue("headShotUrl", res)
                 setValue("headShot", headShot.name)
                 setValue("headShotFile", new File([""], headShot.name)) 
+                headShotUrl = res
             })
         }
+        return {resumeUrl, headShotUrl}
     }
     
     const uploadFile = async (file: Blob, type: string) => {
@@ -84,34 +95,46 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         .catch((e) => {return ""})
         return res
     }
+
+    const [triggerSubmit, setTriggerSubmit] = useState<boolean>(false);
     
+    useEffect(() => {
+        if(triggerSubmit === true) {
+             axiosInstance.post('/delegate/', parseDelegateData(formData))
+            .then(() => {
+                setIsLoading(false)
+                onComplete && onComplete();
+            })
+            .catch((err) => {
+                setIsLoading(false)
+                console.error(err)
+            })
+            setTriggerSubmit(false)
+        }
+    }, [formData, onComplete, triggerSubmit])
+
     const onNext = () => {
         const resumeFile = watch('resumeFile');
         const headShotFile = watch('headShotFile');
+        const resumeName = watch('resume')
+        const headShotName = watch('headShot')
 
-        if (resumeFile !== null && resumeFile.size > 0 && headShotFile !== null && headShotFile.size > 0) {
+        if(resumeFile === null || headShotFile === null) { 
+            return
+        } else if ((resumeFile.size > 0 && headShotFile.size > 0) || resumeFile.name !== resumeName || headShotFile.name !== headShotName) {
             setIsLoading(true)
             uploadFiles(resumeFile, headShotFile)
-            .then(() => {
+            .then((res) => {
                 const values = {
                     headShot: watch('headShot'),
-                    headShotUrl: watch('headShotUrl'),
+                    headShotUrl: res.headShotUrl,
                     resume: watch('resume'),
-                    resumeUrl: watch('resumeUrl'),
+                    resumeUrl: res.resumeUrl,
                     linkedin: watch('linkedin'),
                     shareResume: watch('shareResume')
                 }
                 dispatch(setFileUploads(values))
-                axiosInstance.post('/delegate/', parseDelegateData(formData))
-                .then(() => {
-                    setIsLoading(false)
-                    navigate("/delegate/complete", {replace: true})
-                })
-                .catch((err) => {
-                    setIsLoading(false)
-                    console.error(err)
-                })
-                setIsLoading(false)
+                setTriggerSubmit(true)
             })
         } else if(watch('resumeUrl') !== "" && watch("headShotUrl") !== "") {
             const values = {
@@ -124,16 +147,7 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             }
             setIsLoading(true)
             dispatch(setFileUploads(values))
-            axiosInstance.post('/delegate/', parseDelegateData(formData))
-            .then(() => {
-                setIsLoading(false)
-                navigate("/delegate/complete", {replace: true})
-            })
-            .catch((err) => {
-                setIsLoading(false)
-                console.error(err)
-            })
-            setIsLoading(false) 
+            setTriggerSubmit(true)
         }
 
     }
@@ -143,12 +157,12 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         const headShotFile = watch('headShotFile'); 
         
         setIsLoading(true)
-        uploadFiles(resumeFile, headShotFile).then(() => {
+        uploadFiles(resumeFile, headShotFile).then((res) => {
             const values = {
                 headShot: watch('headShot'),
-                headShotUrl: watch('headShotUrl'),
+                headShotUrl: res.headShotUrl,
                 resume: watch('resume'),
-                resumeUrl: watch('resumeUrl'),
+                resumeUrl: res.resumeUrl,
                 linkedin: watch('linkedin'),
                 shareResume: watch('shareResume')
             }
