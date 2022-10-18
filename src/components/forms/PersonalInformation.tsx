@@ -4,16 +4,14 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
 import {
-    selectDateOfBirth,
   selectEmail,
   selectFirstName,
   selectLastName,
-  selectPhone,
   selectPreferredName,
   selectPronouns,
   setPersonalInformation,
 } from "../../redux/delegateReducer";
-import { emailRegex, phoneRegex } from "../../utils/regex";
+import { emailRegex } from "../../utils/regex";
 import TextInput from "../input/TextInput";
 import ProgressDots from "../ProgressDots";
 import FormNextButton from "./FormNextButton";
@@ -29,8 +27,6 @@ const PersonalInformation: React.FC<FormPageProps> = ({
     lastName: string;
     preferredName: string;
     pronouns: string;
-    phone: string;
-    dateOfBirth: string;
   }
 
   const defaultValues: PersonalInformationForm = {
@@ -39,8 +35,6 @@ const PersonalInformation: React.FC<FormPageProps> = ({
     lastName: useSelector(selectLastName),
     preferredName: useSelector(selectPreferredName),
     pronouns: useSelector(selectPronouns),
-    phone: useSelector(selectPhone),
-    dateOfBirth: useSelector(selectDateOfBirth),
   };
 
   const {
@@ -73,14 +67,6 @@ const PersonalInformation: React.FC<FormPageProps> = ({
       setError("email", { type: "custom", message: "Enter a valid value" });
       hasErrors = true;
     }
-    if (!validatePhone(getValues("phone"))) {
-        setError("phone", { type: "custom", message: "Enter a valid value" });
-        hasErrors = true;
-    }
-    if (!validateDateOfBirth(getValues("dateOfBirth"))) {
-        setError("dateOfBirth", { type: "custom", message: "Enter a valid value" });
-        hasErrors = true;
-    }
     return !hasErrors;
   };
 
@@ -98,30 +84,12 @@ const PersonalInformation: React.FC<FormPageProps> = ({
     return false;
   };
 
-  const validatePhone = (value: string): boolean => {
-    if (phoneRegex.test(value)) {
-      return true;
-    }
-    return false;
-  };
-
-  const validateDateOfBirth = (value: string): boolean => {
-    const oldDate = new Date("01 Jan 1900 00:00:00 MST")
-    const dob = new Date(value)
-    if (dob < new Date() && dob > oldDate) {
-      return true;
-    }
-    return false;
-  };
-
   const onPrevious = (): void => {
     const values: PersonalInformationForm = {
       email: getValues("email") || "",
       firstName: getValues("firstName") || "",
       lastName: getValues("lastName") || "",
       preferredName: getValues("preferredName") || "",
-      phone: getValues("phone") || "",
-      dateOfBirth: getValues("dateOfBirth") || "",
       pronouns: getValues("pronouns") || ""
     };
     dispatch(setPersonalInformation(values));
@@ -134,8 +102,6 @@ const PersonalInformation: React.FC<FormPageProps> = ({
       firstName: getValues("firstName") || "",
       lastName: getValues("lastName") || "",
       preferredName: getValues("preferredName") || "",
-      phone: getValues("phone") || "",
-      dateOfBirth: getValues("dateOfBirth") || "",
       pronouns: getValues("pronouns") || ""
     };
 
@@ -196,27 +162,6 @@ const PersonalInformation: React.FC<FormPageProps> = ({
             setErrors={setError}
             clearErrors={clearErrors}
             control={control}
-          />
-          <TextInput
-            name="phone"
-            label={t("field-phone-number")}
-            setErrors={setError}
-            clearErrors={clearErrors}
-            validation={validatePhone}
-            control={control}
-            required={true}
-            type={'tel'}
-          />
-          <TextInput
-            name="dateOfBirth"
-            label={t("field-birthday")}
-            setErrors={setError}
-            clearErrors={clearErrors}
-            control={control}
-            validation={validateDateOfBirth}
-            type="date"
-            autocomplete="bday"
-            required={true}
           />
         </form>
       </div>
