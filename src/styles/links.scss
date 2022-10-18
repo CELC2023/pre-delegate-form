@@ -6,17 +6,26 @@ a {
     &:hover {
         text-decoration: underline;
     }
+}
 
+a, div {
     &.btn {
         color: $color-white;
         background-color: $color-red;
         text-transform: uppercase;
         padding: 10px 20px;
         border-radius: 8px;
+        cursor: pointer;
 
         &:hover {
             text-decoration: none;
             background-color: rgba($color-red, 0.7);
+        }
+        &.btn--secondary {
+            background-color: $color-blue-dark;
+            &:hover {
+                background-color: rgba($color-blue-dark, 0.7);
+            }
         }
     }
 
