@@ -46,6 +46,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
         onChange(acceptedFiles[0]);
       }
     },
+
   });
 
   return (
@@ -55,7 +56,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
       </label>
       <div className="fileinput--area" {...getRootProps()}>
         {icon && <img alt="" className="fileinput--icon" src={icon} />}
-        <label htmlFor={elementName} className="fileinput--labelarea">
+        <label className="fileinput--labelarea">
           <span className="label-name">{file ? file.name : t("text-drop-files")}</span>
           <span className="label-accepted">{t('text-file-format')} {Object.keys(accept).map((e, i) => i === 0 ? e : `, ${e}`)}</span>
         </label>

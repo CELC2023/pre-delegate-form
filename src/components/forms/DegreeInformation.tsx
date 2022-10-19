@@ -36,6 +36,9 @@ const DegreeInformation: React.FC<FormPageProps> = ({onComplete, onBack}) => {
         value: 'elec',
         label: t('option-major-elec') 
     },{
+        value: 'enviro',
+        label: t('option-major-enviro')
+    },{
         value: 'geo',
         label: t('option-major-geo') 
     },{

@@ -165,6 +165,7 @@ const ContactInformation: React.FC<FormPageProps> = ({
           setErrors={setError}
           clearErrors={clearErrors}
         />
+        <p className="help-text">{t('text-discord-format')}</p>
       </FormContent>
       <FormNextButton onClick={onNext} />
     </>

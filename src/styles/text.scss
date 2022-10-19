@@ -29,3 +29,13 @@ h3 {
 .bold {
     font-weight: 700;
 }
+
+p {
+    &.help-text {
+        color: $color-grey-mid;
+        width: 100%;
+        text-align: left;
+        font-size: 0.9em;
+        font-style: italic;
+    }
+}
