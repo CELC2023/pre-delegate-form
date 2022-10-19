@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { selectShirtSize, setShirtSize } from "../../redux/delegateReducer";
+import Autocomplete from "../input/Autocomplete";
 import OptionRadio from "../input/OptionRadio";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
@@ -40,25 +41,25 @@ const ShirtSize: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     }
 
     const shirtSizes = [{
-        name: "small",
+        value: "small",
         label: t('option-size-small')
     }, {
-        name: "medium",
+        value: "medium",
         label: t('option-size-medium')
     }, {
-        name: "large",
+        value: "large",
         label: t('option-size-large')
     }, {
-        name: "extra-large",
+        value: "extra-large",
         label: t('option-size-extra-large')
     }, {
-        name: "2-extra-large",
+        value: "2-extra-large",
         label: t('option-size-2-large')
     }, {
-        name: "3-extra-large",
+        value: "3-extra-large",
         label: t('option-size-3-large')
     }, {
-        name: "4-extra-large",
+        value: "4-extra-large",
         label: t('option-size-4-large')
     }]
 
@@ -68,7 +69,8 @@ const ShirtSize: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <FormContent>
                 <h2>{t("text-personal")}</h2>
                 <p>{t('text-tshirt')}</p>
-                <OptionRadio name="shirtSize" label={t('field-tshirt-size')} control={control} options={shirtSizes} />
+                <Autocomplete name="shirtSize" label={t('field-tshirt-size')} control={control} options={shirtSizes} />
+                <p>{t('text-extra-merch')}</p>
             </FormContent>
             <FormNextButton onClick={onNext} />
         </>

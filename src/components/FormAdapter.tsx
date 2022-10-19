@@ -13,7 +13,9 @@ const FormAdapter: React.FC<FormAdapterProps> = ({form: {Form, disableNext, disa
 
     return (
         <div className={`form-adapter ${customParentClass ? customParentClass : ''}`} >
+            <div className="form-background-container">
             <img className="form-background " src={FormBackground} alt="" />
+            </div>
             <Form onComplete={nextForm} onBack={previousForm} />
         </div>
     )

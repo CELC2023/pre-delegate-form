@@ -1,6 +1,9 @@
 
 @import "../../styles/colors.scss";
 .custom-scene-footer {
+    @media screen and (max-height: 850px) {
+        display: none;
+    }
     position: absolute;
     left: -3em;
     bottom: 0;

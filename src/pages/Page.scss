@@ -13,10 +13,7 @@
     }
 
     overflow: hidden;
-
-    @media screen and (min-width: $small-phone) {
-        align-items: center;
-    }
+    align-items: center;
 
     .form-adapter {
         width: 425px;
@@ -27,13 +24,14 @@
             width: 90%;
             height: 90%;
             background-color: rgba($color-white, 0.75);
+            >.form-background-container {
+                background: none;
+            }
         }
 
-        @media screen and (max-width: 424px) {
+        @media screen and (max-width: 425px) {
             width: 100%;
-        }
-
-        background-color: $color-white;
+        } 
     }
 
     .footer-container {
