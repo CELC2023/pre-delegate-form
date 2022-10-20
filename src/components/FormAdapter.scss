@@ -69,6 +69,7 @@
             }
         }
         &-previous-container {
+            position: relative;
             justify-content: flex-start;
             padding: 1em 2em 0em 2em;
             .previous-button {
