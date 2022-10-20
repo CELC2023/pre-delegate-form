@@ -1,11 +1,19 @@
 import React from "react";
 import { useTranslation, Trans } from "react-i18next";
 import Foothills from "../../images/scenes/foothills.svg";
+import FoothillsBands from "../../images/scenes/foothills-bands.svg";
 import SceneFooter from "./SceneFooter";
 
 export const FoothillsScene: React.FC = () => {
     return (
         <div className="page-custom-scene" style={{backgroundImage: `url(${Foothills})`}}>
+        </div>
+    )
+}
+
+export const FoothillsBandsScene: React.FC = () => {
+    return (
+        <div className="page-custom-scene" style={{backgroundImage: `url(${FoothillsBands})`}}>
         </div>
     )
 }
