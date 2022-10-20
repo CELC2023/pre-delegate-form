@@ -32,8 +32,7 @@ import { PeaceBridgeFooter, PeaceBridgeScene } from "../components/scenes/PeaceB
 import { BadlandsFooter, BadlandsScene } from "../components/scenes/Badlands";
 import MosqueVisit from "../components/forms/MosqueVisit";
 import ContactInformation from "../components/forms/ContactInformation";
-import ShirtSize from "../components/forms/ShirtSize";
-import { useNavigate } from "react-router-dom";
+import Merch from "../components/forms/Merch";
 import { useCallbackPrompt } from "../hooks/useCallbackPrompt";
 import Alert from "../components/Alert";
 import { useTranslation } from "react-i18next";
@@ -77,7 +76,7 @@ const Page: React.FC = () => {
         Scene: FoothillsScene,
         Footer: FoothillsFooter
     }, {
-        Form: ShirtSize,
+        Form: Merch,
         Scene: FoothillsScene,
         Footer: FoothillsFooter 
     }, {

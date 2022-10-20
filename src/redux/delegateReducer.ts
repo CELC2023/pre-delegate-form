@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { SchoolOptionData } from "../models/School";
 import { Major } from "../models/major";
+import { ShirtSize } from "../models/shirtSize";
 
 export interface delegateSliceInterface {
     language: string,
@@ -54,7 +55,7 @@ export interface delegateSliceInterface {
     comments: string,
     socialActivity: string,
     mosqueTrip: boolean | null,
-    shirtSize: string,
+    shirtSize: ShirtSize | null,
 }
 
 const initialState: delegateSliceInterface = {
@@ -109,7 +110,7 @@ const initialState: delegateSliceInterface = {
     comments: '',
     socialActivity: '',
     mosqueTrip: null,
-    shirtSize: '',
+    shirtSize: null,
 }
 
 export const delegateSlice = createSlice({
@@ -272,6 +273,6 @@ export const selectDiscord = (state: {delegate: { discord: string }}) => state.d
 export const selectDelegateData = (state: {delegate: delegateSliceInterface}) => state.delegate;
 export const selectSocialActivity = (state: {delegate: {socialActivity: string}}) => state.delegate.socialActivity;
 export const selectMosqueTrip = (state: {delegate: {mosqueTrip: boolean}}) => state.delegate.mosqueTrip;
-export const selectShirtSize = (state: {delegate: {shirtSize: string}}) => state.delegate.shirtSize;
+export const selectShirtSize = (state: {delegate: {shirtSize: ShirtSize}}) => state.delegate.shirtSize;
 
 export default delegateSlice.reducer;

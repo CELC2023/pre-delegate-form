@@ -3,20 +3,20 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
+import { ShirtSize } from "../../models/shirtSize";
 import { selectShirtSize, setShirtSize } from "../../redux/delegateReducer";
 import Autocomplete from "../input/Autocomplete";
-import OptionRadio from "../input/OptionRadio";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
 
-const ShirtSize: React.FC<FormPageProps> = ({onBack, onComplete}) => {
+const Merch: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     const {t} = useTranslation();
     const dispatch = useDispatch();
 
     interface ShirtSizeForm {
-        shirtSize: string
+        shirtSize: ShirtSize 
     }
 
     const defaultValues: ShirtSizeForm = {
@@ -28,7 +28,7 @@ const ShirtSize: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const onNext = () => {
         const values = watch();
 
-        if(values.shirtSize !== '') {
+        if(values.shirtSize !== null) {
             dispatch(setShirtSize(values))
             onComplete && onComplete();
         }
@@ -77,4 +77,4 @@ const ShirtSize: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     )
 }
 
-export default ShirtSize;
+export default Merch;
