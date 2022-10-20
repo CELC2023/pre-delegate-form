@@ -5,14 +5,14 @@ import NextButton from "../images/next-button.svg";
 
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { FoothillsScene } from "../components/scenes/Foothills";
+import { FoothillsBandsScene } from "../components/scenes/Foothills";
 
 const Landing: React.FC = () => {
     const {t} = useTranslation();
 
     return (
         <div className="page-container landing-container">
-            <FoothillsScene />
+            <FoothillsBandsScene /> 
             <div className="welcome-container">
                 <div className="english-welcome welcome-text">
                     <p className="text-welcome">Welcome</p>
