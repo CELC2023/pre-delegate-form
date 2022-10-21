@@ -4,17 +4,17 @@
     display: flex;
     cursor: pointer;
     user-select: none;
-    &:hover {
-        .checkbox-option-container {
-           .checkbox-option-input {
-                background-color: rgba($color-red, 0.7);
-                &.selected {
-                    background: none;
-                    border: 2px solid $color-red; 
-                }
-           } 
-        } 
-    }
+    // &:hover {
+    //     .checkbox-option-container {
+    //        .checkbox-option-input {
+    //             background-color: rgba($color-red, 0.7);
+    //             &.selected {
+    //                 background: none;
+    //                 border: 2px solid $color-red; 
+    //             }
+    //        } 
+    //     } 
+    // }
     .checkbox-option-container {
         margin-right: 1em;
             height: 1.25em;

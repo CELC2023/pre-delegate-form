@@ -2,9 +2,11 @@ import { changeLanguage } from "i18next";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
+import { usePreloadImage } from "../../hooks/usePreloadImage";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { setLanguagePreference } from "../../redux/delegateReducer";
 import { blankHref } from "../../utils/constants";
+import { NorthernLightsUrl } from "../scenes/NorthernLights";
 
 const Language: React.FC<FormPageProps> = ({onComplete}) => {
     const dispatch = useDispatch();
@@ -17,6 +19,8 @@ const Language: React.FC<FormPageProps> = ({onComplete}) => {
     }
 
     const {t} = useTranslation();
+
+    usePreloadImage(NorthernLightsUrl);
 
     return (
         <div className="form-content">

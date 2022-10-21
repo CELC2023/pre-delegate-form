@@ -1,11 +1,12 @@
 import React from "react";
 import { useTranslation, Trans } from "react-i18next";
-import PeaceBridge from "../../images/scenes/peacebridge.svg"
 import SceneFooter from "./SceneFooter";
+
+export const PeaceBridgeUrl = 'https://celcassets.cfes.ca/images/peacebridge.svg';
 
 export const PeaceBridgeScene: React.FC = () => {
     return (
-        <div className="page-custom-scene" style={{backgroundImage: `url(${PeaceBridge})`}}>
+        <div className="page-custom-scene" style={{backgroundImage: `url(${PeaceBridgeUrl})`}}>
         </div>
     )
 }

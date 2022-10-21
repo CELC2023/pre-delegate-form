@@ -17,6 +17,8 @@ import ProgressDots from "../ProgressDots";
 import Loader from "../../images/loader.gif";
 import "./FileUploads.scss";
 import { parseDelegateData } from "../../utils/datautils";
+import { usePreloadImage } from "../../hooks/usePreloadImage";
+import { UCalgaryUrl } from "../scenes/UCalgary";
 
 const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {t} = useTranslation();
@@ -171,6 +173,8 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             onBack && onBack();
         })
     }
+
+    usePreloadImage(UCalgaryUrl);
 
     return (
         <>

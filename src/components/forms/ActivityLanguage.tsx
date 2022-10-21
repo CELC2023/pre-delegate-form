@@ -2,11 +2,13 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+import { usePreloadImage } from "../../hooks/usePreloadImage";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { selectFrenchCaseCompetition, selectLanguages, setActivityLanguage } from "../../redux/delegateReducer";
 import BooleanRadio from "../input/BooleanRadio";
 import MultiSelect from "../input/MultiSelect";
 import ProgressDots from "../ProgressDots";
+import { BadlandsUrl } from "../scenes/Badlands";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -49,6 +51,8 @@ const ActivityLanguage: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         name: 'french',
         label: t('text-french')
     }]
+
+    usePreloadImage(BadlandsUrl);
 
     return (
         <>

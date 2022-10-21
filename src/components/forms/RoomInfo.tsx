@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+import { usePreloadImage } from "../../hooks/usePreloadImage";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { selectRoomingAgreement, setRoomAgreement } from "../../redux/delegateReducer";
 import Checkbox from "../input/Checkbox";
 import ProgressDots from "../ProgressDots";
+import { PeaceBridgeUrl } from "../scenes/PeaceBridge";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
@@ -31,6 +33,8 @@ const RoomInfo: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
   const changeAcknowledge = (name: string, value: boolean) => {
     setAcknowledge(value)
   }
+
+  usePreloadImage(PeaceBridgeUrl);
 
   return (
     <>

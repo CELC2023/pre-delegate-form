@@ -1,13 +1,14 @@
 import React from "react";
 import { Trans, useTranslation } from "react-i18next";
-import UCalgary from "../../images/scenes/ucalgary.svg";
 import SceneFooter from "./SceneFooter";
+
+export const UCalgaryUrl = 'https://celcassets.cfes.ca/images/ucalgary.svg';
 
 export const UCalgaryScene: React.FC = () => {
   return (
     <div
       className="page-custom-scene"
-      style={{ backgroundImage: `url(${UCalgary})` }}
+      style={{ backgroundImage: `url(${UCalgaryUrl})` }}
     />
   );
 };

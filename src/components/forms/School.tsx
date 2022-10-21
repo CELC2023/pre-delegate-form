@@ -21,6 +21,8 @@ import {
   selectHeadDelegate,
 } from "../../redux/delegateReducer";
 import BooleanRadio from "../input/BooleanRadio";
+import { usePreloadImage } from "../../hooks/usePreloadImage";
+import { FarmlandUrl } from "../scenes/Farmland";
 
 const School: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
   interface SchoolForm {
@@ -42,6 +44,8 @@ const School: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
   });
 
   const { t } = useTranslation();
+
+  usePreloadImage(FarmlandUrl);
 
   const OptionComponent = (props: OptionProps) => {
     const optionData: any = props.data;
