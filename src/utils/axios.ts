@@ -6,7 +6,7 @@ const axiosDefaultHeaders: AxiosRequestHeaders = {
 }
 
 const axiosDefaultConfig: AxiosRequestConfig = {
-    timeout: 3000,
+    timeout: 30000,
     headers: axiosDefaultHeaders,
     baseURL: process.env.REACT_APP_CELC_API
 }

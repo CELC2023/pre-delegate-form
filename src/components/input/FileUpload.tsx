@@ -40,7 +40,6 @@ const FileUpload: React.FC<FileUploadProps> = ({
   const { getRootProps, getInputProps } = useDropzone({
     accept: accept,
     onDrop(acceptedFiles, fileRejections, event) {
-      console.log(acceptedFiles);
       setFile(acceptedFiles[0] || null);
       if (control) {
         onChange(acceptedFiles[0]);
