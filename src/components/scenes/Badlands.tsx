@@ -1,11 +1,12 @@
 import React from "react";
 import { Trans, useTranslation } from "react-i18next";
-import Badlands from "../../images/scenes/badlands.svg"
 import SceneFooter from "./SceneFooter";
+
+export const BadlandsUrl = 'https://celcassets.cfes.ca/images/badlands.svg';
 
 export const BadlandsScene: React.FC = () => {
     return (
-        <div className="page-custom-scene" style={{backgroundImage: `url(${Badlands})`}}>
+        <div className="page-custom-scene" style={{backgroundImage: `url(${BadlandsUrl})`}}>
         </div>
     )
 }

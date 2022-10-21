@@ -6,13 +6,13 @@
     user-select: none;
     align-items: center;
     padding: 0.25em 0;
-    &:hover {
-        .radio-option-container {
-           .radio-option-input {
-                background-color: rgba($color-red, 0.7); 
-           } 
-        } 
-    }
+    // &:hover {
+    //     .radio-option-container {
+    //        .radio-option-input {
+    //             background-color: rgba($color-red, 0.7); 
+    //        } 
+    //     } 
+    // }
     .radio-option-label {
         width: calc(100% - 2.25em);
     }
@@ -37,22 +37,22 @@
     &.disabled {
         cursor: not-allowed;
 
-        &:hover {
-            .radio-option-container {
-               .radio-option-input {
-                    background-color: transparent; 
-               } 
-            } 
-        }
+        // &:hover {
+        //     .radio-option-container {
+        //        .radio-option-input {
+        //             background-color: transparent; 
+        //        } 
+        //     } 
+        // }
 
         .radio-option-container {
             border-color: $color-grey-mid;
             .radio-option-input {
                 &.selected {
                     background-color: rgba($color-red, 0.7);
-                    &:hover {
-                        background-color: rgba($color-red, 0.7);
-                    }
+                    // &:hover {
+                    //     background-color: rgba($color-red, 0.7);
+                    // }
                 }
             }
         } 

@@ -1,11 +1,12 @@
 import React from "react";
 import { useTranslation, Trans } from "react-i18next";
-import NorthernLights from "../../images/scenes/northernlights.svg"
 import SceneFooter from "./SceneFooter";
+
+export const NorthernLightsUrl = 'https://celcassets.cfes.ca/images/northernlights.svg';
 
 export const NorthernLightsScene: React.FC = () => {
     return (
-        <div className="page-custom-scene" style={{backgroundImage: `url(${NorthernLights})`}}>
+        <div className="page-custom-scene" style={{backgroundImage: `url(${NorthernLightsUrl})`}}>
         </div>
     )
 }
