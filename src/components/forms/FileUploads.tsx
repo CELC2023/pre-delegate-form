@@ -56,34 +56,52 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    interface UploadResult {
-        resumeUrl: string,
-        headShotUrl: string
+    const uploadFiles = async (resume: File | null, headShot: File | null) => {
+        const headShotUrl = watch('headShotUrl');
+        const resumeUrl = watch('resumeUrl');
+        const fileUploads = [processHeadShot(headShot, headShotUrl), processResume(resume, resumeUrl)];
+        return await Promise.all(fileUploads);
     }
 
-    interface IUploadFiles {
-        (resume: File | null, headShot: File | null): Promise<UploadResult>
+    const processHeadShot = async (headShot: File | null, headShotUrl: string) => {
+        if(headShot === null) {
+            return ""
+        }
+        if(headShot.size === 0 && headShotUrl !== "") {
+            return headShotUrl;
+        }
+        await uploadFile(headShot, 'headShot').then((res) => {
+            if(res !== "") {
+                setValue("headShotUrl", res);
+                setValue("headShot", headShot.name);
+                setValue("headShotFile", new File([""], headShot.name))
+            }
+            return res
+        })
+        .catch(() => {
+            setValue("headShotFile", null);
+            setValue("headShot", "");
+        })
     }
 
-    const uploadFiles: IUploadFiles = async (resume, headShot) => {
-        var resumeUrl = watch('resumeUrl'), headShotUrl = watch('headShotUrl')
-        if(resume !== null) {
-            await uploadFile(resume, 'resume').then((res) => {
-                setValue("resumeUrl", res)
-                setValue("resume", resume.name)
+    const processResume = async (resume: File | null, resumeUrl: string) => {
+        if(resume === null) {
+            return ""
+        }
+        if(resume.size === 0 && resumeUrl !== "") {
+            return resumeUrl;
+        }
+        await uploadFile(resume, 'resume').then((res) => {
+            if(res !== "") {
+                setValue("resumeUrl", res);
+                setValue("resume", resume.name);
                 setValue("resumeFile", new File([""], resume.name))
-                resumeUrl = res
-            })
-        }
-        if(headShot !== null) {
-            await uploadFile(headShot, 'headShot').then((res) => {
-                setValue("headShotUrl", res)
-                setValue("headShot", headShot.name)
-                setValue("headShotFile", new File([""], headShot.name)) 
-                headShotUrl = res
-            })
-        }
-        return {resumeUrl, headShotUrl}
+            }
+            return res
+        }).catch(() => {
+            setValue("resumeFile", null);
+            setValue("resume", "");
+        })
     }
     
     const uploadFile = async (file: Blob, type: string) => {
@@ -94,8 +112,10 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         bodyFormData.append("lastName", delegateLastName)
         const res = axiosInstance.post("/delegate/file", bodyFormData)
         .then((r) => {return r.data.url})
-        .catch((e) => {return ""})
-        return res
+        .catch(() => {
+            return ""
+        })
+        return await res
     }
 
     const [triggerSubmit, setTriggerSubmit] = useState<boolean>(false);
@@ -129,9 +149,9 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             .then((res) => {
                 const values = {
                     headShot: watch('headShot'),
-                    headShotUrl: res.headShotUrl,
+                    headShotUrl: watch('headShotUrl'),
                     resume: watch('resume'),
-                    resumeUrl: res.resumeUrl,
+                    resumeUrl: watch('resumeUrl'),
                     linkedin: watch('linkedin'),
                     shareResume: watch('shareResume')
                 }
@@ -162,9 +182,9 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         uploadFiles(resumeFile, headShotFile).then((res) => {
             const values = {
                 headShot: watch('headShot'),
-                headShotUrl: res.headShotUrl,
+                headShotUrl: watch('headShotUrl'),
                 resume: watch('resume'),
-                resumeUrl: res.resumeUrl,
+                resumeUrl: watch('resumeUrl'),
                 linkedin: watch('linkedin'),
                 shareResume: watch('shareResume')
             }
