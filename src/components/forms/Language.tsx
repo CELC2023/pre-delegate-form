@@ -4,17 +4,32 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { usePreloadImage } from "../../hooks/usePreloadImage";
 import FormPageProps from "../../interfaces/FormPageProps";
-import { setLanguagePreference } from "../../redux/delegateReducer";
+import { setActivityLanguage, setLanguagePreference } from "../../redux/delegateReducer";
 import { blankHref } from "../../utils/constants";
 import { NorthernLightsUrl } from "../scenes/NorthernLights";
 
 const Language: React.FC<FormPageProps> = ({onComplete}) => {
     const dispatch = useDispatch();
-    
+  
+    const activityLanguageEnglish = {
+        frenchCaseCompetition: false,
+        languages: ['english']
+    }
+
+    const activityLanguageFrench = {
+        frenchCaseCompetition: true,
+        languages: ['french']
+    }
+
     const selectLanguage = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,lang: string) => {
         e.preventDefault();
         changeLanguage(lang);
         dispatch(setLanguagePreference(lang));
+        if(lang === 'en') {
+            dispatch(setActivityLanguage(activityLanguageEnglish));
+        } else if(lang === 'fr') {
+            dispatch(setActivityLanguage(activityLanguageFrench));
+        }
         onComplete();
     }
 

@@ -1,36 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Landing.scss";
 import Logo from "../images/logo-light.svg";
 import NextButton from "../images/next-button.svg";
 
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { FoothillsBandsScene } from "../components/scenes/Foothills";
-import Foothills from "../images/scenes/foothills.svg";
+import { FoothillsScene } from "../components/scenes/Foothills";
 
 const Landing: React.FC = () => {
     const {t} = useTranslation();
-
-    function preloadImage (src: string) {
-        return new Promise((resolve, reject) => {
-          const img = new Image()
-          img.onload = function() {
-            resolve(img)
-          }
-          img.onerror = img.onabort = function() {
-            reject(src)
-          }
-          img.src = src
-        })
-      }
-
-      useEffect(() => {
-        preloadImage(Foothills)
-      }, [])
-
     return (
         <div className="page-container landing-container">
-            <FoothillsBandsScene /> 
+            <FoothillsScene /> 
             <div className="welcome-container">
                 <div className="english-welcome welcome-text">
                     <p className="text-welcome">Welcome</p>

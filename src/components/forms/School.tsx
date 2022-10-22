@@ -20,7 +20,6 @@ import {
   selectCfesOfficer,
   selectHeadDelegate,
 } from "../../redux/delegateReducer";
-import BooleanRadio from "../input/BooleanRadio";
 import { usePreloadImage } from "../../hooks/usePreloadImage";
 import { FarmlandUrl } from "../scenes/Farmland";
 
@@ -113,8 +112,8 @@ const School: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
     const values: SchoolForm = {
       school: getValues("school") || null,
       headDelegate: getValues("headDelegate") || "",
-      position: getValues("isOfficer") ? ( getValues("position") || "" ) : "",
-      isOfficer: getValues("isOfficer") || false,
+      position: watch("school")?.uuid === "43868944-6627-488f-927c-c5a3a972edb4" ? ( getValues("position") || "" ) : "",
+      isOfficer: watch("school")?.uuid === "43868944-6627-488f-927c-c5a3a972edb4",
     };
 
     if (values.school !== null && values.headDelegate !== "") {
@@ -136,8 +135,8 @@ const School: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
     const values: SchoolForm = {
       school: getValues("school") || null,
       headDelegate: getValues("headDelegate") || "",
-      position: getValues("isOfficer") ? ( getValues("position") || "" ) : "",
-      isOfficer: getValues("isOfficer") || false,
+      position: watch("school")?.uuid === "43868944-6627-488f-927c-c5a3a972edb4" ? ( getValues("position") || "" ) : "",
+      isOfficer: watch("school")?.uuid === "43868944-6627-488f-927c-c5a3a972edb4",
     };
 
     dispatch(setSchoolInformation(values));
@@ -208,18 +207,12 @@ const School: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
             customOptionData={customOptionData}
             required={true}
           />
-          <BooleanRadio
-            name={"isOfficer"}
-            label={t("field-cfes-officer")}
-            required={true}
-            control={control}
-          />
-          {watch("isOfficer") && (
+          {watch("school")?.uuid === "43868944-6627-488f-927c-c5a3a972edb4" && (
             <TextInput
               name={"position"}
               label={t("text-cfes-position")}
               control={control}
-              required={watch("isOfficer")}
+              required={watch("school")?.uuid === "43868944-6627-488f-927c-c5a3a972edb4"}
               setErrors={setError}
               clearErrors={clearErrors}
             />

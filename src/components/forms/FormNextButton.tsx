@@ -5,7 +5,7 @@ import { blankHref } from "../../utils/constants";
 import IcomoonReact from "icomoon-react";
 import iconSet from "../../fonts/selection.json";
 
-const FormNextButton: React.FC<FormControlButtonProps> = ({onClick, isActive = true}) => {
+const FormNextButton: React.FC<FormControlButtonProps> = ({onClick, isActive = true, customText = ""}) => {
     const {t} = useTranslation();
 
     const onClickAction = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -16,7 +16,7 @@ const FormNextButton: React.FC<FormControlButtonProps> = ({onClick, isActive = t
     return (
         <div className="form-navigation-next-container">
             <a className="next-button" href={blankHref} onClick={onClickAction} >
-                <span>{t('text-next')}</span>
+                <span>{customText === "" ? t('text-next') : customText }</span>
                 <IcomoonReact className="next-button-icon" iconSet={iconSet} icon="next-button" />
             </a>
         </div>
