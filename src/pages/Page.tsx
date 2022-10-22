@@ -38,6 +38,7 @@ import Alert from "../components/Alert";
 import { useTranslation } from "react-i18next";
 import Review from "../components/forms/Review";
 import { UCalgaryFooter, UCalgaryScene } from "../components/scenes/UCalgary";
+import Complete from "../components/forms/Complete";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
@@ -153,6 +154,10 @@ const Page: React.FC = () => {
         Footer: BadlandsFooter
     }, {
         Form: Review,
+        Scene: BadlandsScene,
+        Footer: BadlandsFooter
+    }, {
+        Form: Complete,
         Scene: UCalgaryScene,
         Footer: UCalgaryFooter
     }]

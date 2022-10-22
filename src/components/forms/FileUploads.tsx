@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
-import { selectDelegateData, selectFirstName, selectHeadShot, selectHeadShotUrl, selectLastName, selectLinkedin, selectResume, selectResumeUrl, selectShareResume, setFileUploads } from "../../redux/delegateReducer";
+import { selectFirstName, selectHeadShot, selectHeadShotUrl, selectLastName, selectLinkedin, selectResume, selectResumeUrl, selectShareResume, setFileUploads } from "../../redux/delegateReducer";
 import axiosInstance from "../../utils/axios";
 import Checkbox from "../input/Checkbox";
 import FileUpload from "../input/FileUpload";
@@ -16,7 +16,6 @@ import ResumeIcon from "../../images/resume-red.svg";
 import ProgressDots from "../ProgressDots";
 import Loader from "../../images/loader.gif";
 import "./FileUploads.scss";
-import { parseDelegateData } from "../../utils/datautils";
 import { usePreloadImage } from "../../hooks/usePreloadImage";
 import { UCalgaryUrl } from "../scenes/UCalgary";
 
@@ -39,7 +38,6 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const defaultHeadShot = useSelector(selectHeadShot);
     const delegateFirstName = useSelector(selectFirstName);
     const delegateLastName = useSelector(selectLastName);
-    const formData = useSelector(selectDelegateData);
 
     const defaultValues: FileUploadsForm = {
         resume: useSelector(selectResume),
@@ -118,23 +116,6 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         return await res
     }
 
-    const [triggerSubmit, setTriggerSubmit] = useState<boolean>(false);
-    
-    useEffect(() => {
-        if(triggerSubmit === true) {
-             axiosInstance.post('/delegate/', parseDelegateData(formData))
-            .then(() => {
-                setIsLoading(false)
-                onComplete && onComplete();
-            })
-            .catch((err) => {
-                setIsLoading(false)
-                console.error(err)
-            })
-            setTriggerSubmit(false)
-        }
-    }, [formData, onComplete, triggerSubmit])
-
     const onNext = () => {
         const resumeFile = watch('resumeFile');
         const headShotFile = watch('headShotFile');
@@ -156,7 +137,8 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                     shareResume: watch('shareResume')
                 }
                 dispatch(setFileUploads(values))
-                setTriggerSubmit(true)
+                setIsLoading(false)
+                onComplete && onComplete();
             })
         } else if(watch('resumeUrl') !== "" && watch("headShotUrl") !== "") {
             const values = {
@@ -167,9 +149,8 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 linkedin: watch('linkedin'),
                 shareResume: watch('shareResume')
             }
-            setIsLoading(true)
             dispatch(setFileUploads(values))
-            setTriggerSubmit(true)
+            onComplete && onComplete();
         }
 
     }

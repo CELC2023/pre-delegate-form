@@ -3,18 +3,10 @@ import { useTranslation, Trans } from "react-i18next";
 import SceneFooter from "./SceneFooter";
 
 export const FoothillsUrl = 'https://celcassets.cfes.ca/images/foothills.svg';
-export const FoothillsBandsUrl = 'https://celcassets.cfes.ca/images/foothills-bands.svg';
 
 export const FoothillsScene: React.FC = () => {
     return (
         <div className="page-custom-scene" style={{backgroundImage: `url(${FoothillsUrl})`}}>
-        </div>
-    )
-}
-
-export const FoothillsBandsScene: React.FC = () => {
-    return (
-        <div className="page-custom-scene" style={{backgroundImage: `url(${FoothillsBandsUrl})`}}>
         </div>
     )
 }

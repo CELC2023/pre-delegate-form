@@ -1,8 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
-import { selectStream, setStream } from "../../redux/delegateReducer";
 import StreamSelectionButton from "../input/StreamSelectionButton";
 import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
@@ -12,7 +10,6 @@ import FormPreviousButton from "./FormPreviousButton";
 const StreamSelection: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
     const {t} = useTranslation();
-    const dispatch = useDispatch();
 
     const streams = [
         {
@@ -38,7 +35,7 @@ const StreamSelection: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         onBack && onBack();
     }
 
-    const selectedStream = useSelector(selectStream);
+    const selectedStream = '';
 
     const onNext = () => {
         if(selectedStream !== '') {
@@ -47,7 +44,6 @@ const StreamSelection: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     }
 
     const onSelectStream = (uuid: string) => {
-       dispatch(setStream(uuid))
     }
 
     return (

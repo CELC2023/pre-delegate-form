@@ -15,7 +15,8 @@ export interface delegateDataModel {
     major: string,
     minor: string,
     travelMethod: string,
-    arrivalTime: string, 
+    arrivalTime: string,
+    arrivalDate: string, 
     flightNumber: string,
     school: string,
     emergencyContactName: string,
@@ -46,4 +47,5 @@ export interface delegateDataModel {
     socialActivity: string,
     mosqueTrip: boolean,
     shirtSize: string,
+    feedback: string,
 }

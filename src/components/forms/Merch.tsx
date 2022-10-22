@@ -69,7 +69,7 @@ const Merch: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <FormContent>
                 <h2>{t("text-personal")}</h2>
                 <p>{t('text-tshirt')}</p>
-                <Autocomplete name="shirtSize" label={t('field-tshirt-size')} control={control} options={shirtSizes} />
+                <Autocomplete name="shirtSize" label={t('field-tshirt-size')} control={control} options={shirtSizes} required={true} />
                 <p>{t('text-extra-merch')}</p>
             </FormContent>
             <FormNextButton onClick={onNext} />

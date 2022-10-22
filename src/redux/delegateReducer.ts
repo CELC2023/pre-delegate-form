@@ -19,10 +19,10 @@ export interface delegateSliceInterface {
     yearOfStudy: number,
     major: Major | null,
     minor: string,
-    stream: string,
     travelMethod: string,
     parkingPass: boolean,
     arrivalTime: string,
+    arrivalDate: string,
     flightNumber: string,
     school: SchoolOptionData | null,
     emergencyContactName: string,
@@ -56,6 +56,7 @@ export interface delegateSliceInterface {
     socialActivity: string,
     mosqueTrip: boolean | null,
     shirtSize: ShirtSize | null,
+    feedback: string,
 }
 
 const initialState: delegateSliceInterface = {
@@ -74,10 +75,10 @@ const initialState: delegateSliceInterface = {
     yearOfStudy: 1,
     major: null,
     minor: '',
-    stream: '',
     travelMethod: '',
     parkingPass: false,
     arrivalTime: '',
+    arrivalDate: '',
     flightNumber: '',
     school: null,
     emergencyContactName: '',
@@ -111,6 +112,7 @@ const initialState: delegateSliceInterface = {
     socialActivity: '',
     mosqueTrip: null,
     shirtSize: null,
+    feedback: '',
 }
 
 export const delegateSlice = createSlice({
@@ -147,13 +149,11 @@ export const delegateSlice = createSlice({
             state.minor = action.payload.minor;
             state.yearOfStudy = action.payload.yearOfStudy;
         },
-        setStream: (state, action) => {
-            state.stream = action.payload;
-        },
         setTravelInformation: (state, action) => {
             state.travelMethod = action.payload.travelMethod;
             state.arrivalTime = action.payload.arrivalTime;
             state.flightNumber = action.payload.flightNumber;
+            state.arrivalDate = action.payload.arrivalDate;
         },
         setEmergencyContact: (state, action) => {
             state.emergencyContactName = action.payload.name;
@@ -216,11 +216,14 @@ export const delegateSlice = createSlice({
         },
         setShirtSize: (state, action) => {
             state.shirtSize = action.payload.shirtSize;
+        },
+        setFeedback: (state, action) => {
+            state.feedback = action.payload.feedback;
         }
     }
 })
 
-export const { setDietaryRestrictions, setLanguagePreference, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setStream, setTravelInformation, setEmergencyContact, setRoomAgreement, setMedicalInformation, setAccessibilityNeeds, setRoomNoise, setRoomAlcohol, setRoomRequests, setGenders, setRoomingGenders, setActivityLanguage, setSingleRoom, setFileUploads, setSocialActivity, setMosqueTrip, setContactInformation, setShirtSize } = delegateSlice.actions;
+export const { setDietaryRestrictions, setLanguagePreference, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setTravelInformation, setEmergencyContact, setRoomAgreement, setMedicalInformation, setAccessibilityNeeds, setRoomNoise, setRoomAlcohol, setRoomRequests, setGenders, setRoomingGenders, setActivityLanguage, setSingleRoom, setFileUploads, setSocialActivity, setMosqueTrip, setContactInformation, setShirtSize, setFeedback } = delegateSlice.actions;
 
 // selectors
 export const selectEmail = (state: {delegate: {email: string}}) => state.delegate.email;
@@ -241,7 +244,7 @@ export const selectHeadDelegate = (state: {delegate: { headDelegate: string}}) =
 export const selectDegreeMajor = (state: {delegate: { major: Major}}) => state.delegate.major;
 export const selectDegreeMinor = (state: {delegate: { minor: string}}) => state.delegate.minor;
 export const selectDegreeYear = (state: {delegate: { yearOfStudy: number}}) => state.delegate.yearOfStudy;
-export const selectStream = (state: {delegate: { stream: string}}) => state.delegate.stream;
+export const selectArrivalDate = (state: {delegate: { arrivalDate: string}}) => state.delegate.arrivalDate;
 export const selectArrivalTime = (state: {delegate: { arrivalTime: string}}) => state.delegate.arrivalTime;
 export const selectDepartureTime = (state: {delegate: { departureTime: string}}) => state.delegate.departureTime;
 export const selectFlightNumber = (state: {delegate: { flightNumber: string}}) => state.delegate.flightNumber;
@@ -274,5 +277,6 @@ export const selectDelegateData = (state: {delegate: delegateSliceInterface}) =>
 export const selectSocialActivity = (state: {delegate: {socialActivity: string}}) => state.delegate.socialActivity;
 export const selectMosqueTrip = (state: {delegate: {mosqueTrip: boolean}}) => state.delegate.mosqueTrip;
 export const selectShirtSize = (state: {delegate: {shirtSize: ShirtSize}}) => state.delegate.shirtSize;
+export const selectFeedback = (state: {delegate: {feedback: string}}) => state.delegate.feedback;
 
 export default delegateSlice.reducer;
