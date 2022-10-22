@@ -48,10 +48,8 @@ const TravelInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         }
 
         if(values.travelMethod !== "" && values.arrivalTime !== "" && values.arrivalDate !== "") {
-            if((values.travelMethod === 'fly' && values.flightNumber !== "") || values.travelMethod === 'drive') {
-                dispatch(setTravelInformation(values))
-                onComplete && onComplete();
-            }
+            dispatch(setTravelInformation(values))
+            onComplete && onComplete();
         }
     }
 
@@ -76,7 +74,7 @@ const TravelInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <OptionRadio name="travelMethod" label={t('field-transport')} control={control} options={options} value={watch('travelMethod')} required={true} />
                 {
                     watch('travelMethod') === 'fly' &&
-                    <TextInput name="flightNumber" label={t('field-flight-number')} control={control} required={true} />
+                    <TextInput name="flightNumber" label={t('field-flight-number')} control={control} />
                 }
                 <p>{t('text-local-time')}</p>
                 <TextInput name="arrivalDate" label={t('field-arrival-date')} control={control} type={'date'} setErrors={setError} clearErrors={clearErrors}  /> 

@@ -24,6 +24,9 @@ const DegreeInformation: React.FC<FormPageProps> = ({onComplete, onBack}) => {
     const {t} = useTranslation();
 
     const majors = [{
+        name: "aerospace",
+        label: t('option-major-aerospace')
+    },{
         name: 'biomed',
         label: t('option-major-biomed')
     },{
@@ -33,23 +36,47 @@ const DegreeInformation: React.FC<FormPageProps> = ({onComplete, onBack}) => {
         value: 'civil',
         label: t('option-major-civil')
     },{
+        value: 'comp',
+        label: t('option-major-comp')
+    },{
         value: 'elec',
         label: t('option-major-elec') 
+    },{
+        value: 'engphys',
+        label: t('option-major-engphys')
     },{
         value: 'enviro',
         label: t('option-major-enviro')
     },{
+        value: 'general',
+        label: t('option-major-general')
+    },{
         value: 'geo',
         label: t('option-major-geo') 
+    },{
+        value: 'industrial',
+        label: t('option-major-industrial')
+    },{
+        value: 'manufacturing',
+        label: t('option-major-manufacturing')
     },{
         value: 'mech',
         label: t('option-major-mech')
     },{
+        value: 'mechatronics',
+        label: t('option-major-mechatronics')
+    },{
+        value: 'navala',
+        label: t('option-major-navala')
+    },{
+        value: 'process',
+        label: t('option-major-process')
+    },{
         value: 'soft',
         label: t('option-major-soft') 
     },{
-        value: 'comp',
-        label: t('option-major-comp')
+        value: 'sust-design',
+        label: t('option-major-sust-design')
     },{
         value: 'other',
         label: t('option-other') 
