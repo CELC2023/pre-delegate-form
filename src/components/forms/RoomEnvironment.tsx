@@ -37,6 +37,9 @@ const RoomEnvironment: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     }, {
         name: 'loud',
         label: t('option-noise-loud')
+    }, {
+        name:' prefer-not-to-say',
+        label: t('option-prefer-not-to-say')
     }]
 
     const onChangeEnvironment = (name: string) => {
