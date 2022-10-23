@@ -61,6 +61,9 @@ const DietaryRestrictions: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         name: 'halal',
         label: t('option-dietary-halal')
     }, {
+        name: 'dairy-free',
+        label: t('option-dietary-dairy')
+    }, {
         name: 'gluten-free',
         label: t('option-dietary-gluten')
     }, {

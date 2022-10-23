@@ -53,7 +53,6 @@ export const parseDelegateData = (
   const schoolName = data.school ? data.school.label : "";
   const major = data.major ? data.major.value : "";
   const singleRoom = data.singleRoom === null ? false : data.singleRoom;
-  const mosqueTrip = data.mosqueTrip === null ? false : data.mosqueTrip;
   const shirtSize = data.shirtSize ? data.shirtSize.value : "";
   return {
     language,
@@ -102,7 +101,6 @@ export const parseDelegateData = (
     schoolName,
     major,
     socialActivity,
-    mosqueTrip,
     shirtSize,
     feedback,
   };

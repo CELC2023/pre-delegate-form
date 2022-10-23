@@ -45,7 +45,6 @@ export interface delegateDataModel {
     shareResume: boolean,
     schoolName: string,
     socialActivity: string,
-    mosqueTrip: boolean,
     shirtSize: string,
     feedback: string,
 }

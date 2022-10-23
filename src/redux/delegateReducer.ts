@@ -54,7 +54,6 @@ export interface delegateSliceInterface {
     shareResume: boolean,
     comments: string,
     socialActivity: string,
-    mosqueTrip: boolean | null,
     shirtSize: ShirtSize | null,
     feedback: string,
 }
@@ -110,7 +109,6 @@ const initialState: delegateSliceInterface = {
     shareResume: false,
     comments: '',
     socialActivity: '',
-    mosqueTrip: null,
     shirtSize: null,
     feedback: '',
 }
@@ -205,9 +203,6 @@ export const delegateSlice = createSlice({
         setSocialActivity: (state, action) => {
             state.socialActivity = action.payload.socialActivity;
         },
-        setMosqueTrip: (state, action) => {
-            state.mosqueTrip = action.payload.mosqueTrip;
-        },
         setContactInformation: (state, action) => {
             state.phone = action.payload.phone;
             state.dateOfBirth = action.payload.dateOfBirth;
@@ -223,7 +218,7 @@ export const delegateSlice = createSlice({
     }
 })
 
-export const { setDietaryRestrictions, setLanguagePreference, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setTravelInformation, setEmergencyContact, setRoomAgreement, setMedicalInformation, setAccessibilityNeeds, setRoomNoise, setRoomAlcohol, setRoomRequests, setGenders, setRoomingGenders, setActivityLanguage, setSingleRoom, setFileUploads, setSocialActivity, setMosqueTrip, setContactInformation, setShirtSize, setFeedback } = delegateSlice.actions;
+export const { setDietaryRestrictions, setLanguagePreference, setLanguagesPreference, setPersonalInformation, setSchoolInformation, setDegreeInformation, setTravelInformation, setEmergencyContact, setRoomAgreement, setMedicalInformation, setAccessibilityNeeds, setRoomNoise, setRoomAlcohol, setRoomRequests, setGenders, setRoomingGenders, setActivityLanguage, setSingleRoom, setFileUploads, setSocialActivity, setContactInformation, setShirtSize, setFeedback } = delegateSlice.actions;
 
 // selectors
 export const selectEmail = (state: {delegate: {email: string}}) => state.delegate.email;
@@ -275,7 +270,6 @@ export const selectLinkedin = (state: {delegate: { linkedin: string }}) => state
 export const selectDiscord = (state: {delegate: { discord: string }}) => state.delegate.discord;
 export const selectDelegateData = (state: {delegate: delegateSliceInterface}) => state.delegate;
 export const selectSocialActivity = (state: {delegate: {socialActivity: string}}) => state.delegate.socialActivity;
-export const selectMosqueTrip = (state: {delegate: {mosqueTrip: boolean}}) => state.delegate.mosqueTrip;
 export const selectShirtSize = (state: {delegate: {shirtSize: ShirtSize}}) => state.delegate.shirtSize;
 export const selectFeedback = (state: {delegate: {feedback: string}}) => state.delegate.feedback;
 

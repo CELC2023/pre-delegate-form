@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
 import { selectDelegateData, selectFeedback, setFeedback } from "../../redux/delegateReducer";
@@ -67,7 +67,7 @@ const Review: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             }
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
-                <h2>{t('text-deedback')}</h2>
+                <h2>{t('text-feedback')}</h2>
                 <Textarea name="feedback" control={control} />
             </FormContent>
             <FormNextButton onClick={onNext} customText={t('text-submit')} />

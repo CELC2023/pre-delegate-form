@@ -13,42 +13,51 @@ import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
 
 const ShirtSizeGuide: React.FC = () => {
+  const {t} = useTranslation();
+
   return (
     <div>
       <table>
         <tbody>
           <tr className="table--header">
-            <td>Sizes</td>
-            <td>Width (CM)</td>
-            <td>Length (CM)</td>
+            <td>{t('text-shirt-sizes')}</td>
+            <td>{t('text-body-length')}</td>
+            <td>{t('text-body-width')}</td>
+            <td>{t('text-sleeve-length')}</td>
           </tr>
           <tr>
-            <td>S</td>
-            <td>46</td>
-            <td>71</td>
+            <td>{t('option-size-small')}</td>
+            <td>28</td>
+            <td>18</td>
+            <td>15.62</td>
           </tr>
           <tr>
-            <td>M</td>
-            <td>51</td>
-            <td>74</td>
+            <td>{t('option-size-medium')}</td>
+            <td>29</td>
+            <td>20</td>
+            <td>17</td>
           </tr>
           <tr>
-            <td>L</td>
-            <td>56</td>
-            <td>76</td>
+            <td>{t('option-size-large')}</td>
+            <td>30</td>
+            <td>22</td>
+            <td>18.5</td>
           </tr>
           <tr>
-            <td>XL</td>
-            <td>61</td>
-            <td>79</td>
+            <td>{t('option-size-extra-large')}</td>
+            <td>32</td>
+            <td>26</td>
+            <td>21.5</td>
           </tr>
           <tr>
-            <td>2XL</td>
-            <td>66</td>
-            <td>81</td>
+            <td>{t('option-size-2-large')}</td>
+            <td>33</td>
+            <td>28</td>
+            <td>21.5</td>
           </tr>
         </tbody>
       </table>
+      <p>{t('text-measurements-inches')}</p>
     </div>
   );
 };
@@ -110,7 +119,7 @@ const Merch: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
     <>
       {showSizeGuide && (
         <Alert
-          text={t("text-shirt-guide")}
+          title={t("text-shirt-guide")}
           AlertBody={ShirtSizeGuide}
           disableNo={true}
           yesText={"Close"}
