@@ -32,13 +32,13 @@ const RoomEnvironment: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         name: 'quiet',
         label: t('option-noise-quiet')
     }, {
-        name: 'medium',
+        name: 'moderate',
         label: t('option-noise-medium')
     }, {
         name: 'loud',
         label: t('option-noise-loud')
     }, {
-        name:' prefer-not-to-say',
+        name: 'prefer-not-to-say',
         label: t('option-prefer-not-to-say')
     }]
 

@@ -42,15 +42,17 @@ const RoomInfo: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
       <FormContent>
         <ProgressDots steps={5} current={3} />
         <h2>{t("text-rooming-questionnaire")}</h2>
+        <p>{t('text-rooming-instructions')}</p>
         <p>
           <Trans
-            i18nKey={"text-shared-beds"}
+            i18nKey={"text-rooming-description"}
             components={[
               <strong className="bold" />,
               <strong className="bold" />,
             ]}
           ></Trans>
         </p>
+        <p>{t('text-rooming-attempt')}</p>
         <Checkbox name="sharedBeds" label={t('option-yes')} value={acknowledge} onChange={changeAcknowledge} required={true} />
       </FormContent>
       <FormNextButton onClick={onNext} isActive={acknowledge} />

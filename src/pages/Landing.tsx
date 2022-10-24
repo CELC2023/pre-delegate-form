@@ -27,7 +27,7 @@ const Landing: React.FC = () => {
             <img className="logo" src={Logo} alt="" />
             <div className="begin-container">
                 <Link to={'/delegate'} className="start-button" tabIndex={1}>
-                    <span>{t('text-start', {lng: 'en'} )} | {t('text-start', {lng: 'fr'} )}</span>
+                    <span className="start-text">{t('text-start', {lng: 'en'} )} | {t('text-start', {lng: 'fr'} )}</span>
                     <img className="next-button-icon" src={NextButton} alt="" />
                 </Link>
             </div>

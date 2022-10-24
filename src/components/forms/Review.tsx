@@ -68,7 +68,7 @@ const Review: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
                 <h2>{t('text-feedback')}</h2>
-                <Textarea name="feedback" control={control} />
+                <Textarea name="feedback" label={t('info-enter-text')} control={control} />
             </FormContent>
             <FormNextButton onClick={onNext} customText={t('text-submit')} />
         </>

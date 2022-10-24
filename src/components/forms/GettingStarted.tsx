@@ -27,7 +27,7 @@ const GettingStarted: React.FC<FormPageProps> = ({onComplete}) => {
         text: t("text-resume-upload")
     }, {
         id: 'time',
-        icon: <p>25</p>,
+        icon: <p>18</p>,
         text: t("text-minutes-complete")
     }, {
         id: 'flight',

@@ -38,6 +38,7 @@ import { useTranslation } from "react-i18next";
 import Review from "../components/forms/Review";
 import { UCalgaryFooter, UCalgaryScene } from "../components/scenes/UCalgary";
 import Complete from "../components/forms/Complete";
+import BedGender from "../components/forms/BedGender";
 
 export interface FormConfig {
     Form: React.FC<FormPageProps>,
@@ -121,6 +122,10 @@ const Page: React.FC = () => {
         Footer: FarmlandFooter
     }, {
         Form: RoomGender,
+        Scene: FarmlandScene,
+        Footer: FarmlandFooter
+    }, {
+        Form: BedGender,
         Scene: FarmlandScene,
         Footer: FarmlandFooter
     }, {
