@@ -47,7 +47,7 @@ const TravelInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
             arrivalDate: watch('arrivalDate'),
         }
 
-        if(values.travelMethod !== "" && values.arrivalTime !== "" && values.arrivalDate !== "") {
+        if(values.travelMethod !== "") {
             dispatch(setTravelInformation(values))
             onComplete && onComplete();
         }
@@ -78,7 +78,7 @@ const TravelInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 }
                 <p>{t('text-local-time')}</p>
                 <TextInput name="arrivalDate" label={t('field-arrival-date')} control={control} type={'date'} setErrors={setError} clearErrors={clearErrors}  /> 
-                <TextInput name="arrivalTime" label={t('field-arrival-time')} control={control} type={'time'} setErrors={setError} clearErrors={clearErrors} required={true} />
+                <TextInput name="arrivalTime" label={t('field-arrival-time')} control={control} type={'time'} setErrors={setError} clearErrors={clearErrors} />
             </FormContent>
             <FormNextButton onClick={onNext} />
         </>
