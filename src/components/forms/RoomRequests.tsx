@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import FormPageProps from "../../interfaces/FormPageProps";
-import { selectRoomBlocks, selectRoomRequests, setRoomRequests } from "../../redux/delegateReducer";
+import { selectRoomRequests, setRoomRequests } from "../../redux/delegateReducer";
 import Textarea from "../input/Textarea";
 import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
@@ -16,12 +16,10 @@ const RoomRequests: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     
     interface RoomRequestsForm {
         roomRequests: string,
-        roomBlock: string
     }
 
     const defaultValues: RoomRequestsForm = {
-        roomRequests: useSelector(selectRoomRequests) || '',
-        roomBlock: useSelector(selectRoomBlocks) || ''
+        roomRequests: useSelector(selectRoomRequests) || ''
     }
 
     const {control, watch} = useForm({defaultValues: defaultValues})
@@ -29,7 +27,6 @@ const RoomRequests: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const onNext = () => {
         const values = {
             requests: watch('roomRequests'),
-            block: watch('roomBlock') 
         }
         dispatch(setRoomRequests(values))
         onComplete && onComplete();
@@ -38,7 +35,6 @@ const RoomRequests: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const onPrevious = () => {
         const values = {
             requests: watch('roomRequests'),
-            block: watch('roomBlock') 
         }
         dispatch(setRoomRequests(values))
         onBack && onBack();
@@ -52,8 +48,6 @@ const RoomRequests: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <h2>{t('text-rooming-questionnaire')}</h2>
                 <p>{t('text-room-requests')}</p>
                 <Textarea name="roomRequests" label={t('info-enter-text')} control={control} />
-                <p>{t('text-room-block')}</p>
-                <Textarea name="roomBlock" label={t('info-enter-text')} control={control} />
             </FormContent>
             <FormNextButton onClick={onNext} />
         </>

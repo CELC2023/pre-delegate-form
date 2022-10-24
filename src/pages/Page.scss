@@ -20,6 +20,7 @@
         height: 750px;
         z-index: 2;
         overflow-y: auto;
+        overflow-x: hidden;
 
         &.full-page-form-adapter {
             width: 90%;

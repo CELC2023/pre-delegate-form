@@ -1,0 +1,11 @@
+@import "../../styles/colors.scss";
+
+.info-page-container {
+    .late-fee {
+        background-color: $color-blue-mid;
+        color: $color-white;
+        padding: 1em;
+        border-radius: 8px;
+        text-transform: uppercase;
+    }
+}

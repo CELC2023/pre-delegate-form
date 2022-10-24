@@ -122,7 +122,7 @@ const Merch: React.FC<FormPageProps> = ({ onBack, onComplete }) => {
           title={t("text-shirt-guide")}
           AlertBody={ShirtSizeGuide}
           disableNo={true}
-          yesText={"Close"}
+          yesText={t('text-close')}
           onYes={() => setShowSizeGuide(false)}
         />
       )}
