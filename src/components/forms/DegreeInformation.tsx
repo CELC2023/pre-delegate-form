@@ -24,10 +24,10 @@ const DegreeInformation: React.FC<FormPageProps> = ({onComplete, onBack}) => {
     const {t} = useTranslation();
 
     const majors = [{
-        name: "aerospace",
+        value: "aerospace",
         label: t('option-major-aerospace')
     },{
-        name: 'biomed',
+        value: 'biomed',
         label: t('option-major-biomed')
     },{
         value: 'chem',

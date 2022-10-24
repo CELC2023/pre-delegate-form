@@ -18,6 +18,7 @@ import Loader from "../../images/loader.gif";
 import "./FileUploads.scss";
 import { usePreloadImage } from "../../hooks/usePreloadImage";
 import { UCalgaryUrl } from "../scenes/UCalgary";
+import Alert from "../Alert";
 
 const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {t} = useTranslation();
@@ -53,6 +54,11 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {control, watch, setValue} = useForm({defaultValues: defaultValues});
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isError, setIsError] = useState<boolean>(false);
+
+    const setAPIError = () => {
+        setIsError(true);
+    }
 
     const uploadFiles = async (resume: File | null, headShot: File | null) => {
         const headShotUrl = watch('headShotUrl');
@@ -79,6 +85,7 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         .catch(() => {
             setValue("headShotFile", null);
             setValue("headShot", "");
+            setAPIError();
         })
     }
 
@@ -99,6 +106,7 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         }).catch(() => {
             setValue("resumeFile", null);
             setValue("resume", "");
+            setAPIError();
         })
     }
     
@@ -111,6 +119,7 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         const res = axiosInstance.post("/delegate/file", bodyFormData)
         .then((r) => {return r.data.url})
         .catch(() => {
+            setAPIError();
             return ""
         })
         return await res
@@ -136,9 +145,14 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                     linkedin: watch('linkedin'),
                     shareResume: watch('shareResume')
                 }
-                dispatch(setFileUploads(values))
-                setIsLoading(false)
-                onComplete && onComplete();
+                if(values.resumeUrl !== "" && values.headShotUrl !== "") {
+                    dispatch(setFileUploads(values));
+                    setIsLoading(false);
+                    onComplete && onComplete();
+                } else {
+                    setIsLoading(false);
+                    setIsError(true);
+                }
             })
         } else if(watch('resumeUrl') !== "" && watch("headShotUrl") !== "") {
             const values = {
@@ -184,6 +198,10 @@ const FileUploads: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <div className="loading" >
                     <img alt="" src={Loader} className="loader-image" />
                 </div>
+            }
+            {
+                isError &&
+                <Alert text={t('text-file-error')} disableNo={true} yesText={t('text-close')} onYes={() => {setIsError(false)}} />
             }
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>

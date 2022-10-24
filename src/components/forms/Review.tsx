@@ -11,6 +11,7 @@ import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
 import FormPreviousButton from "./FormPreviousButton";
 import Loader from "../../images/loader.gif";
+import Alert from "../Alert";
 
 const Review: React.FC<FormPageProps> = ({onBack, onComplete}) => {
 
@@ -30,6 +31,7 @@ const Review: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {control, watch} = useForm({defaultValues: defaultValues});
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isError, setIsError] = useState<boolean>(false);
 
     const onNext = () => {
         const values: ReviewFormProps = {
@@ -44,7 +46,8 @@ const Review: React.FC<FormPageProps> = ({onBack, onComplete}) => {
         })
         .catch((err) => {
             setIsLoading(false);
-            console.error(err);
+            setIsError(true);
+            console.error(err)
         })
     }
 
@@ -64,6 +67,10 @@ const Review: React.FC<FormPageProps> = ({onBack, onComplete}) => {
                 <div className="loading" >
                     <img alt="" src={Loader} className="loader-image" />
                 </div>
+            }
+            {
+                isError &&
+                <Alert text={t('text-submit-error')} disableNo={true} yesText={t('text-close')} onYes={() => {setIsError(false)}} />
             }
             <FormPreviousButton onClick={onPrevious} />
             <FormContent>
