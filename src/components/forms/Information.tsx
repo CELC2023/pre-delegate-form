@@ -18,7 +18,7 @@ const Information: React.FC<FormPageProps> = ({onComplete}) => {
    
     const isLate = (): boolean => {
         const date = new Date();
-        const deadline = new Date(1669100400000);
+        const deadline = new Date(1667631600);
         if(date.getTime() > deadline.getTime()) {
             return true;
         }
