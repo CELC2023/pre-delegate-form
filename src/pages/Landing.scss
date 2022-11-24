@@ -64,6 +64,23 @@
         }
     }
 
+    .registration-closed-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 15%;
+        font-size: 2em;
+        text-align: center;
+        margin-top: auto;
+        margin-bottom: 1em;
+        color: $color-white;
+        >p {
+            font-style: italic;
+            padding-top: 0.5em;
+            z-index: 3;
+        }
+    }
+
     .begin-container {
         font-style: italic;
         font-size: 1.5em;

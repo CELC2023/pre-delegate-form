@@ -1,9 +1,5 @@
 import React from "react";
 import "./Landing.scss";
-import Logo from "../images/logo-light.svg";
-import NextButton from "../images/next-button.svg";
-
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FoothillsScene } from "../components/scenes/Foothills";
 
@@ -24,12 +20,9 @@ const Landing: React.FC = () => {
                     <p className="text-portal">portail d'inscription CCLI</p>
                 </div>
             </div>
-            <img className="logo" src={Logo} alt="" />
-            <div className="begin-container">
-                <Link to={'/delegate'} className="start-button" tabIndex={1}>
-                    <span className="start-text">{t('text-start', {lng: 'en'} )} | {t('text-start', {lng: 'fr'} )}</span>
-                    <img className="next-button-icon" src={NextButton} alt="" />
-                </Link>
+            <div className="registration-closed-container">
+                <p>REGISTRATION IS NOW CLOSED!</p>
+                <p>Les inscriptions sont maintenant terminées!</p>
             </div>
         </div>
     )
