@@ -5,6 +5,7 @@ import Landing from './pages/Landing';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import CompleteForm from './pages/CompleteForm';
 import ReactGA from 'react-ga';
+import CheckIn from './pages/CheckIn';
 
 const App: React.FC = () => {
 
@@ -16,6 +17,7 @@ const App: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Landing />} />
+        <Route path='/checkin' element={<CheckIn />} />
         <Route path='/delegate' element={<Page />} />
         <Route path='/delegate/complete' element={<CompleteForm />} />
         <Route path="/*" element={<Navigate to="/" replace />} />

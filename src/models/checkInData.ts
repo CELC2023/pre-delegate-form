@@ -1,0 +1,17 @@
+export interface checkInDataModel {
+    language: string,
+    email: string,
+    phone: string,
+    firstName: string,
+    lastName: string,
+    mediaRelease: boolean,
+    liabilityWaiver: boolean,
+    idCheck: boolean,
+    schoolId: string,
+    schoolName: string,
+    arrivalDate: string,
+    dateOfBirth: string,
+    pronouns: string,
+    roomId: number,
+    roomMates: string,
+}

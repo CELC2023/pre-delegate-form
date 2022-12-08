@@ -1,8 +1,8 @@
 import {configureStore } from '@reduxjs/toolkit'
-import delegateReducer from './delegateReducer'
+import checkInReducer from './checkInReducer'
 
 export const store = configureStore({
     reducer: {
-        delegate: delegateReducer,
+        checkIn: checkInReducer,
     }
 })
