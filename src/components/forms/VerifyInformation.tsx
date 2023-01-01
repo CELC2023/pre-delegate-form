@@ -1,23 +1,27 @@
-import { collection, documentId, onSnapshot, query, QuerySnapshot, where } from "firebase/firestore";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { db } from "../../firebase/firebase";
 import FormPageProps from "../../interfaces/FormPageProps";
-import { selectEmail, selectFirstName, selectLastName, selectPhone } from "../../redux/checkInReducer";
-import { blankHref } from "../../utils/constants";
-import BooleanRadio from "../input/BooleanRadio";
+import { selectChanges, selectEmail, selectFirstName, selectLastName, selectPhone, setInformationChange } from "../../redux/checkInReducer";
 import Textarea from "../input/Textarea";
-import TextInput from "../input/TextInput";
 import ProgressDots from "../ProgressDots";
 import FormContent from "./FormContent";
 import FormNextButton from "./FormNextButton";
-import FormPreviousButton from "./FormPreviousButton";
 
 const VerifyInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     const {t} = useTranslation();
     const dispatch = useDispatch();
+
+    interface VerifyForm {
+        changes: string;
+    }
+
+    const defaults: VerifyForm = {
+        changes: useSelector(selectChanges)
+    }
+
+    const {control, getValues} = useForm<VerifyForm>({defaultValues: defaults})
 
     interface PersonalInformation {
         firstName: string;
@@ -34,19 +38,31 @@ const VerifyInformation: React.FC<FormPageProps> = ({onBack, onComplete}) => {
     }
 
     const onNext = () => {
+        const changeInfo = getValues('changes');
+        if(changeInfo !== '') {
+            dispatch(setInformationChange(changeInfo || ""));
+        }
         onComplete && onComplete()
     }
 
     return (
         <>
             <FormContent>
-                <ProgressDots steps={5} current={3} />
-                <h2>Verify</h2>
+                <ProgressDots steps={6} current={1} />
+                <h2>{t('title-verify')}</h2>
+                <p>{t('text-verify-info')}</p>
                 <p>First Name: {info.firstName}</p>
                 <p>Last Name: {info.lastName}</p>
-                <p>Email: {info.email}</p>
-                <p>Phone: {info.phone}</p>
-                <Textarea name="changes" label="Indicate any changes" />
+                {
+                    info.email !== "" &&
+                    <p>Email: {info.email}</p>
+                }
+                {
+                    info.phone !== "" &&
+                    <p>Phone: {info.phone}</p>
+                }
+                <p>{t('text-indicate-changes')}:</p>
+                <Textarea name="changes" label={""} control={control} />
             </FormContent>
             <FormNextButton onClick={onNext} />
         </>

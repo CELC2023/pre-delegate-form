@@ -14,4 +14,7 @@ export interface checkInDataModel {
     pronouns: string,
     roomId: number,
     roomMates: string,
+    changes: string,
+    delegateId: string,
+    governance: boolean
 }
